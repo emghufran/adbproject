@@ -52,6 +52,7 @@ MEDIA_ROOT = ''
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = ''
 
+#full path: '</path/to/directory/adbproject/src/adbproject/vinyl/media/'
 STATIC_DOC_ROOT = 'C:/Rajani/STS Workspace/adbproject/src/adbproject/vinyl/media/'
 
 # Absolute path to the directory static files should be collected to.
@@ -122,7 +123,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'adbproject.vinyl',
+    'vinyl',
 )
 
 # A sample logging configuration. The only tangible logging
