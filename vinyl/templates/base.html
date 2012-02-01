@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<title></title>
+<link rel="stylesheet" type="text/css" href="adbproject/styles/base.css" />
+</head>
+{% load i18n %}
+<body>
+
+	<div id="container">
+		<div id="header">
+			<div id="rightsubheader">
+				<a>{% trans "Register" %}</a> | <a>{% trans "Login" %}</a> | <select><option
+						value="en">English</option>
+					<option value="fr">Français</option>
+				</select>
+			</div>
+
+			<div id="logo">
+			
+				<img src="adbproject/images/logo.gif" height="100" />
+			</div>
+		</div>
+		<div id="wrapper">
+			<div id="content">
+				<!-- <p><strong>Content here.</strong></p> -->
+				{% block content %}
+
+				 
+				{% endblock %}
+			</div>
+		</div>
+		<div id="navigation">
+			<br />
+			<form id="searchForm" method="post" action="">
+			  <div><input id="search" name="search" type="text"></input>
+				<input type="button" value="Search" class="myButton"/>
+				</div>
+			</form>
+			<br/>
+			<p class="menu community"><a href="">{% trans "Community" %}</a>
+			</p>
+		</div>
+		<div id="extra">
+
+			<p class="menu myProfile"><a href="http://localhost:8000/adbproject/playlist.html">{% trans "My Profile" %}</a></p>
+			<p class="menu myLibrary"><a href="">{% trans "My Library" %}</a></p>
+		</div>
+		<div id="footer">
+			<p>Footer</p>
+		</div>
+	</div>
+
+</body>
+</html>
