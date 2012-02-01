@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-<title></title>
-<link rel="stylesheet" type="text/css" href="adbproject/styles/base.css" />
+<title>{% block page_title %}Vinyl Records{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css" />
 </head>
 {% load i18n %}
 <body>
@@ -21,15 +21,13 @@
 
 			<div id="logo">
 			
-				<img src="adbproject/images/logo.gif" height="100" />
+				<img src="{{STATIC_URL}}images/logo.gif" height="100" />
 			</div>
 		</div>
 		<div id="wrapper">
 			<div id="content">
-				<!-- <p><strong>Content here.</strong></p> -->
 				{% block content %}
-
-				 
+					
 				{% endblock %}
 			</div>
 		</div>
