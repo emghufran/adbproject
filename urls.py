@@ -6,8 +6,12 @@ from django.conf.urls.defaults import patterns, include, url
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'vinyl.views.homepage', name='homepage'),
-    url(r'^adbproject/', include('adbproject.vinyl.urls')),
+	url(r'^$', 'vinyl.views.homepage', name='homepage'),
+	url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
+	url(r'^accounts/logout/$', 'vinyl.views.logout_view'),
+	
+	url(r'^vinyl/', include('adbproject.vinyl.urls')),
+    #url(r'^adbproject/', include('adbproject.vinyl.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

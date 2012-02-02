@@ -13,10 +13,20 @@
 	<div id="container">
 		<div id="header">
 			<div id="rightsubheader">
-				<a>{% trans "Register" %}</a> | <a>{% trans "Login" %}</a> | <select><option
+				<div style="float:right;">
+				| <select><option
 						value="en">English</option>
-					<option value="fr">Français</option>
+					<option value="fr">Francais</option>
 				</select>
+				</div>
+				<div style="float:right;">
+				{% if user.is_authenticated %}
+					{% trans "Welcome" %}, {{ user.username }}! | <a href="/accounts/logout/">{% trans "Logout" %}</a>
+				{% else %}
+					<a href="/accounts/register/">{% trans "Register" %}</a> | <a href="/accounts/login/">{% trans "Login" %}</a>
+				{% endif %}
+				</div>
+				
 			</div>
 
 			<div id="logo">

@@ -1,16 +1,24 @@
 from django.db import models
+from django.contrib.auth.models import User
 
+class UserProfile(models.Model):
+	mid_name = models.CharField(max_length=128, null=True)
+	phone = models.CharField(max_length= 32, null=True)
+	address = models.CharField(max_length=256, null=True)
+	profile_pic = models.CharField(max_length=1024, null=True)
+	language = models.CharField(max_length=8, null=True)
+	user = models.ForeignKey(User)
 
-class User(models.Model):
-    username = models.CharField(max_length=128, unique=True)
-    password = models.CharField(max_length=128)
-    first_name = models.CharField(max_length=128)
-    mid_name = models.CharField(max_length=128, null=True)
-    last_name = models.CharField(max_length=128)
-    email = models.CharField(max_length=256)
-    phone = models.CharField(max_length= 32, null=True)
-    address = models.CharField(max_length=256, null=True)
-    profile_pic = models.CharField(max_length=1024, null=True)
+#class User(models.Model):
+#    username = models.CharField(max_length=128, unique=True)
+#    password = models.CharField(max_length=128)
+#    first_name = models.CharField(max_length=128)
+#    mid_name = models.CharField(max_length=128, null=True)
+#    last_name = models.CharField(max_length=128)
+#    email = models.CharField(max_length=256)
+#    phone = models.CharField(max_length= 32, null=True)
+#    address = models.CharField(max_length=256, null=True)
+#    profile_pic = models.CharField(max_length=1024, null=True)
     
 class Category(models.Model):
     category_name = models.CharField(max_length=128)

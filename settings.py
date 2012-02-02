@@ -123,7 +123,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'vinyl',
+    'adbproject.vinyl',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -148,3 +148,5 @@ LOGGING = {
         },
     }
 }
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+LOGIN_REDIRECT_URL = '/vinyl/playlist'

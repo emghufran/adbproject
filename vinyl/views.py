@@ -1,7 +1,7 @@
 from django.template import loader, Context, RequestContext
 from django.http import HttpResponse
 from django.utils.translation import activate
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponseRedirect
 from adbproject import settings
 
 from django.shortcuts import render_to_response
@@ -18,7 +18,13 @@ def playlists(request):
     
     activate(language)
     t = loader.get_template("playlists.html")
-    c = Context({})
+    c = RequestContext(request, {})
     response = HttpResponse(t.render(c))
     response.set_cookie('lang', language)
     return response
+	
+from django.contrib.auth import logout
+
+def logout_view(request):
+	logout(request)
+	return HttpResponseRedirect('/')
