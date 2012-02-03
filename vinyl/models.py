@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib import admin
 
 class UserProfile(models.Model):
 	mid_name = models.CharField(max_length=128, null=True)
@@ -9,6 +10,7 @@ class UserProfile(models.Model):
 	language = models.CharField(max_length=8, null=True)
 	user = models.ForeignKey(User)
 
+admin.site.register(UserProfile)
 #class User(models.Model):
 #    username = models.CharField(max_length=128, unique=True)
 #    password = models.CharField(max_length=128)
@@ -21,19 +23,27 @@ class UserProfile(models.Model):
 #    profile_pic = models.CharField(max_length=1024, null=True)
     
 class Category(models.Model):
-    category_name = models.CharField(max_length=128)
+    category_name = models.CharField(max_length=128, unique=True)
     category_desc = models.CharField(max_length=256, null=True)
     no_of_disc = models.IntegerField(null=True)
+
+admin.site.register(Category)
     
 class Genre(models.Model):
-    genre_name = models.CharField(max_length=32)
+    genre_name = models.CharField(max_length=32, unique=True)
+
+admin.site.register(Genre)
 
 class Artist(models.Model):
     name = models.CharField(max_length=128)
     artisttype = models.CharField(max_length=32, null=True)
+
+admin.site.register(Artist)
     
 class Musicplayer(models.Model):
-    player_name = models.CharField(max_length=128)
+    player_name = models.CharField(max_length=128, unique=True)
+
+admin.site.register(Musicplayer)
 
 class Playlist(models.Model):
     list_name = models.CharField(max_length=128)
@@ -42,6 +52,11 @@ class Playlist(models.Model):
     published_on = models.DateTimeField(null=True)
     created_by = models.ForeignKey(User)
     
+    class Meta:
+		unique_together = ('list_name', 'created_by',)
+    
+admin.site.register(Playlist)
+
 class RecordLibrary(models.Model):
     library_type = models.CharField(max_length=32, null=True)
     is_published = models.NullBooleanField()
@@ -50,7 +65,7 @@ class RecordLibrary(models.Model):
 class SoundtrackAbstract(models.Model):
     title = models.CharField(max_length=256, null=True)
     release_date = models.DateTimeField(null=True)
-    playing_time = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    playing_time = models.TimeField(null=True)
     style = models.CharField(max_length=16, null=True)
     audio_engineer = models.CharField(max_length=128, null=True)
     lyricist = models.CharField(max_length=128, null=True)
@@ -64,7 +79,9 @@ class SoundtrackAbstract(models.Model):
 class Soundtrack(SoundtrackAbstract):
     genre = models.ForeignKey(Genre, null=True)
     original_version = models.ForeignKey("Soundtrack", null=True) 
-    player = models.ManyToManyField(Musicplayer)
+    player = models.ManyToManyField(Musicplayer, null=True)
+
+admin.site.register(Soundtrack)
     
 class RecordAbstract(models.Model):
     title = models.CharField(max_length=256)
@@ -81,17 +98,22 @@ class Record(RecordAbstract):
     category = models.ForeignKey(Category, null=True)
     artist = models.ForeignKey(Artist, null=True)
     
+admin.site.register(Record)
 
 class Trackartist(models.Model):
     track = models.ForeignKey(Soundtrack)
     artist = models.ForeignKey(Artist)
     artisttype = models.CharField(max_length=1)
     
+admin.site.register(Trackartist)
+
 class Recordtrack(models.Model):
     track = models.ForeignKey(Soundtrack)
     record = models.ForeignKey(Record)
     order = models.IntegerField()
     disc_number = models.IntegerField()
+
+admin.site.register(Recordtrack)
     
 class Rating(models.Model):
     record = models.ForeignKey(Record)
@@ -116,6 +138,8 @@ class RecordLibraryItem(models.Model):
     user = models.force_unicode(User)
     library = models.ForeignKey(RecordLibrary) 
 
+admin.site.register(RecordLibraryItem)
+
 class PlaylistShare(models.Model):
     shared_to = models.ForeignKey(User, related_name='shared_user')
     playlist = models.ForeignKey(Playlist)
@@ -128,6 +152,9 @@ class CustomAttribute(models.Model):
     field_desc = models.CharField(max_length=256)
     record = models.ForeignKey(Record)
     field_value = models.CharField(max_length=256)
+    
+    class Meta:
+    	unique_together = ('created_by','field_name',)
 
 class Revision(models.Model):
     revision_type = models.CharField(max_length=32)

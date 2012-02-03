@@ -1,8 +1,1 @@
-Changes Required:
-- Settings.py
-	- update your connection info
-	- Add STATIC_DOC_ROOT and assign an absolute path of your static files.
-
-
-IMP: Please name your eclipse project 'Vinyl' and start an application named 'vinyl'.
-
+See https://docs.google.com/document/d/1taqBBo8tRclwGHuX8FRMHjfF6PF9vVpxA6WbusHuL6E/edit?hl=en_US
