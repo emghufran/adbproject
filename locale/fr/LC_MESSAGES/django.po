@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-01 16:52+0100\n"
+"POT-Creation-Date: 2012-02-03 01:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .\vinyl\templates\base.html.py:15
+#: .\vinyl\templates\base.html.py:40
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: .\vinyl\templates\base.html.py:40
+msgid "Logout"
+msgstr "Se disconnecter"
+
+#: .\vinyl\templates\base.html.py:42
 msgid "Register"
 msgstr "Inscription"
 
-#: .\vinyl\templates\base.html.py:15
+#: .\vinyl\templates\base.html.py:42
+#: .\vinyl\templates\registration\login.html.py:19
 msgid "Login"
 msgstr "Se connecter"
 
-#: .\vinyl\templates\base.html.py:43
+#: .\vinyl\templates\base.html.py:68
 msgid "Community"
 msgstr "La communauté"
 
-#: .\vinyl\templates\base.html.py:48
+#: .\vinyl\templates\base.html.py:74
 msgid "My Profile"
 msgstr "Mon profil"
 
-#: .\vinyl\templates\base.html.py:49
+#: .\vinyl\templates\base.html.py:75
 msgid "My Library"
 msgstr "Ma bibliothèque"

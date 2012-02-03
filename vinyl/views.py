@@ -7,20 +7,14 @@ from adbproject import settings
 from django.shortcuts import render_to_response
 def homepage(request):
 	t = loader.get_template('base.html')
-	c = RequestContext( request, { 
-		'latest_poll_list': 'abcd', 'content' : "hahahaha", 'page_title' : 'test title'
-	})
+	c = RequestContext(request, {})
 	return HttpResponse(t.render(c))
 	#return render_to_response('base.html', {'latest_poll_list': 'abcd'})
 	
 def playlists(request):
-    language = request.GET.get('lang', settings.LANGUAGE_CODE)
-    
-    activate(language)
     t = loader.get_template("playlists.html")
     c = RequestContext(request, {})
     response = HttpResponse(t.render(c))
-    response.set_cookie('lang', language)
     return response
 	
 from django.contrib.auth import logout
@@ -28,3 +22,10 @@ from django.contrib.auth import logout
 def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect('/')
+
+def change_language(request, lang):
+    activate(lang)
+    response = HttpResponse()
+    response.set_cookie('django_language', lang)
+    response.write(True)
+    return response

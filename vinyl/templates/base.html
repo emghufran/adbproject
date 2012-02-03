@@ -6,17 +6,33 @@
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <title>{% block page_title %}Vinyl Records{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css" />
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+		$('.lang_select').change(function() {
+			var lang_url = '/vinyl/lang/' + $(this).val();
+			jQuery.ajax({
+				url: lang_url,
+				success: function(){
+					location.reload();
+			  	}
+			});
+		});
+	});
+</script>
 </head>
 {% load i18n %}
+{% get_current_language as CURRENT_LANG_CODE %}
 <body>
 
 	<div id="container">
 		<div id="header">
 			<div id="rightsubheader">
 				<div style="float:right;">
-				| <select><option
-						value="en">English</option>
-					<option value="fr">Francais</option>
+				| <select class="lang_select"><option
+						value="en" {% if CURRENT_LANG_CODE == 'en' %}  selected	{% endif %}>English</option>
+					<option value="fr" {% if CURRENT_LANG_CODE == 'fr' %}  selected	{% endif %}>Francais</option>
 				</select>
 				</div>
 				<div style="float:right;">
@@ -52,11 +68,13 @@
 			<p class="menu community"><a href="">{% trans "Community" %}</a>
 			</p>
 		</div>
+		{% if user.is_authenticated %}
 		<div id="extra">
 
-			<p class="menu myProfile"><a href="http://localhost:8000/adbproject/playlist.html">{% trans "My Profile" %}</a></p>
+			<p class="menu myProfile"><a href="">{% trans "My Profile" %}</a></p>
 			<p class="menu myLibrary"><a href="">{% trans "My Library" %}</a></p>
 		</div>
+		{% endif %}
 		<div id="footer">
 			<p>Footer</p>
 		</div>
