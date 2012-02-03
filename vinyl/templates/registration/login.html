@@ -1,12 +1,30 @@
 {% extends "base.html" %}
 {% load url from future %}
 {% block content %}
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<div id="login">
+{% if form.non_field_errors %}
+<div class="error corner-all"> 
+{{ form.non_field_errors }}
+</div>
 {% endif %}
-<form method= "post" action="{% url 'django.contrib.auth.views.login' %}" >
+<form id="loginForm" method= "post" action="{% url 'django.contrib.auth.views.login' %}" >
 {% csrf_token %}
-<table>
+<div class="block">
+	{% if form.username.errors %}
+	<div class="error corner-all">{{ form.username.errors }}</div>
+	{% endif %}
+	<div class="label">{{ form.username.label_tag }}</div>
+	<div>{{ form.username }}</div>
+</div>
+<div class="block">	
+	{% if form.password.errors %}
+	<div class="error corner-all">{{ form.password.errors }}</div>
+	{% endif %}
+	
+	<div class="label">{{ form.password.label_tag }} </div>
+	<div>{{ form.password }} </div>
+</div>
+<!-- <table>
 	<tr>
 		<td >{{ form.username.label_tag }} </td>
 		<td>{{ form.username }} </td>
@@ -15,8 +33,11 @@
 		<td >{{ form.password.label_tag }} </td>
 		<td >{{ form.password }} </td>
 	</tr>
-</table>
-<input type="submit" value="login" />
-<input type="hidden" name="next" value= "{{ next }}" />
+</table> -->
+<div class="block">	
+	<input type="submit" value="Login" class="button"/>
+	<input type="hidden" name="next" value= "{{ next }}" />
+</div>
 </form>
+</div>
 {% endblock %}

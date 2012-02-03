@@ -19,6 +19,15 @@ div#navigation{float:left;width:200px;}
 div#extra{float:left;clear:left;width:200px}
 div#footer{clear:both;width:100%}
 input#search {background: url("../images/ico.search.gif") no-repeat left top; padding-left: 20px;}
+div#login{padding: 15px;width:300px;}
+div#login ul{list-style:none;padding:0px 2px;margin:2px;}
+form#loginForm{margin-top: 10px;}
+form#loginForm .label{width:100px;font-size:11px;float:left;}
+form#loginForm input{font-size:11px;}
+form#loginForm .block{padding:2px;}
+
+.corner-all{border-radius:4px;}
+.error{border: 1px solid red;background-color: #FEF8F6; padding: 4px; color:red;margin:2px;}
 
 body {
 	font: 11px/1.5em Verdana;
@@ -110,7 +119,7 @@ hr {
 }
 
 /* Style for button */
-.myButton {
+.button {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -130,12 +139,12 @@ hr {
 	padding:4px 18px;
 	text-decoration:none;
 	text-shadow:1px 1px 0px #ffffff;
-}.myButton:hover {
+}.button:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
 	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
 	background-color:#dfdfdf;
-}.myButton:active {
+}.button:active {
 	position:relative;
 	top:1px;
 }
