@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<div class="rec-details-title">{{ record.title}}</div>
+<div class="rec-details">
+<table id="rec-details">
+	<tr>
+		<td class="label">{% trans "Artist" %}</td>
+		<td>{{record.artist.name}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Featuring" %}</td> <!-- Needs correction in the table -->
+		<td>{{record.disc_size}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Producer" %}</td>
+		<td>{{record.producer}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Genre" %}</td>
+		<td>{{record.genre.genre_name}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Cateogry" %}</td>
+		<td>{{record.category.name}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Disc Size" %}</td>
+		<td>{{record.disc_size}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Matrix Number" %}</td>
+		<td>{{record.matrix_number}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Press Info" %}</td>
+		<td>{{record.press_info}}</td>
+	</tr>
+	<tr>
+		<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Rating" %}</td>
+		<td> Stars here (Average {{ rating.avg_rating }} out of 5)</td>
+	</tr>
+</table>
+
+<br/>
+<div class="rec-details-title">Tracks</div>
+<table>
+<thead>
+	<tr>
+		<td></td>
+		<td>{% trans "Title" %}</td>
+		<td>{% trans "Artist" %}</td>
+		<td>{% trans "Genre" %}</td>
+		<td>{% trans "Playing Time" %}</td>
+		<td>{% trans "Release Date" %}</td>
+	</tr>
+</thead>
+<tbody>
+{% for track in tracks %}
+	<tr>
+		<td></td>
+		<td>{{track.title}}</td>
+		<td>{{track.artist.name}}</td>
+		<td>{{track.genre.genre_name}}</td>
+		<td>{{track.playing_time}}</td>
+		<td>{{track.release_date }}</td>
+	</tr>
+
+{% endfor %}
+</tbody>
+</table>
+<br/>
+<div class="comments-panel">
+<div><strong>{% trans "Comments" %}</strong></div>
+	{% for comment in comments %}
+	<div class="comment">
+		<div class="commenter">{{ comment.commenter.username}} - {{ comment.commented_on }}</div>
+		<div class="comment-text">{{ comment.comment}}</div>
+	</div>
+	{% endfor %}
+</div>
+</div>
+{% endblock %}

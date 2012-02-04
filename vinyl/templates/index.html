@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+
+<div id="all-records">
+<h3> All Records </h3>
+<hr/>
+{% load paginator %}
+{% paginator 5 %}
+{% for record in object_list %}
+<div class="record">
+<p><strong><a href="/vinyl/record/{{ record.id }}">{{ record.title }}</a></strong></p> 
+<p>{% trans "Artist" %}: {{ record.artist.name }}<br/>
+{% trans "Genre" %}: {{ record.genre.genre_name }}</p>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

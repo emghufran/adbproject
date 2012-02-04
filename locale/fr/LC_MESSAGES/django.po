@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-03 01:08+0100\n"
+"POT-Creation-Date: 2012-02-04 20:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,18 +30,59 @@ msgid "Register"
 msgstr "Inscription"
 
 #: .\vinyl\templates\base.html.py:42
-#: .\vinyl\templates\registration\login.html.py:19
 msgid "Login"
 msgstr "Se connecter"
 
-#: .\vinyl\templates\base.html.py:68
+#: .\vinyl\templates\base.html.py:59 .\vinyl\templates\base.html.py:92
 msgid "Community"
 msgstr "La communauté"
 
-#: .\vinyl\templates\base.html.py:74
+#: .\vinyl\templates\base.html.py:63 .\vinyl\templates\base.html.py:98
 msgid "My Profile"
 msgstr "Mon profil"
 
-#: .\vinyl\templates\base.html.py:75
+#: .\vinyl\templates\base.html.py:64 .\vinyl\templates\base.html.py:99
 msgid "My Library"
 msgstr "Ma bibliothèque"
+
+#: .\vinyl\templates\index.html.py:13
+#: .\vinyl\templates\record_details.html.py:8
+msgid "Artist"
+msgstr "Artiste"
+
+#: .\vinyl\templates\index.html.py:14
+#: .\vinyl\templates\record_details.html.py:20
+msgid "Genre"
+msgstr "Genre"
+
+#: .\vinyl\templates\record_details.html.py:12
+msgid "Featuring"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:16
+msgid "Producer"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:24
+msgid "Cateogry"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:28
+msgid "Disc Size"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:32
+msgid "Matrix Number"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:36
+msgid "Press Info"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:43
+msgid "Rating"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:53
+msgid "Comments"
+msgstr "Commentaires"

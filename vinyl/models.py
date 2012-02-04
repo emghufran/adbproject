@@ -126,7 +126,7 @@ class Userrating(models.Model):
     rated_on = models.DateTimeField()
 
 class Comment(models.Model):
-    commentor = models.ForeignKey(User)
+    commenter = models.ForeignKey(User)
     record = models.ForeignKey(Record)
     comment = models.TextField()
     commented_on = models.DateTimeField()

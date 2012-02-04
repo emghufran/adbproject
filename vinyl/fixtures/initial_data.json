@@ -1,0 +1,429 @@
+[
+	{
+		"pk": "1",
+		"model": "vinyl.Soundtrack",
+		"fields": {
+			"title": "Someone like you"
+		}
+	},
+    {
+        "pk": 2, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Al Campbell"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Alpha Rowen"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Alton Ellis"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Anthony B"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Artist"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Baco"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Bagga Worries"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Barry Biggs"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Carlton Lewis"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Christine Miller"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Chuck Fenda"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Cornel Campbell"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Cultural Roots"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Danny Red"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Delton Screechie"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Don Carlos"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Earl Sixteen"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Early B"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Errol Dunkley"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Everton Blender"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Fitta Warri"
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Gussie P"
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Jah Stitch"
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Jah Thomas"
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Kenny Knots"
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Kiko"
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Mafia & Fluxy"
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Peter Broggs"
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Ruddy Thomas"
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Wayne And Johnny"
+        }
+    },
+    {
+        "pk": 2, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 2, 
+            "genre": 5, 
+            "producer": "Tappa Zukie", 
+            "title": "Know Your Culture / Jill"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 3, 
+            "genre": 5, 
+            "producer": "Oxman", 
+            "title": "Brother Man"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 4, 
+            "genre": 5, 
+            "producer": "Mosco", 
+            "title": "Zulu Man / Peeping Tom"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 5, 
+            "genre": 5, 
+            "producer": "Manjul", 
+            "title": "Show Your Emotion / Tonight"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 6, 
+            "genre": 5, 
+            "producer": "Nomadix", 
+            "title": "400 Years"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 7, 
+            "genre": 5, 
+            "producer": "Tappa Zukie", 
+            "title": "Reflection"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 8, 
+            "genre": 5, 
+            "producer": "Fashion", 
+            "title": "Sweet Soul Rocking / Golden Wonder DUB"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 9, 
+            "genre": 5, 
+            "producer": "Roots HiTek", 
+            "title": "The Light / Trod Away Home"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 10, 
+            "genre": 5, 
+            "producer": "D Davis", 
+            "title": "Locks A Flow / Babylon Get A Blow"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 11, 
+            "genre": 5, 
+            "producer": "Ryan Moore", 
+            "title": "Why Dem Gwaan So / Universal Ruler"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 12, 
+            "genre": 5, 
+            "producer": "Hookim", 
+            "title": "I Need You Right Now / You Captured My Heart"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 13, 
+            "genre": 5, 
+            "producer": "Germain / Cultural Roots", 
+            "title": "Reality"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 14, 
+            "genre": 5, 
+            "producer": "Gussie P", 
+            "title": "Give Jah Praise / Ballistic Domination"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 15, 
+            "genre": 5, 
+            "producer": "Bunny Hylton", 
+            "title": "Sweet Africa / History"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 16, 
+            "genre": 5, 
+            "producer": "Niney / Hookim", 
+            "title": "Dice Cup / Ackee Monkey"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 17, 
+            "genre": 5, 
+            "producer": "Earl Sixteen", 
+            "title": "Jah Love We Want / Gold Of Sheba"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 18, 
+            "genre": 5, 
+            "producer": "Gussie P", 
+            "title": "Gates Of Hell"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 19, 
+            "genre": 5, 
+            "producer": "D Davis", 
+            "title": "Reggae Ambassador / Have Fe Mek It"
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 20, 
+            "genre": 5, 
+            "producer": "Fred Dread", 
+            "title": "Starlights / Live Consciously"
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 21, 
+            "genre": 5, 
+            "producer": "Errol Dunkley", 
+            "title": "Mount Zion / Love Of My Woman"
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "artist": 22, 
+            "genre": 5, 
+            "producer": "Neil Perch", 
+            "title": "Israel / Wicked Intentions"
+        }
+    }
+]
