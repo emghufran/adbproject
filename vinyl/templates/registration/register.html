@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block content %}
+{% if form.errors %}
+<!-- put errors here -->
+{% endif %}
+<form method= "post" action="{% url 'vinyl.views.register' %}" >
+{% csrf_token %}
+{{ form.as_p }}
+{{ profile_form.as_p }}
+<input type="submit" value="Register" />
+<input type="hidden" name="next" value= "{{ next }}" />
+</form>
+{% endblock %}
