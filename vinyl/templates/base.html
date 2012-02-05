@@ -32,7 +32,7 @@
 				<div style="float:right;">
 				| <select class="lang_select"><option
 						value="en" {% if CURRENT_LANG_CODE == 'en' %}  selected	{% endif %}>English</option>
-					<option value="fr" {% if CURRENT_LANG_CODE == 'fr' %}  selected	{% endif %}>Francais</option>
+					<option value="fr" {% if CURRENT_LANG_CODE == 'fr' %}  selected	{% endif %}>Français</option>
 				</select>
 				</div>
 				<div style="float:right;">
@@ -61,7 +61,8 @@
 				{% if user.is_authenticated %}
 
 					<li class="menu myProfile"><a href="">{% trans "My Profile" %}</a></li>
-					<li class="menu myLibrary"><a href="">{% trans "My Library" %}</a></li>
+					<li class="menu myLibrary"><a href="/vinyl/library">{% trans "My Library" %}</a></li>
+					<li class="menu myPlaylists"><a href="/vinyl/playlists/all">{% trans "Playlists" %}</a></li>
 				{% endif %}
 				</ul>
 				</div>
@@ -100,8 +101,8 @@
 		</div> -->
 		{% endif %}
 		<div id="footer">
-			<hr/>
 			<p>Footer</p>
+			<hr/>
 		</div>
 	</div>
 

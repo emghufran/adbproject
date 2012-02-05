@@ -66,7 +66,6 @@ hr {padding-left:15px;
 #tabs {
 	float:left;
 	width:100%;
-	background:#efefef;
 	font-size:93%;
 	font-weight: bold;
 	line-height:normal;
@@ -132,6 +131,9 @@ hr {padding-left:15px;
 .myLibrary {
 	background: url("../images/music.png") no-repeat left;
 }
+.myPlaylists {
+	background: url("../images/playlists.png") no-repeat left;
+}
 
 /* Style for button */
 .button {
@@ -172,3 +174,7 @@ table#rec-details .label{width: 120px;}
 .comment{margin-left:10px}
 .commenter{padding: 2px 4px; margin-top:4px;}
 .comment-text{border: 1px solid #DDDDDD;border-radius: 5px 5px 5px 5px; margin-right: 10px;padding: 2px 5px;}
+
+
+table th{padding: 10px 10px 9px;line-height: 18px;text-align: left;border-bottom: 1px solid #DDD;vertical-align: top;font-weight:bold;}
+table th, table td {padding: 2px 10px 4px;line-height: 24px;text-align: left;border-bottom: 1px solid #DDD;vertical-align: top;}

@@ -140,6 +140,11 @@ class RecordLibraryItem(models.Model):
 
 admin.site.register(RecordLibraryItem)
 
+class PlaylistItem(models.Model):
+	playlist = models.ForeignKey(Playlist)
+	track = models.ForeignKey(Soundtrack)
+	record = models.ForeignKey(Record)
+	
 class PlaylistShare(models.Model):
     shared_to = models.ForeignKey(User, related_name='shared_user')
     playlist = models.ForeignKey(Playlist)

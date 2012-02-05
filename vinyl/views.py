@@ -1,7 +1,7 @@
 from adbproject import settings
-from adbproject.vinyl.models import Record
-from adbproject.vinyl.models import Rating
+from adbproject.vinyl.models import Rating, Record, Playlist
 from django.contrib.auth import logout
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.http import HttpRequest, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
@@ -24,11 +24,28 @@ def homepage(request):
 #	c = RequestContext(request, {'records': data, 'paginator': p})
 #	return HttpResponse(t.render(c))
 	
-def playlists(request):
-    t = loader.get_template("playlists.html")
-    c = RequestContext(request, {})
-    response = HttpResponse(t.render(c))
-    return response
+def playlists(request, pltype):
+	from django.db.models import Q
+	from django.contrib.auth import get_user
+	curuser = get_user(request)
+	user = User.objects.get(id=curuser.id)
+		
+	if (pltype == 'my'):
+		playlists = user.playlist_set.all()
+	elif (pltype == 'sharedwm'):
+		playlists = user.shared_user.all()
+	elif (pltype == 'myshared'):
+		playlists = user.owner.all()
+	else:
+		pltype = 'all'
+		playlists = Playlist.objects.all()
+	
+	return object_list(request, template_name = 'playlists.html',
+         queryset = playlists, paginate_by = 10)
+#    t = loader.get_template("playlists.html")
+#    c = RequestContext(request, {})
+#    response = HttpResponse(t.render(c))
+#    return response
 	
 
 def logout_view(request):

@@ -5,8 +5,10 @@
 <div id="all-records">
 <h3> All Records </h3>
 <hr/>
+{% if is_paginated %}
 {% load paginator %}
-{% paginator 5 %}
+{% paginator 10 %}
+{% endif %}
 {% for record in object_list %}
 <div class="record">
 <p><strong><a href="/vinyl/record/{{ record.id }}">{{ record.title }}</a></strong></p> 
