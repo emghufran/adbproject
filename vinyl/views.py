@@ -9,6 +9,12 @@ from django.template import loader, Context, RequestContext
 from django.utils.translation import activate
 from django.views.generic.list_detail import object_list
 
+
+from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
+from adbproject.vinyl.models import UserProfileForm
+
 def homepage(request):
 	from django.db.models import Q
 
@@ -51,6 +57,21 @@ def playlists(request, pltype):
 def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect('/')
+
+def register(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		profile_form = UserProfileForm(request.POST)
+	else:
+		form = UserCreationForm()
+		profile_form = UserProfileForm()
+	return render_to_response('registration/register.html', { 'form' : form, 'profile_form': profile_form }, context_instance=RequestContext(request))
+		
+def my_test_view(request):
+	send_mail('Subject', 'Message. ', 'from@example.com', ['emghufran@gmail.com'])
+	t = loader.get_template("my_test_view.html")
+	c = RequestContext(request, {})
+	return HttpResponse(t.render(c))
 
 def change_language(request, lang):
     activate(lang)

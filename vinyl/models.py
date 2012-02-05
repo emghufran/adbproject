@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
+from django import forms
 
 class UserProfile(models.Model):
 	mid_name = models.CharField(max_length=128, null=True)
@@ -11,6 +12,12 @@ class UserProfile(models.Model):
 	user = models.ForeignKey(User)
 
 admin.site.register(UserProfile)
+class UserProfileForm(forms.Form):
+	mid_name = forms.CharField(max_length=128, required=False)
+	phone = forms.CharField(max_length=32, required=False)
+	address = forms.CharField(max_length=512, required=False)
+	language = forms.CharField(max_length=128, required=False)
+
 #class User(models.Model):
 #    username = models.CharField(max_length=128, unique=True)
 #    password = models.CharField(max_length=128)

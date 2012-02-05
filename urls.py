@@ -9,6 +9,9 @@ urlpatterns = patterns('',
 	url(r'^$', 'vinyl.views.homepage', name='homepage'),
 	url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
 	url(r'^accounts/logout/$', 'vinyl.views.logout_view'),
+	url(r'^accounts/register/$', 'vinyl.views.register'),
+	
+	url(r'^test_view/$', 'vinyl.views.my_test_view'),
 	
 	url(r'^vinyl/', include('adbproject.vinyl.urls')),
     #url(r'^adbproject/', include('adbproject.vinyl.urls')),

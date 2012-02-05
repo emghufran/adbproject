@@ -150,3 +150,15 @@ LOGGING = {
 }
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 LOGIN_REDIRECT_URL = '/vinyl/playlist'
+
+
+#EMAIL SETTINGS
+#SETUP an email account on gmail with the following credentials. but can't connect through the uni. network.
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'vinyl.records.adb'
+EMAIL_HOST_PASSWORD = 'VinylRecords#'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+#writing emails to the console since actual sending doesn't work. to be removed.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
