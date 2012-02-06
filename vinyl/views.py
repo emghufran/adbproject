@@ -72,9 +72,11 @@ def register(request):
 			user_profile = profile_form.save(commit=False)
 			user_profile.user_id = user.id
 			user_profile.save()
-			
-			#else:
-			#	logger.debug("testing register: else case, form failed")
+			import md5
+			m = md5.new(user.username)
+			email_text = "Dear " + user.username + ",\n\nWe welcome you to VinylRecords. Please click on the following link to confirm your registration:\n\n" + settings.SITE_BASE_URL + "accounts/activate/" + str(user.id) + "/" + m.hexdigest() + "\n\nThanks,\nVinylRecords Team."
+			send_mail('Welcome to Vinyl Records', email_text, 'admin@vinylrecords.com', [user.email])
+			return HttpResponseRedirect('/vinyl/playlists/all/')
 	else:
 		form = RegisterForm()
 		profile_form = UserProfileForm()
