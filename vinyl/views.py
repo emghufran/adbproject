@@ -13,7 +13,10 @@ from django.views.generic.list_detail import object_list
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import send_mail
-from adbproject.vinyl.models import UserProfileForm
+from adbproject.vinyl.models import UserProfileForm, RegisterForm
+
+import logging
+logger = logging.getLogger(__name__)
 
 def homepage(request):
 	from django.db.models import Q
@@ -60,11 +63,22 @@ def logout_view(request):
 
 def register(request):
 	if request.method == 'POST':
-		form = UserCreationForm(request.POST)
+		form = RegisterForm(request.POST)
 		profile_form = UserProfileForm(request.POST)
+		if form.is_valid() and profile_form.is_valid():
+			#do something
+			logger.debug("testing register: if case")
+			user = form.save()
+			user_profile = profile_form.save(commit=False)
+			user_profile.user_id = user.id
+			user_profile.save()
+			
+			#else:
+			#	logger.debug("testing register: else case, form failed")
 	else:
-		form = UserCreationForm()
+		form = RegisterForm()
 		profile_form = UserProfileForm()
+		
 	return render_to_response('registration/register.html', { 'form' : form, 'profile_form': profile_form }, context_instance=RequestContext(request))
 		
 def my_test_view(request):
