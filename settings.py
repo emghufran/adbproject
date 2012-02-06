@@ -149,7 +149,7 @@ LOGGING = {
     }
 }
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
-LOGIN_REDIRECT_URL = '/vinyl/playlist'
+LOGIN_REDIRECT_URL = '/vinyl/playlists/all'
 
 
 #EMAIL SETTINGS
@@ -162,3 +162,5 @@ EMAIL_USE_TLS = True
 
 #writing emails to the console since actual sending doesn't work. to be removed.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+SUPPORTED_LANGUAGES = [('en','English'), ('fr','Francais')]
