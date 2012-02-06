@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<div class="details-title">{{ track.title}} 
+	<a href="{% url adbproject.vinyl.views.edit_track track.id  %}" class="class-link">[Edit]</a>
+</div>
+<table id="details">
+	<tr>
+		<td class="label">{% trans "Artists" %}</td>
+		<td>{{ artists }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Featuring Artists" %}</td> 
+		<td>{{ feat_artists}}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Genre" %}</td>
+		<td>{{ track.genre.genre_name }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Playing Time" %}</td>
+		<td>{{ track.playing_time }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Style" %}</td>
+		<td>{{ track.style }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Lyricist" %}</td>
+		<td>{{ track.lyricist }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Audio Engineer" %}</td>
+		<td>{{ track.audio_engineer }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Music Writer" %}</td>
+		<td>{{ track.audio_engineer }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Rhythm" %}</td>
+		<td>{{ track.rythm }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Original version" %}</td>
+		<td>{{ track.original_version.title }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Music Players" %}</td>
+		<td>{{ musicplayers }}</td>
+	</tr>	
+</table>
+
+{% endblock %}

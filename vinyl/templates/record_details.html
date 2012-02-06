@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 {% load i18n %}
-<div class="rec-details-title">{{ record.title}}</div>
+<div class="details-title">{{ record.title}} 
+	<a href="{% url adbproject.vinyl.views.edit_record record.id  %}" class="class-link">[Edit]</a>
+</div>
 <div class="rec-details">
-<table id="rec-details">
+<table id="details">
 	<tr>
 		<td class="label">{% trans "Artist" %}</td>
 		<td>{{record.artist.name}}</td>
@@ -46,29 +48,36 @@
 </table>
 
 <br/>
-<div class="rec-details-title">Tracks</div>
+<div class="details-title">Tracks</div>
 <table>
 <thead>
 	<tr>
-		<td></td>
-		<td>{% trans "Title" %}</td>
-		<td>{% trans "Artist" %}</td>
-		<td>{% trans "Genre" %}</td>
-		<td>{% trans "Playing Time" %}</td>
-		<td>{% trans "Release Date" %}</td>
+		<th></th>
+		<th>{% trans "Title" %}</th>
+		<th>{% trans "Artist" %}</th>
+		<th>{% trans "Genre" %}</th>
+		<th>{% trans "Playing Time" %}</th>
+		<th>{% trans "Release Date" %}</th>
 	</tr>
 </thead>
 <tbody>
-{% for track in tracks %}
+{% for row in data %}
 	<tr>
 		<td></td>
-		<td>{{track.title}}</td>
-		<td>{{track.artist.name}}</td>
-		<td>{{track.genre.genre_name}}</td>
-		<td>{{track.playing_time}}</td>
-		<td>{{track.release_date }}</td>
+		<td>{{row.recordtrack.track.title}}</td>
+		<td>{{row.artists}}</td>
+		<td>{{row.recordtrack.track.genre.genre_name}}</td>
+		<td>{{row.recordtrack.track.playing_time}}</td>
+		<td>{{row.recordtrack.track.release_date }}</td>
 	</tr>
-
+<!-- 	<tr>
+		<td></td>
+		<td>{{recordtrack.track.title}}</td>
+		<td>{{artists.1}}</td>
+		<td>{{recordtrack.track.genre.genre_name}}</td>
+		<td>{{recordtrack.track.playing_time}}</td>
+		<td>{{recordtrack.track.release_date }}</td>
+	</tr> --> 
 {% endfor %}
 </tbody>
 </table>

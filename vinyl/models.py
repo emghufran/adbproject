@@ -151,6 +151,7 @@ class PlaylistItem(models.Model):
 	playlist = models.ForeignKey(Playlist)
 	track = models.ForeignKey(Soundtrack)
 	record = models.ForeignKey(Record)
+	created_by = models.ForeignKey(User)
 	
 class PlaylistShare(models.Model):
     shared_to = models.ForeignKey(User, related_name='shared_user')
