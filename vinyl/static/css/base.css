@@ -166,9 +166,10 @@ hr {padding-left:15px;
 	top:1px;
 }
 
-.rec-details-title{font-size:13px; font-weight:bold;padding:15px 0px;border-bottom: 1px solid #DDDDDD;margin:5px 0px;}
-table#rec-details {margin-top:10px}
-table#rec-details .label{width: 120px;}
+.details-title{font-size:13px; font-weight:bold;padding:15px 0px;border-bottom: 1px solid #DDDDDD;margin:5px 0px;}
+.class-link{font-size:11px; font-weight:normal;text-decoration: underline;}
+table#details {margin-top:10px}
+table#details .label{width: 120px;}
 
 .comments-panel{margin: 10px 0px; padding: 2px; border-width: 1px 1px 0px; border-style: solid solid none; border-color: #DDDDDD;  border-radius: 4px 4px 4px 4px;}
 .comment{margin-left:10px}

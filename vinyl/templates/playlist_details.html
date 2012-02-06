@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<div class="details-title">{{ playlist.list_name}}
+	 <a href="{% url adbproject.vinyl.views.edit_playlist playlist.id  %}" class="class-link">[Edit]</a>
+</div>
+<div>
+<table id="details">
+	<tr>
+		<td class="label">{% trans "Owner" %}</td>
+		<td>{{ playlist.created_by.username }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Published" %}</td>
+		<td>{{ playlist.is_published }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Created on" %}</td> 
+		<td>{{ playlist.created_on }}</td>
+	</tr>
+</table>
+
+<div class="details-title">Track List</div>
+<table>
+<thead>
+	<tr>
+		<th></th>
+		<th>{% trans "Title" %}</th>
+		<th>{% trans "Record" %}</th>
+		<th>{% trans "Artist" %}</th>
+		<th>{% trans "Added by" %}</th>
+	</tr>
+</thead>
+<tbody>
+{% for plitem in playlistitems %}
+	<tr>
+		<td></td>
+		<td><a href="{% url adbproject.vinyl.views.track_details plitem.track.id %}">{{ plitem.track.title }}</a></td>
+		<td><a href="{% url adbproject.vinyl.views.record_details plitem.record.id %}">{{ plitem.record.title }}</a></td>
+		<td>{{ plitem.record.artist.name }}</td>
+		<td>{{ plitem.created_by.username }}</td>
+	</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<div class="details-title" style="width: 200px">Shared with:</div>
+<table>
+	<thead>
+		<tr><th>Username</th></tr>
+	</thead>
+	<tbody>
+	{% for share in shares %}
+		<tr><td>{{ share.shared_to.username }}</td></tr>
+	{% endfor %}
+	</tbody>
+</table>
+</div>
+
+{% endblock %}
