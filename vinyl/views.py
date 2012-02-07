@@ -1,6 +1,6 @@
 from adbproject import settings
-from adbproject.vinyl.models import Rating, Record, Playlist, UserProfileForm, \
-	Soundtrack
+from adbproject.vinyl.models import *
+
 from django.contrib.auth import logout, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -12,11 +12,9 @@ from django.template import loader, Context, RequestContext
 from django.utils.translation import activate
 from django.views.generic.list_detail import object_list
 
-
 from django.contrib.auth import logout
 from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import send_mail
-from adbproject.vinyl.models import UserProfileForm, RegisterForm
 
 import logging
 logger = logging.getLogger(__name__)
