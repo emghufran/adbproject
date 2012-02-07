@@ -61,8 +61,8 @@
 				{% if user.is_authenticated %}
 
 					<li class="menu myProfile"><a href="">{% trans "My Profile" %}</a></li>
-					<li class="menu myLibrary"><a href="/vinyl/library">{% trans "My Library" %}</a></li>
-					<li class="menu myPlaylists"><a href="/vinyl/playlists/all">{% trans "Playlists" %}</a></li>
+					<li class="menu myLibrary"><a href="{% url adbproject.vinyl.views.library %}">{% trans "My Library" %}</a></li>
+					<li class="menu myPlaylists"><a href="{% url adbproject.vinyl.views.playlists 'all' %}l">{% trans "Playlists" %}</a></li>
 				{% endif %}
 				</ul>
 				</div>

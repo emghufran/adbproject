@@ -3,13 +3,13 @@
 <div id="tabs">
 	<ul>
 		<li {% if ptype == 'all' %} class="current" {% endif %}>
-			<a href="/vinyl/playlists/all"><span>All Playlists</span> </a>
+			<a href="{% url adbproject.vinyl.views.playlists 'all' %}"><span>All Playlists</span> </a>
 		</li>
 		<li {% if ptype == 'my' %} class="current" {% endif %}>
-			<a href="/vinyl/playlists/my"><span>My Published</span> </a>
+			<a href="{% url adbproject.vinyl.views.playlists 'my' %}"><span>My Published</span> </a>
 		</li>
-		<li><a href="/vinyl/playlists/sharedwm"><span>My Shared</span> </a></li>
-		<li><a href="/vinyl/playlists/myshared"><span>Shared with me</span> </a></li>
+		<li><a href="{% url adbproject.vinyl.views.playlists 'sharedwm' %}"><span>My Shared</span> </a></li>
+		<li><a href="{% url adbproject.vinyl.views.playlists 'myshared' %}"><span>Shared with me</span> </a></li>
 	</ul>
 </div>
 <br/>
@@ -38,7 +38,13 @@
 			<td>{{ playlist.created_on }}</td>
 			<td>{{ playlist.playlistItem_set.count }}</td>
 			<!-- <td>{{ playlist.last_updated}}</td> -->
-			<td><input type="button" value="Edit" class="button"/> &nbsp;<input type="button" value="Delete" class="button"/></td>
+			<td>
+				{% if playlist.created_by.id == user.id %}
+				<a href="{% url adbproject.vinyl.views.edit_playlist playlist.id  %}" class="button buttonlink">Edit</a> &nbsp;
+				<a href="" class="button buttonlink">Delete</a>
+				<!-- <input type="button" value="Edit" class="button"/> &nbsp;<input type="button" value="Delete" class="button"/> -->
+				{% endif %}
+			</td>
 		</tr>
 {% endfor %}
 	</tbody>
