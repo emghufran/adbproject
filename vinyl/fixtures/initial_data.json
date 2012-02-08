@@ -425,5 +425,53 @@
             "producer": "Neil Perch", 
             "title": "Israel / Wicked Intentions"
         }
+    },
+    {
+        "pk": 1, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "LP", 
+            "no_of_disc" : 1
+        }
+    },
+    {
+        "pk": 2, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "Double LP", 
+            "no_of_disc" : 2
+        }
+    },
+    {
+        "pk": 3, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "EP", 
+            "no_of_disc" : 1
+        }
+    },
+    {
+        "pk": 4, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "Double EP", 
+            "no_of_disc" : 2
+        }
+    },
+    {
+        "pk": 5, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "Maxi Single", 
+            "no_of_disc" : 1
+        }
+    },
+    {
+        "pk": 6, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "Single", 
+            "no_of_disc" : 1
+        }
     }
 ]

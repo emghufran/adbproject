@@ -19,6 +19,8 @@ class Category(models.Model):
     category_name = models.CharField(max_length=128, unique=True)
     category_desc = models.CharField(max_length=256, null=True)
     no_of_disc = models.IntegerField(null=True)
+    def __unicode__(self):
+        return u'%s' % (self.category_name)
 
 admin.site.register(Category)
     
@@ -79,8 +81,8 @@ admin.site.register(Soundtrack)
 class RecordAbstract(models.Model):
     title = models.CharField(max_length=256)
     disk_size = models.CharField(max_length=32, null=True)
-    matrix_nubmer = models.CharField(max_length=64, null=True)
-    press_info = models.CharField(max_length=128, null=True)
+    matrix_nubmer = models.CharField(max_length=64, null=False)
+    press_info = models.CharField(max_length=128, null=False)
     producer = models.CharField(max_length=128, null=True)
     
     class Meta:

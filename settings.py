@@ -121,10 +121,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'adbproject.vinyl',
+    'ajax_select'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -144,10 +145,6 @@ LOGGING = {
         },
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler'
-        },
 		'console':{
             'level':'DEBUG',
             'class':'logging.StreamHandler',
@@ -156,8 +153,8 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'handlers': ['console'],
+            'level': 'INFO',
             'propagate': True,
         },
     }
@@ -178,3 +175,14 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SUPPORTED_LANGUAGES = [('en','English'), ('fr','Francais')]
+
+#for ajax_select
+AJAX_LOOKUP_CHANNELS = {
+    #   pass a dict with the model and the field to search against
+    #'genre'  : {'model':'vinyl.genre', 'search_field':'genre_name'}
+    'genre' : ('adbproject.lookups', 'GenreLookup'),
+    'artist' : ('adbproject.lookups', 'ArtistLookup')
+}
+# magically include jqueryUI/js/css
+AJAX_SELECT_BOOTSTRAP = True
+AJAX_SELECT_INLINES = 'inline'

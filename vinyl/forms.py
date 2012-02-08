@@ -1,10 +1,12 @@
 from django import forms
-from django.db import models
-from django.contrib.auth.models import User
-from django.contrib import admin
-from django.contrib.auth.forms import UserCreationForm
-from adbproject import settings
+#from django.db import models
+#from django.contrib.auth.models import User
+#from django.contrib import admin
+#from django.contrib.auth.forms import UserCreationForm
+#from adbproject import settings
 from adbproject.vinyl.models import *
+from adbproject.ajax_select import make_ajax_field
+
 #UserProfile form	
 class UserProfileForm(forms.ModelForm):
 	mid_name = forms.CharField(max_length=128, required=False)
@@ -40,3 +42,19 @@ class RegisterForm(UserCreationForm):
 		if User.objects.filter(email=data).exists():
 			raise forms.ValidationError("This email already used")
 		return data
+
+class RecordForm(forms.ModelForm):
+	matrix_number = forms.CharField(max_length=64, required=True)
+	title = forms.CharField(max_length=128, required=False)
+	DISC_SIZES = (('7','7 inches'), ('10','10 inches'), ('12','12 inches'))
+	PRESS_INFO = (('first','first'), ('repress','repress'))
+	disc_size = forms.ChoiceField(choices=DISC_SIZES, required=False)
+	press_info = forms.ChoiceField(choices=PRESS_INFO, required=False)
+	
+	#make_ajax_field(model,model_fieldname,channel,show_help_text = False,**kwargs)
+	genre = make_ajax_field(Record,'genre','genre') #,help_text=True)
+	artist = make_ajax_field(Record,'artist','artist') #,help_text=True)
+	category = forms.ModelChoiceField(queryset=Category.objects.all(), initial=1)
+	class Meta:
+		model = Record
+		#exclude = ('user_id')

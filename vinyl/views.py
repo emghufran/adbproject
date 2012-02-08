@@ -1,5 +1,6 @@
 from adbproject import settings
 from adbproject.vinyl.models import *
+from adbproject.vinyl.forms import *
 
 from django.contrib.auth import logout, logout
 from django.contrib.auth.forms import UserCreationForm
@@ -17,7 +18,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.mail import send_mail
 
 import logging
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('django.request')
 
 def homepage(request):
 	record_list = Record.objects.all()
@@ -151,6 +152,8 @@ def track_details(request, track_id):
 # TODO update these views. They are added to make navigation work.
 def edit_track(request, track_id):
 	return HttpResponse("")
+def new_track(request):
+	return HttpResponse("")
 
 def edit_playlist(request, playlist_id):
 	return HttpResponse("")
@@ -158,3 +161,13 @@ def edit_playlist(request, playlist_id):
 def edit_record(request, record_id):
 	return HttpResponse("")
 
+def new_record(request):
+	if request.method == 'POST':
+		form = RecordForm(request.POST)
+		if form.is_valid():
+			logger.debug("testing register: if case")
+			return HttpResponseRedirect('/vinyl/record/' + str(record.id))
+	else:
+		form = RecordForm()
+		
+	return render_to_response('record/new_record.html', { 'form' : form }, context_instance=RequestContext(request))
