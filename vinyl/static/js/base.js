@@ -1,4 +1,42 @@
 $(document).ready(function() {
+	$('.lang_select').change(function() {
+		var lang_url = '/vinyl/lang/' + $(this).val();
+		jQuery.ajax({
+			url: lang_url,
+			success: function(){
+				location.reload();
+		  	}
+		});
+	});
+	
+	$('#addtolist').click(function(){
+		ids = [];
+		//$('input:checked').each(function(){ids.push($(this).attr("id"))});
+		$('input:checked').each(function(){
+			ids.push($(this).attr("id"));
+		});
+		
+		
+		$.ajax({
+			url: '/vinyl/list/add/' + $('#listtype').val() + "/" + ids.join("_"),
+			complete: function() {
+				alert('Added');
+			},
+			error: function() {
+				alert('Error');
+			}
+			
+		});
+	});
+	
+	$('#lightbox').ajaxStart(function(){
+		$(this).show();
+	});
+
+	$('#lightbox').ajaxStop(function(){
+		$(this).hide();
+	});
+		
 		$('#add_track_to_record_form').submit(function(e) {
 			jQuery("#add_track_submit").attr('disabled', true);
           	jQuery("#add_track_error_div").prepend('<span>Adding track, please wait... </span>');

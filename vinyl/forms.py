@@ -1,11 +1,11 @@
+from adbproject.ajax_select import make_ajax_field
+from adbproject.vinyl.models import *
 from django import forms
 #from django.db import models
 #from django.contrib.auth.models import User
 #from django.contrib import admin
 #from django.contrib.auth.forms import UserCreationForm
 #from adbproject import settings
-from adbproject.vinyl.models import *
-from adbproject.ajax_select import make_ajax_field
 
 #UserProfile form	
 class UserProfileForm(forms.ModelForm):
@@ -59,6 +59,17 @@ class RecordForm(forms.ModelForm):
 		model = Record
 		fields = ('matrix_number', 'title', 'disk_size', 'press_info', 'genre', 'artist', 'category')
 		#exclude = ('user_id')
+		
+class SearchForm(forms.Form):
+	record_title = forms.CharField(max_length=128, required=False)
+	artist = forms.CharField(max_length=128, required=False)
+	rating_lower = forms.ChoiceField(widget = forms.Select(), 
+                 choices = ([('',''), ('1','1'), ('2','2'),('3','3'), ('4','4'),('5','5')]), required=False)
+	rating_upper  = forms.ChoiceField(widget = forms.Select(), 
+                 choices = ([('',''), ('1','1'), ('2','2'),('3','3'), ('4','4'),('5','5')]), required=False)
+	
+	genre = forms.CharField(required=False)
+	category = forms.CharField(required=False)
 
 class RecordtrackForm(forms.ModelForm):
 	#make_ajax_field(model,model_fieldname,channel,show_help_text = False,**kwargs)

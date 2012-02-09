@@ -2,16 +2,18 @@
 {% block content %}
 <div id="tabs">
 	<ul>
-		<li {% if ptype == 'all' %} class="current" {% endif %}>
-			<a href="{% url adbproject.vinyl.views.playlists 'all' %}"><span>All Playlists</span> </a>
+		<li>
+			<a href="{% url adbproject.vinyl.views.playlists 'all' %}"><span  {% if ptype == "all" %} class="current" {% endif %}>All Playlists</span> </a>
 		</li>
 		<li {% if ptype == 'my' %} class="current" {% endif %}>
 			<a href="{% url adbproject.vinyl.views.playlists 'my' %}"><span>My Published</span> </a>
 		</li>
-		<li><a href="{% url adbproject.vinyl.views.playlists 'sharedwm' %}"><span>My Shared</span> </a></li>
-		<li><a href="{% url adbproject.vinyl.views.playlists 'myshared' %}"><span>Shared with me</span> </a></li>
+		<li><a href="{% url adbproject.vinyl.views.playlists 'myshared' %}"><span>My Shared</span> </a></li>
+		<li><a href="{% url adbproject.vinyl.views.playlists 'sharedwm' %}"><span>Shared with me</span> </a></li>
 	</ul>
 </div>
+{% load tablesorter %}
+
 <br/>
 <br/>
 {% if is_paginated %}
@@ -21,10 +23,11 @@
 <table>
 	<thead>
 		<tr>
-			<th>Playlist</th>
+			{% table_header headers %}
+			<!-- <th>Playlist</th>
 			<th>Created by</th>
 			<th>Created on</th>
-			<th># of Records</th>
+			<th># of Records</th> -->
 			<!-- <th>Last Updated on</th> -->
 			<th></th>
 		</tr>
@@ -33,10 +36,10 @@
 	<!--  works for my playlists and all playlists. TODO modify for my shared and shared with me -->
 {% for playlist in object_list %}
 		<tr>
-			<td><a href="{% url adbproject.vinyl.views.playlist_details playlist.id %}">{{ playlist.list_name }}</a></td>
-			<td>{{ playlist.created_by.username }}</td>
+			<td><a href="{% url adbproject.vinyl.views.playlist_details playlist.id %}">{{ playlist.list_name|escape }}</a></td>
+			<td>{{ playlist.created_by.username|escape }}</td>
 			<td>{{ playlist.created_on }}</td>
-			<td>{{ playlist.playlistItem_set.count }}</td>
+			<td>{{ playlist.num_records }}</td>
 			<!-- <td>{{ playlist.last_updated}}</td> -->
 			<td>
 				{% if playlist.created_by.id == user.id %}

@@ -1,23 +1,24 @@
 from adbproject import settings
-from adbproject.vinyl.models import *
 from adbproject.vinyl.forms import *
-
-from django.contrib.auth import logout, logout
-from django.contrib.auth.forms import UserCreationForm
+from adbproject.vinyl.models import *
+from adbproject.vinyl.snippets.tablesorter import SortHeaders
+from django.contrib.auth import logout, logout, logout, get_user
+from django.contrib.auth.forms import UserCreationForm, UserCreationForm
 from django.contrib.auth.models import User
-from django.core.mail import send_mail
+from django.core.mail import send_mail, send_mail
 from django.core.paginator import Paginator
+from django.db.models.aggregates import Count
 from django.http import HttpRequest, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import loader, Context, RequestContext
 from django.utils.translation import activate
 from django.views.generic.list_detail import object_list
-
-from django.contrib.auth import logout
-from django.contrib.auth.forms import UserCreationForm
-from django.core.mail import send_mail
-
+from haystack.views import SearchView
+import datetime
 import logging
+
+
+
 logger = logging.getLogger('django.request')
 
 def homepage(request):
@@ -34,22 +35,38 @@ def homepage(request):
 #	return HttpResponse(t.render(c))
 	
 def playlists(request, pltype):
-	from django.contrib.auth import get_user
 	curuser = get_user(request)
 	user = User.objects.get(id=curuser.id)
+	
+	LIST_HEADERS = (
+				('Playlist', 'list_name'),
+				('Created by', 'created_by__username'),
+				('Created on', 'created_on'),
+				('# of Records', 'num_records'),
+				)
 		
+	sort_headers = SortHeaders(request, LIST_HEADERS)
 	if (pltype == 'my'):
-		playlists = user.playlist_set.all()
+		playlists = Playlist.objects.filter(created_by__id=user.id).annotate(num_records=Count('playlistitem')).order_by(sort_headers.get_order_by())
+#		playlists = user.playlist_set.all()
 	elif (pltype == 'sharedwm'):
-		playlists = user.shared_user.all()
+		playlists = Playlist.objects.filter(playlistshare__shared_to__id=user.id).annotate(num_records=Count('playlistitem')).order_by(sort_headers.get_order_by())
+#		playlists = user.shared_user.all()
 	elif (pltype == 'myshared'):
-		playlists = user.owner.all()
+		playlists = Playlist.objects.filter(playlistshare__created_by__id=user.id).annotate(num_records=Count('playlistitem')).order_by(sort_headers.get_order_by())
+#		playlists = user.owner.all()
 	else:
 		pltype = 'all'
-		playlists = Playlist.objects.all()
+		playlists = Playlist.objects.annotate(num_records=Count('playlistitem')).order_by(sort_headers.get_order_by())
+		
+#    users = User.objects.order_by(sort_headers.get_order_by())
+#    return render_to_response('users/user_list.html', {
+#        'users': users,
+#        'headers': list(sort_headers.headers()),
+#    })
 	
 	return object_list(request, template_name = 'playlists.html',
-         queryset = playlists, paginate_by = 10)
+         queryset = playlists, paginate_by = 10, extra_context={'ptype':pltype,'headers': list(sort_headers.headers())})
 #    t = loader.get_template("playlists.html")
 #    c = RequestContext(request, {})
 #    response = HttpResponse(t.render(c))
@@ -162,13 +179,104 @@ def edit_playlist(request, playlist_id):
 def edit_record(request, record_id):
 	return HttpResponse("")
 
+def library(request):
+	return HttpResponse("s")
+
+def add_to_list(request, type, ids):
+	
+	id_array = ids.split("_")
+	cur_user = get_user(request)
+	
+	rec_library = RecordLibrary.objects.filter(user=cur_user.id, library_type=type)
+	if not(rec_library):
+		rec_library = RecordLibrary(user=cur_user, library_type=type)
+		rec_library.save()
+		print "Reclib saved"
+	else:
+		rec_library = rec_library[0]
+	
+	
+#	lib_id = rec_library.id
+	cur_time = datetime.time()
+	print cur_time
+	
+	for rec_id in id_array:
+		print rec_id
+		print rec_library
+		item = RecordLibraryItem(library=rec_library, user=cur_user, record=Record(id=rec_id))
+		item.save()
+		
+	return HttpResponse("")
+
+def search_record(request):
+	query_string = request.GET.get('q','')
+	cur_user = get_user(request)
+	
+	playlists = Playlist.objects.filter(created_by__id=cur_user.id)
+	
+	form = SearchForm()
+
+	if query_string:
+		LIST_HEADERS = (
+				('Title', 'title'),
+				('Matrix Number', 'matrix_number'),
+				('Artists', 'artist__name'),
+				('Rating', 'rating__avg_rating'),
+				('Genre', 'genre__genre_name'),
+				('Category', 'category__category_name'),
+				)
+		additional_params = 'q='+query_string
+		
+		sort_headers = SortHeaders(request, LIST_HEADERS, additional_params={'q':query_string})
+
+		entry_query = get_query(query_string.strip(), ['title', 'genre__genre_name', 'category__category_name', 
+													'artist__name', 'recordtrack__track__title',])
+		print entry_query
+		record_list = Record.objects.filter(entry_query).order_by(sort_headers.get_order_by())
+##		entry_query = get_query(query_string.strip(), ['record__title', 'record__genre__genre_name', 'record__category__category_name', 'record__artist__name',
+##													'track__title', 'track__trackartist__artist__name'])
+#		entry_query = get_query(query_string.strip(), ['record__title', 'record__genre__genre_name', 'record__artist__name',
+#													'track__title', ])
+#		print entry_query
+#		record_list= Recordtrack.objects.filter(entry_query)
+		print record_list.count()
+		
+		context = {'q':query_string, 'form': form, 'additional_params': additional_params, 'playlists': playlists, 'view': 'rec', 'headers': sort_headers.headers()}
+		
+		return object_list(request, template_name='search_results.html',
+         queryset=record_list, paginate_by=10, extra_context = context) 
+		
+#	if ('q' in request.GET) and request.GET['q'].strip():
+#		query_string = request.GET['q']
+#		
+#		entry_query = get_query(query_string, ['title', ])
+#		
+#		record_list = Record.objects.filter(entry_query)
+#		
+#		context = {'q':query_string}
+		
+	else:
+		form = SearchForm()
+		context = {'form': form, 'record_list': []}
+		
+		t = loader.get_template("search_results.html")
+		c = RequestContext(request, context)
+		return HttpResponse(t.render(c))
+		
+#	return object_list(request, template_name='search_results.html',
+#         queryset=record_list, paginate_by=2, extra_context = context)
+		
+
+#def search(req):
+#	return SearchView(template='search/search.html')(req)
+
 def new_record(request):
 	if request.method == 'POST':
 		form = RecordForm(request.POST)
 		if form.is_valid():
 			record = form.save()
 			logger.debug("testing register: if case")
-			return HttpResponseRedirect('/vinyl/record/' + str(record.id))
+#			return HttpResponseRedirect('/vinyl/record/' + str(record.id))
 	else:
 		form = RecordForm()
 		

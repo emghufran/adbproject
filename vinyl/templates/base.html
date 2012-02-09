@@ -6,29 +6,19 @@
 <meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
 <title>{% block page_title %}Vinyl Records{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/base.css" />
-<!--<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/jquery-ui.css" />-->
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
-<!--<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui.js"></script>-->
 <script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
 <script type="text/javascript">
 
-	$(document).ready(function() {
-		$('.lang_select').change(function() {
-			var lang_url = '/vinyl/lang/' + $(this).val();
-			jQuery.ajax({
-				url: lang_url,
-				success: function(){
-					location.reload();
-			  	}
-			});
-		});
-	});
+	
 </script>
 </head>
 {% load i18n %}
 {% get_current_language as CURRENT_LANG_CODE %}
 <body>
-
+<div id="lightbox" style="display:none;">
+<img src="{{STATIC_URL}}images/loading.gif" />
+</div>
 		<div class="topbar">
 		<div class="container">
 			<div id="rightsubheader">
@@ -71,8 +61,8 @@
 				</div>
 			</div>
 			<div class="righthalf">
-				<form id="searchForm" method="post" action="">
-			  		<div><input id="search" name="search" type="text"></input>
+				<form id="searchForm" method="get" action="{% url adbproject.vinyl.views.search_record  %}">
+			  		<div><input id="q" name="q" type="text" value="{{ q }}"></input>
 						<input type="button" value="Search" class="button"/>
 					</div>
 				</form>

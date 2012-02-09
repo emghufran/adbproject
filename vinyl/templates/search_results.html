@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<div>
+<h3>Advanced Search </h3>
+<form id="searchform" name="searchform" method="POST">
+{% csrf_token %}
+<table>
+<tr>
+	<td>{{ form.record_title.label_tag }}</td>
+	<td>{{ form.record_title }}</td>
+	<td>{{ form.artist.label_tag }} </td>
+	<td>{{ form.artist }} </td>
+</td>
+<tr>	
+	<td>Rating </td>
+	<td>Between {{ form.rating_lower }} and {{ form.rating_upper }}</td>
+	<td>{{ form.genre.label_tag }} </td>
+	<td>{{ form.genre }} </td>
+</tr>
+<tr>	
+	<td>{{ form.category.label_tag }} </td>
+	<td>{{ form.category }} </td>
+	<td></td>
+	<td></td>
+</tr>
+</table>
+</form>
+{% load tablesorter %}
+	<h3>Search result for : {{ q }}</h3>
+	
+	{% if is_paginated %} 
+	{% load paginator %} 
+	{% paginator 10 %} 
+	{% endif %} 
+	{% if view == 'rec' %}
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				{% table_header headers %}
+				<!-- <th>Title</th>
+				<th>Matrix Number</th>
+				<th>Artists</th>
+				<th>Rating</th>
+				<th>Genre</th>
+				<th>Category</th> -->
+			</tr>
+		</thead>
+		<tbody>
+			{% for object in object_list %}
+			<tr>
+				<td><input id="{{object.id}}" type="checkbox"
+					class="id-chekbox" />
+				</td>
+				<td>{{ object.title }}</td>
+				<td>{{ object.matrix_number }}</td>
+				<td>{{ object.artist.name}}</td>
+				<td>{{ object.rating.avg_rating }}</td>
+				<td>{{ object.genre.genre_name }}</td>
+				<td>{{ object.category_name }}</td>
+			</tr>
+			<!-- <tr>
+			<td></td>
+			<td>{{ object.record.title }}</td>
+			<td>{{ object.record.matrix_number }}</td>
+			<td>{{ object.record.artist.name}}</td>
+			<td>{{ object.record.rating.avg_rating }}</td>
+			<td>{{ object.record.genre.genre_name }}</td>
+			<td>{{ object.record.category_name }}</td>
+		</tr> -->
+			{% endfor %}
+		</tbody>
+	</table>
+	<br />
+	<div id="commands">
+		Add to list: <select id="listtype">
+			<option value="O">Owned list</option>
+			<option value="T">Tracked list</option>
+			<optgroup label="Playlists">Playlists
+			</optgroup> {% for playlist in playlists %}
+			<option>{{ playlist.list_name }}</option> {% endfor %}
+		</select> <input id="addtolist" type="button" value="Add" class="button" />
+	</div>
+
+	{% endif %}
+
+{% if view == 'track'%}
+
+{% endif %}
+</div>
+{% endblock %}
