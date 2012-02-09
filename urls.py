@@ -2,7 +2,7 @@
 from django.conf.urls.defaults import *
 
 from django.contrib import admin
-from ajax_select import urls as ajax_select_urls
+from adbproject.ajax_select import urls as ajax_select_urls
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin

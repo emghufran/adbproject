@@ -181,7 +181,8 @@ AJAX_LOOKUP_CHANNELS = {
     #   pass a dict with the model and the field to search against
     #'genre'  : {'model':'vinyl.genre', 'search_field':'genre_name'}
     'genre' : ('adbproject.lookups', 'GenreLookup'),
-    'artist' : ('adbproject.lookups', 'ArtistLookup')
+    'artist' : ('adbproject.lookups', 'ArtistLookup'),
+    'soundtrack_title' : ('adbproject.lookups', 'SoundtrackTitleLookup')
 }
 # magically include jqueryUI/js/css
 AJAX_SELECT_BOOTSTRAP = True
