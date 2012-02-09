@@ -81,7 +81,7 @@ admin.site.register(Soundtrack)
 class RecordAbstract(models.Model):
     title = models.CharField(max_length=256)
     disk_size = models.CharField(max_length=32, null=True)
-    matrix_nubmer = models.CharField(max_length=64, null=False)
+    matrix_number = models.CharField(max_length=64, null=False)
     press_info = models.CharField(max_length=128, null=False)
     producer = models.CharField(max_length=128, null=True)
     
@@ -92,6 +92,7 @@ class Record(RecordAbstract):
     genre = models.ForeignKey(Genre)
     category = models.ForeignKey(Category, null=True)
     artist = models.ForeignKey(Artist, null=True)
+    soundtracks = models.ManyToManyField(Soundtrack, through="Recordtrack")
     
 admin.site.register(Record)
 
@@ -107,6 +108,8 @@ class Recordtrack(models.Model):
     record = models.ForeignKey(Record)
     order = models.IntegerField()
     disc_number = models.IntegerField()
+    def __unicode__(self):
+        return u'%s' % (self.title)
 
 admin.site.register(Recordtrack)
     
@@ -121,7 +124,7 @@ class Userrating(models.Model):
     rated_on = models.DateTimeField()
 
 class Comment(models.Model):
-    commenter = models.ForeignKey(User)
+    commentor = models.ForeignKey(User)
     record = models.ForeignKey(Record)
     comment = models.TextField()
     commented_on = models.DateTimeField()

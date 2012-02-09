@@ -48,7 +48,24 @@
 </table>
 
 <br/>
-<div class="details-title">Tracks</div>
+<div class="details-title">Tracks<span><a class="class-link" href="javascript:;" onclick="$('#add_track_div').toggle()">Add Tracks</a></span>
+<div id="add_track_div" style="display:none;">
+<div>Search for existing tracks, or add new tracks using <a href='/vinyl/track/new/{{record.id}}/'>this</a> link. The new track will automatically be linked with this record.</div>
+<div id="add_track_error_div">
+</div>
+<form id="add_track_to_record_form" method="post" action="">
+{% csrf_token %}
+{{recordtrack_form.as_p}}
+
+<input type="hidden" id="add_track_record_id" name="record" value="{{ record.id }}" />
+<input type="submit" id="add_track_submit" value="Add Soundtrack" />
+<input type="hidden" name="next" value= "{{ next }}" />
+</form>
+
+
+</div>
+</div>
+
 <table>
 <thead>
 	<tr>
@@ -69,15 +86,7 @@
 		<td>{{row.recordtrack.track.genre.genre_name}}</td>
 		<td>{{row.recordtrack.track.playing_time}}</td>
 		<td>{{row.recordtrack.track.release_date }}</td>
-	</tr>
-<!-- 	<tr>
-		<td></td>
-		<td>{{recordtrack.track.title}}</td>
-		<td>{{artists.1}}</td>
-		<td>{{recordtrack.track.genre.genre_name}}</td>
-		<td>{{recordtrack.track.playing_time}}</td>
-		<td>{{recordtrack.track.release_date }}</td>
-	</tr> --> 
+	</tr> 
 {% endfor %}
 </tbody>
 </table>
@@ -86,7 +95,7 @@
 <div><strong>{% trans "Comments" %}</strong></div>
 	{% for comment in comments %}
 	<div class="comment">
-		<div class="commenter">{{ comment.commenter.username}} - {{ comment.commented_on }}</div>
+		<div class="commenter">{{ comment.commentor.username}} - {{ comment.commented_on }}</div>
 		<div class="comment-text">{{ comment.comment}}</div>
 	</div>
 	{% endfor %}

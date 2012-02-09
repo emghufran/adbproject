@@ -48,13 +48,25 @@ class RecordForm(forms.ModelForm):
 	title = forms.CharField(max_length=128, required=False)
 	DISC_SIZES = (('7','7 inches'), ('10','10 inches'), ('12','12 inches'))
 	PRESS_INFO = (('first','first'), ('repress','repress'))
-	disc_size = forms.ChoiceField(choices=DISC_SIZES, required=False)
+	disk_size = forms.ChoiceField(choices=DISC_SIZES, required=False)
 	press_info = forms.ChoiceField(choices=PRESS_INFO, required=False)
-	
+		
 	#make_ajax_field(model,model_fieldname,channel,show_help_text = False,**kwargs)
 	genre = make_ajax_field(Record,'genre','genre') #,help_text=True)
 	artist = make_ajax_field(Record,'artist','artist') #,help_text=True)
 	category = forms.ModelChoiceField(queryset=Category.objects.all(), initial=1)
 	class Meta:
 		model = Record
+		fields = ('matrix_number', 'title', 'disk_size', 'press_info', 'genre', 'artist', 'category')
 		#exclude = ('user_id')
+
+class RecordtrackForm(forms.ModelForm):
+	#make_ajax_field(model,model_fieldname,channel,show_help_text = False,**kwargs)
+	track = make_ajax_field(Recordtrack,'track','soundtrack_title',help_text="Search for existing soundtracks or add a new using link at the top")
+	order = forms.CharField(max_length=32, required=True)
+	disc_number = forms.IntegerField(required=True)
+	
+	
+	class Meta:
+		model = Recordtrack
+		fields = ('track', 'order')

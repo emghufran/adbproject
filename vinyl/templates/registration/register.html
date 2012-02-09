@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load url from future %}
+{% load i18n %}
 {% block content %}
 <form method= "post" action="{% url 'vinyl.views.register' %}" >
 {% csrf_token %}

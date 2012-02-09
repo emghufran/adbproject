@@ -103,6 +103,7 @@ def record_details(request, record_id):
 #  	print data.count()
 	artists = {}
 	data = []
+	recordtrack_form = RecordtrackForm()
 	for recordtrack in recordtracks:
 		trackartist_list = recordtrack.track.trackartist_set.all()
 		artiststr = []
@@ -116,7 +117,7 @@ def record_details(request, record_id):
 #  	rating = Rating.objects.get(record=record_id) 
 	
 	t = loader.get_template("record_details.html")
-	c = RequestContext(request, {'record': record, 'rating':rating, 'comments': comments, 'data': data, 'recordtracks': recordtracks, 'artists': artists})
+	c = RequestContext(request, {'record': record, 'rating':rating, 'comments': comments, 'data': data, 'recordtracks': recordtracks, 'artists': artists, 'recordtrack_form' : recordtrack_form})
 	return HttpResponse(t.render(c))
 
 def playlist_details(request, playlist_id):
@@ -152,7 +153,7 @@ def track_details(request, track_id):
 # TODO update these views. They are added to make navigation work.
 def edit_track(request, track_id):
 	return HttpResponse("")
-def new_track(request):
+def new_track(request, record_id=None):
 	return HttpResponse("")
 
 def edit_playlist(request, playlist_id):
@@ -165,9 +166,30 @@ def new_record(request):
 	if request.method == 'POST':
 		form = RecordForm(request.POST)
 		if form.is_valid():
+			record = form.save()
 			logger.debug("testing register: if case")
 			return HttpResponseRedirect('/vinyl/record/' + str(record.id))
 	else:
 		form = RecordForm()
 		
 	return render_to_response('record/new_record.html', { 'form' : form }, context_instance=RequestContext(request))
+
+def associate_track_to_record(request):
+	import json
+	if request.method == 'POST':
+		form = RecordtrackForm(request.POST)
+		if form.is_valid():
+			recordtrack = form.save(commit=False)
+			recordtrack.record_id = request.POST["record"]
+			recordtrack.disc_number = form.cleaned_data['disc_number']
+			recordtrack.order = form.cleaned_data['order']
+			
+			recordtrack.save() 
+			logger.debug("testing register: if case")
+			return HttpResponse(json.dumps({"success": "true", "next" : "/vinyl/record/" + str(recordtrack.record_id)}))
+		else:
+			return HttpResponse(json.dumps(form.errors))
+
+def json_response(x):
+	import json
+	return HttpResponse(json.dumps(x, sort_keys=True, indent=2), content_type='application/json; charset=UTF-8')
