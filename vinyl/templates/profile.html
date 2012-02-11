@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<div class="details-title"> My Profile </div>
+<div>
+<table id="details">
+	<tr>
+		<td class="label">{% trans "Profile Picture" %}</td> 
+		<td> <img src=”{{ user_profile.profile_pic }}” /></td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Username" %}</td>
+		<td>{{ user_profile.user.username }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "First Name" %}</td>
+		<td>{{ user_profile.user.first_name }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Last Name" %}</td>
+		<td>{{ user_profile.user.last_name }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Email" %}</td> 
+		<td>{{ user_profile.user.email }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Phone" %}</td> 
+		<td>{{ user_profile.phone }}</td>
+	</tr>
+	<tr>
+		<td class="label">{% trans "Language" %}</td> 
+		<td>{{ user_profile.language }}</td>
+	</tr>
+</table>
+
+
+</div>
+
+{% endblock %}
