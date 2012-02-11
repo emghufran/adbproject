@@ -172,7 +172,7 @@ def new_track(request, record_id):
 			soundtrack = form.save()
 			print soundtrack.id
 			if Trackartist.objects.filter(artist__id=artist,track__id=soundtrack.id).count() < 1:
-				ta = Trackartist.objects.create(artist_id=artist, track_id=soundtrack.id,artisttype="P")
+				Trackartist.objects.create(artist_id=artist, track_id=soundtrack.id,artisttype="P")
 			
 			rt = recordtrack.save(commit=False)
 			if Recordtrack.objects.filter(record__id=record_id, track__id=soundtrack.id).count() < 1:
