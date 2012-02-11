@@ -1,8 +1,8 @@
-from django.db import models
-from django.contrib.auth.models import User
-from django.contrib import admin
 from adbproject import settings
+from django.contrib import admin
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.db import models
 
 class UserProfile(models.Model):
 	mid_name = models.CharField(max_length=128, null=True)
@@ -16,7 +16,7 @@ admin.site.register(UserProfile)
 
 
 class Category(models.Model):
-    category_name = models.CharField(max_length=128, unique=True)
+    category_name = models.CharField(max_length=128, unique=True, db_index=True)
     category_desc = models.CharField(max_length=256, null=True)
     no_of_disc = models.IntegerField(null=True)
     def __unicode__(self):
@@ -25,12 +25,12 @@ class Category(models.Model):
 admin.site.register(Category)
     
 class Genre(models.Model):
-    genre_name = models.CharField(max_length=32, unique=True)
+    genre_name = models.CharField(max_length=32, unique=True, db_index=True)
 
 admin.site.register(Genre)
 
 class Artist(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128, db_index=True)
     artisttype = models.CharField(max_length=32, null=True)
 
 admin.site.register(Artist)
@@ -55,16 +55,16 @@ admin.site.register(Playlist)
 class RecordLibrary(models.Model):
     library_type = models.CharField(max_length=32, null=True)
     is_published = models.NullBooleanField()
-    userid = models.ForeignKey(User)
+    user = models.ForeignKey(User)
 
 class SoundtrackAbstract(models.Model):
-    title = models.CharField(max_length=256, null=True)
+    title = models.CharField(max_length=256, null=True, db_index=True)
     release_date = models.DateTimeField(null=True)
     playing_time = models.IntegerField(null=True)
     style = models.CharField(max_length=16, null=True)
     audio_engineer = models.CharField(max_length=128, null=True)
     lyricist = models.CharField(max_length=128, null=True)
-    music_writer = models.CharField(max_length=256, null=True)
+    music_writer = models.CharField(max_length=256, null=True, db_index=True)
     rythm = models.CharField(max_length=32, null=True)
     label = models.CharField(max_length=128, null=True)
     
@@ -79,7 +79,7 @@ class Soundtrack(SoundtrackAbstract):
 admin.site.register(Soundtrack)
     
 class RecordAbstract(models.Model):
-    title = models.CharField(max_length=256)
+    title = models.CharField(max_length=256, db_index=True)
     disk_size = models.CharField(max_length=32, null=True)
     matrix_number = models.CharField(max_length=64, null=False)
     press_info = models.CharField(max_length=128, null=False)
@@ -133,17 +133,23 @@ class RecordLibraryItem(models.Model):
     record = models.ForeignKey(Record)
     record_type = models.CharField(max_length=32, null=True)
     condition = models.CharField(max_length=32, null=True)
-    user = models.force_unicode(User)
+    user = models.ForeignKey(User)
     library = models.ForeignKey(RecordLibrary) 
-
+    
+    class Meta:
+        unique_together = ('record', 'user', 'library')
+    
 admin.site.register(RecordLibraryItem)
 
 class PlaylistItem(models.Model):
-	playlist = models.ForeignKey(Playlist)
-	track = models.ForeignKey(Soundtrack)
-	record = models.ForeignKey(Record)
-	created_by = models.ForeignKey(User)
-	
+    playlist = models.ForeignKey(Playlist)
+    track = models.ForeignKey(Soundtrack)
+    record = models.ForeignKey(Record)
+    created_by = models.ForeignKey(User)
+    
+    class Meta:
+        unique_together = ('playlist', 'created_by', 'track')
+
 class PlaylistShare(models.Model):
     shared_to = models.ForeignKey(User, related_name='shared_user')
     playlist = models.ForeignKey(Playlist)
@@ -158,7 +164,7 @@ class CustomAttribute(models.Model):
     field_value = models.CharField(max_length=256)
     
     class Meta:
-    	unique_together = ('created_by','field_name',)
+        unique_together = ('created_by','field_name',)
 
 class Revision(models.Model):
     revision_type = models.CharField(max_length=32)

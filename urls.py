@@ -1,11 +1,8 @@
-#from django.conf.urls.defaults import patterns, include, url
-from django.conf.urls.defaults import *
-
+from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from adbproject.ajax_select import urls as ajax_select_urls
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -14,6 +11,9 @@ urlpatterns = patterns('',
 	url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
 	url(r'^accounts/logout/$', 'vinyl.views.logout_view'),
 	url(r'^accounts/register/$', 'vinyl.views.register'),
+    url(r'^search/', include('adbproject.vinyl.search-urls')),
+#    (r'^search/', include('haystack.urls')),
+#    url(r'^search/', include('adbproject.haystack_urls')),
 	
 	url(r'^test_view/$', 'vinyl.views.my_test_view'),
 	

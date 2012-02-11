@@ -15,17 +15,7 @@
 <script type="text/javascript" src="{{ STATIC_URL }}js/base.js"></script>
 <script type="text/javascript">
 
-	$(document).ready(function() {
-		$('.lang_select').change(function() {
-			var lang_url = '/vinyl/lang/' + $(this).val();
-			jQuery.ajax({
-				url: lang_url,
-				success: function(){
-					location.reload();
-			  	}
-			});
-		});
-	});
+	
 	$(document).ready(function() {
 		$(function() {
 			$('#id_release_date').datepicker({ buttonImage: '/images/datepicker.gif', autoSize : true, dateFormat: 'yy-mm-dd' });
@@ -36,7 +26,9 @@
 {% load i18n %}
 {% get_current_language as CURRENT_LANG_CODE %}
 <body>
-
+<div id="lightbox" style="display:none;">
+<img src="{{STATIC_URL}}images/loading.gif" />
+</div>
 		<div class="topbar">
 		<div class="container">
 			<div id="rightsubheader">
@@ -72,16 +64,16 @@
 				{% if user.is_authenticated %}
 
 					<li class="menu myProfile"><a href="">{% trans "My Profile" %}</a></li>
-					<li class="menu myLibrary"><a href="{% url adbproject.vinyl.views.library %}">{% trans "My Library" %}</a></li>
-					<li class="menu myPlaylists"><a href="{% url adbproject.vinyl.views.playlists 'all' %}l">{% trans "Playlists" %}</a></li>
+					<li class="menu myLibrary"><a href="{% url adbproject.vinyl.views.library 'O' %}">{% trans "My Library" %}</a></li>
+					<li class="menu myPlaylists"><a href="{% url adbproject.vinyl.views.playlists 'all' %}">{% trans "Playlists" %}</a></li>
 				{% endif %}
 				</ul>
 				</div>
 			</div>
 			<div class="righthalf">
-				<form id="searchForm" method="post" action="">
-			  		<div><input id="search" name="search" type="text"></input>
-						<input type="button" value="Search" class="button"/>
+				<form id="searchForm" method="get" action="{% url adbproject.vinyl.views.search_record  %}">
+			  		<div><input id="q" name="q" type="text" value="{{ q }}"></input>
+						<input type="submit" value="Search" class="button"/>
 					</div>
 				</form>
 			</div>

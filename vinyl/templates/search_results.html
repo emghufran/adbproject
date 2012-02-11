@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<div>
+<h3>Advanced Search </h3>
+<form id="searchform" name="searchform" method="POST">
+{% csrf_token %}
+<table>
+<tr>
+	<td>{{ form.record_title.label_tag }}</td>
+	<td>{{ form.record_title }}</td>
+	<td>{{ form.artist.label_tag }} </td>
+	<td>{{ form.artist }} </td>
+</td>
+<tr>	
+	<td>Rating </td>
+	<td>Between {{ form.rating_lower }} and {{ form.rating_upper }}</td>
+	<td>{{ form.genre.label_tag }} </td>
+	<td>{{ form.genre }} </td>
+</tr>
+<tr>	
+	<td>{{ form.category.label_tag }} </td>
+	<td>{{ form.category }} </td>
+	<td></td>
+	<td></td>
+</tr>
+</table>
+</form>
+{% load tablesorter %}
+	<h3>Search result for : {{ q }}</h3>
+	
+	{% if is_paginated %} 
+	{% load paginator %} 
+	{% paginator 10 %} 
+	{% endif %} 
+		<ul id="tabs">
+			<li><a {% if view == 'rec' %} class="active" {% endif %} href="{% url vinyl.views.search_record %}?q={{q}}">Record View</a></li>
+			<li><a {% if view == 'track' %} class="active" {% endif %} href="{% url vinyl.views.search_track %}?q={{q}}">Track View</a></li>
+		</ul>
+	
+	{% if view == 'rec' %}
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				{% table_header headers %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for object in object_list %}
+			<tr>
+				<td><input id="{{object.id}}" type="checkbox"
+					class="id-chekbox" />
+				</td>
+				<td>{{ object.title }}</td>
+				<td>{{ object.matrix_number }}</td>
+				<td>{{ object.artist.name}}</td>
+				<td>{{ object.rating.avg_rating }}</td>
+				<td>{{ object.genre.genre_name }}</td>
+				<td>{{ object.category_name }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br />
+	{% if user.is_authenticated %}
+	<div id="commands">
+		Add to list: <select id="listtype">
+			<option value="O">Owned list</option>
+			<option value="T">Tracked list</option>
+			<optgroup label="Playlists">Playlists
+			</optgroup> {% for playlist in playlists %}
+			<option>{{ playlist.list_name }}</option> {% endfor %}
+		</select> <input id="addtolist" type="button" value="Add" class="button" />
+	</div>
+	{% endif %}
+	{% endif %}
+
+{% if view == 'track'%}
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				{% table_header headers %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for object in object_list %}
+			<tr>
+				<td><input id="{{object.track.id}}_{{object.record.id}}" type="checkbox"
+					class="id-chekbox" />
+				</td>
+				<td>{{ object.track.title }}</td>
+				<td>{{ object.track.artist.name}}</td>
+				<td>{{ object.track.music_writer}}</td>
+				<td>{{ object.track.release_date }}</td>
+				<td>{{ object.track.genre.genre_name }}</td>
+				<td>{{ object.track.original_version.title }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br />
+	{% if user.is_authenticated %}
+	<div id="commands">
+		Add to list: <select id="playlists">
+			{% for playlist in playlists %}
+			<option value="{{ playlist.id }}">{{ playlist.list_name }}</option> 
+			{% endfor %}
+		</select> <input id="addtoplaylist" type="button" value="Add" class="button" /> OR 
+		<input id="createplaylist" type="button" value="Create a playlist with the selected track" class="button">
+	</div>
+	{% endif %}
+
+{% endif %}
+</div>
+{% endblock %}
