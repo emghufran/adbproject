@@ -193,6 +193,12 @@ def edit_playlist(request, playlist_id):
 def edit_record(request, record_id):
 	return HttpResponse("")
 
+def my_profile(request, user_id):
+	user_profile = UserProfile.objects.get(id=user_id)
+
+	t = loader.get_template("profile.html")
+	c = RequestContext(request, {'user_profile': user_profile})
+	return HttpResponse(t.render(c))
 def library(request, list_type):
 	user = get_user(request)
 	
