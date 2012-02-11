@@ -33,18 +33,17 @@
 	{% load paginator %} 
 	{% paginator 10 %} 
 	{% endif %} 
+		<ul id="tabs">
+			<li><a {% if view == 'rec' %} class="active" {% endif %} href="{% url vinyl.views.search_record %}?q={{q}}">Record View</a></li>
+			<li><a {% if view == 'track' %} class="active" {% endif %} href="{% url vinyl.views.search_track %}?q={{q}}">Track View</a></li>
+		</ul>
+	
 	{% if view == 'rec' %}
 	<table>
 		<thead>
 			<tr>
 				<th></th>
 				{% table_header headers %}
-				<!-- <th>Title</th>
-				<th>Matrix Number</th>
-				<th>Artists</th>
-				<th>Rating</th>
-				<th>Genre</th>
-				<th>Category</th> -->
 			</tr>
 		</thead>
 		<tbody>
@@ -60,19 +59,11 @@
 				<td>{{ object.genre.genre_name }}</td>
 				<td>{{ object.category_name }}</td>
 			</tr>
-			<!-- <tr>
-			<td></td>
-			<td>{{ object.record.title }}</td>
-			<td>{{ object.record.matrix_number }}</td>
-			<td>{{ object.record.artist.name}}</td>
-			<td>{{ object.record.rating.avg_rating }}</td>
-			<td>{{ object.record.genre.genre_name }}</td>
-			<td>{{ object.record.category_name }}</td>
-		</tr> -->
 			{% endfor %}
 		</tbody>
 	</table>
 	<br />
+	{% if user.is_authenticated %}
 	<div id="commands">
 		Add to list: <select id="listtype">
 			<option value="O">Owned list</option>
@@ -82,10 +73,44 @@
 			<option>{{ playlist.list_name }}</option> {% endfor %}
 		</select> <input id="addtolist" type="button" value="Add" class="button" />
 	</div>
-
+	{% endif %}
 	{% endif %}
 
 {% if view == 'track'%}
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				{% table_header headers %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for object in object_list %}
+			<tr>
+				<td><input id="{{object.track.id}}_{{object.record.id}}" type="checkbox"
+					class="id-chekbox" />
+				</td>
+				<td>{{ object.track.title }}</td>
+				<td>{{ object.track.artist.name}}</td>
+				<td>{{ object.track.music_writer}}</td>
+				<td>{{ object.track.release_date }}</td>
+				<td>{{ object.track.genre.genre_name }}</td>
+				<td>{{ object.track.original_version.title }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<br />
+	{% if user.is_authenticated %}
+	<div id="commands">
+		Add to list: <select id="playlists">
+			{% for playlist in playlists %}
+			<option value="{{ playlist.id }}">{{ playlist.list_name }}</option> 
+			{% endfor %}
+		</select> <input id="addtoplaylist" type="button" value="Add" class="button" /> OR 
+		<input id="createplaylist" type="button" value="Create a playlist with the selected track" class="button">
+	</div>
+	{% endif %}
 
 {% endif %}
 </div>

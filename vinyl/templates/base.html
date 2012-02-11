@@ -54,8 +54,8 @@
 				{% if user.is_authenticated %}
 
 					<li class="menu myProfile"><a href="">{% trans "My Profile" %}</a></li>
-					<li class="menu myLibrary"><a href="{% url adbproject.vinyl.views.library %}">{% trans "My Library" %}</a></li>
-					<li class="menu myPlaylists"><a href="{% url adbproject.vinyl.views.playlists 'all' %}l">{% trans "Playlists" %}</a></li>
+					<li class="menu myLibrary"><a href="{% url adbproject.vinyl.views.library 'O' %}">{% trans "My Library" %}</a></li>
+					<li class="menu myPlaylists"><a href="{% url adbproject.vinyl.views.playlists 'all' %}">{% trans "Playlists" %}</a></li>
 				{% endif %}
 				</ul>
 				</div>
@@ -63,7 +63,7 @@
 			<div class="righthalf">
 				<form id="searchForm" method="get" action="{% url adbproject.vinyl.views.search_record  %}">
 			  		<div><input id="q" name="q" type="text" value="{{ q }}"></input>
-						<input type="button" value="Search" class="button"/>
+						<input type="submit" value="Search" class="button"/>
 					</div>
 				</form>
 			</div>

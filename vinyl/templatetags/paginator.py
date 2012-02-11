@@ -44,4 +44,4 @@ def paginator(context, adjacent_pages=2):
         'additional_params': context.get('additional_params', '')
     }
 
-register.inclusion_tag('paginator.html', takes_context=True)(paginator)
+register.inclusion_tag('tags/paginator.html', takes_context=True)(paginator)

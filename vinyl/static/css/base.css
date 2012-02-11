@@ -49,104 +49,20 @@ body {
 	font: 11px/1.5em Verdana;
 	}
 */
-h1 {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:16px;
-	font-weight:bold;
-	margin:0;
-	padding:0;
-	}
-h3 {padding-left:15px}
-hr {padding-left:15px;
-	border:none;
-	border-top:1px solid #CCCCCC;
-	height:1px;
-	margin-bottom:20px;
-	}
-
-#tabs {
-	float:left;
-	width:100%;
-	font-size:93%;
-	font-weight: bold;
-	line-height:normal;
-	border-bottom:1px solid #666;
-	}
-
-#tabs ul {
-	margin:0;
-	padding:10px 10px 0 50px;
-	list-style:none;
-	}
-
-#tabs li {
-	display:inline;
-	margin:0;
-	padding:0;
-	}
-
-#tabs a {
-	float:left;
-	background:url("../images/tableft.gif") no-repeat left top;
-	margin:0;
-	padding:0 0 0 4px;
-	text-decoration:none;
-	}
-
-#tabs a span {
-	float:left;
-	display:block;
-	background:url("../images/tabright.gif") no-repeat right top;
-	padding:5px 15px 4px 6px;
-	color:#FFF;
-	}
-
-/* Commented Backslash Hack hides rule from IE5-Mac \*/
-#tabs a span {float:none;}
-
-/* End IE5-Mac hack */
-#tabs a:hover span {
-	color:#FFF;
-	}
-
-#tabs a:hover {
-	background-position:0% -42px;
-	}
-
-#tabs a:hover span {
-	background-position:100% -42px;
-	}
-
-/* End IE5-Mac hack */
-.current {
-	color:#FFF;
-	}
-
-.current {
-	background-position:0% -42px;
-	}
-
-.current {
-	background-position:100% -42px;
-	}
+h1{font-family:Arial, Helvetica, sans-serif;font-size:16px;font-weight:bold;margin:0;padding:0;}
+h3{padding-left:15px}
+hr{padding-left:15px;border:none;border-top:1px solid #CCCCCC;height:1px;margin-bottom:20px;}
+#tabs{float:left;width:100%;font-size:93%;font-weight: bold;line-height:normal;border-bottom: 1px solid #404040;margin-bottom:10px;}
+ul{margin:0;padding:10px 10px 0 50px;list-style:none;}
+#tabs li{display:inline;}
+#tabs li a { color: #404040;line-height:34px;padding:10px;}
+#tabs .active{border-color: #404040 #404040 transparent;border-style: solid;border-width: 1px;border-radius: 5px 5px 0 0;}
 /* Styles for Menu bar */
-.menu {
-	padding-left: 34px;
-	height: 34px;
-	line-height: 30px;
-}
-.community {
-	background: url("../images/community.gif") no-repeat left;
-}
-.myProfile{
-	background: url("../images/user.png") no-repeat left;
-}
-.myLibrary {
-	background: url("../images/music.png") no-repeat left;
-}
-.myPlaylists {
-	background: url("../images/playlists.png") no-repeat left;
-}
+.menu {padding-left: 34px;height: 34px;line-height: 30px;}
+.community{background: url("../images/community.gif") no-repeat left;}
+.myProfile{background: url("../images/user.png") no-repeat left;}
+.myLibrary {background: url("../images/music.png") no-repeat left;}
+.myPlaylists {background: url("../images/playlists.png") no-repeat left;}
 
 /* Style for button */
 .button {
@@ -189,7 +105,6 @@ table#details .label{width: 120px;}
 .comment{margin-left:10px}
 .commenter{padding: 2px 4px; margin-top:4px;}
 .comment-text{border: 1px solid #DDDDDD;border-radius: 5px 5px 5px 5px; margin-right: 10px;padding: 2px 5px;}
-
 
 table th{padding: 10px 10px 9px;line-height: 18px;text-align: left;border-bottom: 1px solid #DDD;vertical-align: top;font-weight:bold;}
 table th, table td {padding: 2px 10px 4px;line-height: 24px;text-align: left;border-bottom: 1px solid #DDD;vertical-align: top;}

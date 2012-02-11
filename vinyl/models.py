@@ -3,43 +3,6 @@ from django.contrib import admin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.query_utils import Q
-import re
-
-def normalize_query(query_string,
-                    findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
-                    normspace=re.compile(r'\s{2,}').sub):
-    ''' Splits the query string in invidual keywords, getting rid of unecessary spaces
-        and grouping quoted words together.
-        Example:
-        
-        >>> normalize_query('  some random  words "with   quotes  " and   spaces')
-        ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
-    
-    '''
-    return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)] 
-
-def get_query(query_string, search_fields):
-    ''' Returns a query, that is a combination of Q objects. That combination
-        aims to search keywords within a model by testing the given search fields.
-    
-    '''
-    query = None # Query to search for every search term        
-    terms = normalize_query(query_string)
-    for term in terms:
-        or_query = None # Query to search for a given term in each field
-        for field_name in search_fields:
-            q = Q(**{"%s__icontains" % field_name: term})
-            if or_query is None:
-                or_query = q
-            else:
-                or_query = or_query | q
-        if query is None:
-            query = or_query
-        else:
-            query = query & or_query
-    return query
-
 
 class UserProfile(models.Model):
 	mid_name = models.CharField(max_length=128, null=True)
@@ -53,7 +16,7 @@ admin.site.register(UserProfile)
 
 
 class Category(models.Model):
-    category_name = models.CharField(max_length=128, unique=True)
+    category_name = models.CharField(max_length=128, unique=True, db_index=True)
     category_desc = models.CharField(max_length=256, null=True)
     no_of_disc = models.IntegerField(null=True)
     def __unicode__(self):
@@ -62,12 +25,12 @@ class Category(models.Model):
 admin.site.register(Category)
     
 class Genre(models.Model):
-    genre_name = models.CharField(max_length=32, unique=True)
+    genre_name = models.CharField(max_length=32, unique=True, db_index=True)
 
 admin.site.register(Genre)
 
 class Artist(models.Model):
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128, db_index=True)
     artisttype = models.CharField(max_length=32, null=True)
 
 admin.site.register(Artist)
@@ -95,13 +58,13 @@ class RecordLibrary(models.Model):
     user = models.ForeignKey(User)
 
 class SoundtrackAbstract(models.Model):
-    title = models.CharField(max_length=256, null=True)
+    title = models.CharField(max_length=256, null=True, db_index=True)
     release_date = models.DateTimeField(null=True)
     playing_time = models.TimeField(null=True)
     style = models.CharField(max_length=16, null=True)
     audio_engineer = models.CharField(max_length=128, null=True)
     lyricist = models.CharField(max_length=128, null=True)
-    music_writer = models.CharField(max_length=256, null=True)
+    music_writer = models.CharField(max_length=256, null=True, db_index=True)
     rythm = models.CharField(max_length=32, null=True)
     label = models.CharField(max_length=128, null=True)
     
@@ -116,7 +79,7 @@ class Soundtrack(SoundtrackAbstract):
 admin.site.register(Soundtrack)
     
 class RecordAbstract(models.Model):
-    title = models.CharField(max_length=256)
+    title = models.CharField(max_length=256, db_index=True)
     disk_size = models.CharField(max_length=32, null=True)
     matrix_number = models.CharField(max_length=64, null=False)
     press_info = models.CharField(max_length=128, null=False)
@@ -172,15 +135,21 @@ class RecordLibraryItem(models.Model):
     condition = models.CharField(max_length=32, null=True)
     user = models.ForeignKey(User)
     library = models.ForeignKey(RecordLibrary) 
-
+    
+    class Meta:
+        unique_together = ('record', 'user', 'library')
+    
 admin.site.register(RecordLibraryItem)
 
 class PlaylistItem(models.Model):
-	playlist = models.ForeignKey(Playlist)
-	track = models.ForeignKey(Soundtrack)
-	record = models.ForeignKey(Record)
-	created_by = models.ForeignKey(User)
-	
+    playlist = models.ForeignKey(Playlist)
+    track = models.ForeignKey(Soundtrack)
+    record = models.ForeignKey(Record)
+    created_by = models.ForeignKey(User)
+    
+    class Meta:
+        unique_together = ('playlist', 'created_by', 'track')
+
 class PlaylistShare(models.Model):
     shared_to = models.ForeignKey(User, related_name='shared_user')
     playlist = models.ForeignKey(Playlist)
@@ -195,7 +164,7 @@ class CustomAttribute(models.Model):
     field_value = models.CharField(max_length=256)
     
     class Meta:
-    	unique_together = ('created_by','field_name',)
+        unique_together = ('created_by','field_name',)
 
 class Revision(models.Model):
     revision_type = models.CharField(max_length=32)

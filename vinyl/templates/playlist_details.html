@@ -14,7 +14,16 @@
 	</tr>
 	<tr>
 		<td class="label">{% trans "Published" %}</td>
-		<td>{{ playlist.is_published }}</td>
+		<td>
+			{% if playlist.is_published %} 
+			Yes 
+			{% else %} 
+			No 
+				{% if user.is_authenticated and playlist.created_by.id == user.id %}
+				<input id="publish-now" type="button" value="Publish Now" class="button" pid="{{ playlist.id}}"/>
+				{% endif %}
+			{% endif %}
+		</td>
 	</tr>
 	<tr>
 		<td class="label">{% trans "Created on" %}</td> 

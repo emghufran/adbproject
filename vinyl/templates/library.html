@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+	<ul id="tabs">
+		<li>
+			<a href="{% url adbproject.vinyl.views.library 'T' %}" 
+				  {% if list_type == "T" %} class="active" {% endif %}><span>Tracked List</span> </a>
+		</li>
+		<li>
+			<a href="{% url adbproject.vinyl.views.library 'O' %}"
+				 {% if list_type == 'O' %} class="active" {% endif %}><span>Owned List</span> </a>
+		</li>
+	</ul>
+{% load tablesorter %}
+
+<br/>
+<br/>
+{% if is_paginated %}
+{% load paginator %}
+{% paginator 10 %}
+{% endif %}
+<table>
+	<thead>
+		<tr>
+			<th></th>
+			{% table_header headers %}
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for list in object_list %}
+		<tr>
+			<td><input id="{{ list.record.id }}" type="checkbox"></td>
+			<td><a href="{% url vinyl.views.record_details list.record.id %}">{{ list.record.title|escape }}</a></td>
+			<td>{{ list.record.artist.name|escape }}</td>
+			<td>{{ list.record.genre.genre_name }}</td>
+			<td>{{ list.record.category.category_name }}</td>
+			<td>{{ list.num_tracks}}</td>
+			<td>{{ list.record.producer}}</td>
+		</tr>
+{% endfor %}
+	</tbody>
+</table>
+<br/>
+	<div id="commands">
+		<input id="rm-rec-lib" type="button" value="Remove Selected" class="button" /> 
+		{% if list_type == "T" %} 
+		<input id="promote-owned" type="button" value="Promote selected to owned" class="button">
+		{% endif %}
+	</div>
+{% endblock %}

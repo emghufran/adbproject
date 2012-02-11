@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 	url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
 	url(r'^accounts/logout/$', 'vinyl.views.logout_view'),
 	url(r'^accounts/register/$', 'vinyl.views.register'),
-    url(r'^search/$', include('adbproject.vinyl.search-urls')),
+    url(r'^search/', include('adbproject.vinyl.search-urls')),
 #    (r'^search/', include('haystack.urls')),
 #    url(r'^search/', include('adbproject.haystack_urls')),
 	
