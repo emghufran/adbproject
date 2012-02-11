@@ -159,6 +159,26 @@ def track_details(request, track_id):
 def edit_track(request, track_id):
 	return HttpResponse("")
 
+def delete_track(request, track_id, record_id):
+	track=Soundtrack.objects.filter(pk=track_id)
+	record=Record.objects.filter(pk=record_id)
+	errorlist=[]
+	uid = request.user.id
+	if uid == None:
+		uid = 1
+	if len(track) < 1 or len(record) < 1:
+		errorlist.append('Track or Record does not exist')
+		return HttpResponseRedirect('/vinyl/record/' + str(record.id))
+	
+	rt = Recordtrack.objects.filter(record__id=record.id, track__id=track.id)
+	rt.delete()
+	rev = Revision.objects.create(revision_type='RecordTrack', created_on=datetime.now(), user_id=uid)
+	curr_rts = Recordtrack.objects.filter(record__id=record.id)
+	for cr in curr_rts:
+		RecordtrackArchive.objects.create(track_id=cr.track_id, record_id=cr.record_id, order=cr.order, disc_number=cr.disc_number, revision_id=rev.id)
+		
+	return HttpResponseRedirect('/vinyl/record/' + str(record.id))
+
 def new_track(request, record_id):
 	if request.method == 'POST':
 		if Record.objects.filter(pk=record_id).count() < 1:
@@ -188,9 +208,6 @@ def new_track(request, record_id):
 	return render_to_response('record/new_track.html', { 'form' : form, 'record':record_id, 'recordtrack':recordtrack }, context_instance=RequestContext(request))
 
 def edit_playlist(request, playlist_id):
-	return HttpResponse("")
-
-def edit_record(request, record_id):
 	return HttpResponse("")
 
 def library(request, list_type):
@@ -438,17 +455,48 @@ def search_track(request):
 		t = loader.get_template("search_results.html")
 		c = RequestContext(request, context)
 		return HttpResponse(t.render(c))
-	
-#def search(req):
-#	return SearchView(template='search/search.html')(req)
 
+def edit_record(request, record_id):
+	errorlist = []
+	rec_instance = Record.objects.filter(pk=record_id)
+	uid = request.user.id
+	if uid == None:
+			uid = 1
+	if request.method == 'POST':
+		form = RecordForm(request.POST, instance=rec_instance[0])
+		if form.is_valid():
+			record = form.save()
+			logger.debug("testing register: if case")
+			rev = Revision.objects.create(revision_type='Record', created_on=datetime.now(), user_id=uid)
+			ra_f = RecordArchiveForm(request.POST)
+			ra = ra_f.save(commit=False)
+			ra.revision_id = rev.id
+			ra.record_id = record.id
+			ra.save()
+			return HttpResponseRedirect('/vinyl/record/' + str(record.id))
+	else:	
+		if len(rec_instance) == 0:
+			errorlist.append("Record does not exist")
+			return render_to_response('record/edit_record.html', { 'errors' : errorlist, 'record_id':record_id }, context_instance=RequestContext(request))
+		form = RecordForm(instance=rec_instance[0])
+
+	return render_to_response('record/edit_record.html', { 'form' : form, 'errors' : errorlist, 'record_id':record_id }, context_instance=RequestContext(request))
 def new_record(request):
+	uid = request.user.id
+	if uid == None:
+		uid = 1
 	if request.method == 'POST':
 		form = RecordForm(request.POST)
 		if form.is_valid():
 			record = form.save()
 			logger.debug("testing register: if case")
-#			return HttpResponseRedirect('/vinyl/record/' + str(record.id))
+			rev = Revision.objects.create(revision_type='Record', created_on=datetime.now(), user_id=uid)
+			ra_f = RecordArchiveForm(request.POST)
+			ra = ra_f.save(commit=False)
+			ra.revision_id = rev.id
+			ra.record_id = record.id
+			ra.save()
+			return HttpResponseRedirect('/vinyl/record/' + str(record.id))
 	else:
 		form = RecordForm()
 		
@@ -456,6 +504,9 @@ def new_record(request):
 
 def associate_track_to_record(request):
 	import json
+	uid = request.user.id
+	if uid == None:
+		uid = 1
 	if request.method == 'POST':
 		form = RecordtrackForm(request.POST)
 		record_id = request.POST["record"]
@@ -467,6 +518,11 @@ def associate_track_to_record(request):
 			if Recordtrack.objects.filter(record__id=record_id, track__id=recordtrack.track_id).count() > 0:
 				return HttpResponse(json.dumps({"general_error":["This soundtrack is already associated with this Record"]}))
 			recordtrack.save() 
+			
+			rev = Revision.objects.create(revision_type='RecordTrack', created_on=datetime.now(), user_id=uid)
+			curr_rts = Recordtrack.objects.filter(record__id=record_id)
+			for cr in curr_rts:
+				RecordtrackArchive.objects.create(track_id=cr.track_id, record_id=cr.record_id, order=cr.order, disc_number=cr.disc_number, revision_id=rev.id)
 			logger.debug("testing register: if case")
 			return HttpResponse(json.dumps({"success": "true", "next" : "/vinyl/record/" + str(recordtrack.record_id)}))
 		else:

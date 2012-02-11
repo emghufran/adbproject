@@ -167,6 +167,7 @@ class CustomAttribute(models.Model):
         unique_together = ('created_by','field_name',)
 
 class Revision(models.Model):
+#revision type: Record, Recordtracks, Soundtrack
     revision_type = models.CharField(max_length=32)
     created_on = models.DateTimeField(null=True)
     user = models.ForeignKey(User)
@@ -175,10 +176,17 @@ class RecordArchive(RecordAbstract):
     category_id = models.IntegerField(null=True)
     genre_id = models.IntegerField(null=True)
     revision = models.ForeignKey(Revision)
-
-class RecordtrackArchive(Recordtrack):
-    revision = models.ForeignKey(Revision)
+    record = models.ForeignKey(Record)
     
+class RecordtrackArchive(models.Model):
+	track = models.ForeignKey(Soundtrack)
+	record = models.ForeignKey(Record)
+	order = models.IntegerField()
+	disc_number = models.IntegerField()
+	revision = models.ForeignKey(Revision)
+	def __unicode__(self):
+		return u'%s' % (self.record_id)
+	
 class SoundtrackArchive(Soundtrack):
     genre_id = models.IntegerField(null=True)
     revision = models.ForeignKey(Revision)

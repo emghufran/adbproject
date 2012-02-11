@@ -9,7 +9,8 @@ urlpatterns = patterns('',
                     
                     url(r'track/new/(?P<record_id>\d+)/$', new_track, name='new_track_url'),
                     url(r'^track/(?P<track_id>\d+)$', track_details),
-                    url(r'^track/edit/(?P<track_id>\d+)$', edit_track),
+                    url(r'^track/edit/(?P<track_id>\d+)/$', edit_track, name='edit_track_url'),
+                    url(r'^track/delete/(?P<track_id>\d+)/(?P<record_id>\d+)/$', delete_track, name='delete_track_url'),
                     
 					url(r'^playlists/(?P<pltype>\w+)$', playlists),
                     url(r'^playlist/(?P<playlist_id>\d+)$', playlist_details),
@@ -22,7 +23,7 @@ urlpatterns = patterns('',
 
                     url(r'^record/(?P<record_id>\d+)$', record_details),  
                     url(r'^record/new/$', new_record),
-                    url(r'^record/edit/(?P<record_id>\d+)$', edit_record),
+                    url(r'^record/edit/(?P<record_id>\d+)/$', edit_record, name='edit_record_url'),
                     url(r'^record/associate_track_to_record/$', associate_track_to_record),
 
 					url(r'^library/(?P<list_type>\w)/$', library), 

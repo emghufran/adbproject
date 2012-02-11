@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block content %}
+{%if errors|length > 0%}
+{% for err in errors %}
+<li>{{err}}</li>
+{%endfor%}
+{%else%}
+<form method= "post" action="{% url 'edit_record_url' record_id=record_id %}" >
+{% csrf_token %}
+<div class="clearboth"></div>
+{{ form.as_p }}
+{{ profile_form.as_p }}
+<input type="submit" value="Add Record" />
+<input type="hidden" name="next" value= "{{ next }}" />
+</form>
+{%endif%}
+{% endblock %}

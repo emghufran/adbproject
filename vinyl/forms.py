@@ -59,6 +59,22 @@ class RecordForm(forms.ModelForm):
 		model = Record
 		fields = ('matrix_number', 'title', 'disk_size', 'press_info', 'genre', 'artist', 'category')
 		#exclude = ('user_id')
+
+class RecordArchiveForm(forms.ModelForm):
+	matrix_number = forms.CharField(max_length=64, required=True)
+	title = forms.CharField(max_length=128, required=False)
+	DISC_SIZES = (('7','7 inches'), ('10','10 inches'), ('12','12 inches'))
+	PRESS_INFO = (('first','first'), ('repress','repress'))
+	disk_size = forms.ChoiceField(choices=DISC_SIZES, required=False)
+	press_info = forms.ChoiceField(choices=PRESS_INFO, required=False)
+		
+	#make_ajax_field(model,model_fieldname,channel,show_help_text = False,**kwargs)
+	genre = forms.IntegerField(required=False)
+	artist = forms.IntegerField(required=False)
+	category = forms.IntegerField(required=False)
+	class Meta:
+		model = RecordArchive
+		fields = ('matrix_number', 'title', 'disk_size', 'press_info', 'genre', 'artist', 'category')
 		
 class SearchForm(forms.Form):
 	record_title = forms.CharField(max_length=128, required=False)
