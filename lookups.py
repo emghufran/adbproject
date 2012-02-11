@@ -58,3 +58,19 @@ class SoundtrackTitleLookup(LookupChannel):
         return u"<div><i>%s</i></div>" % (escape(obj.title))
     def check_auth(self, request):
         return True
+
+class MusicplayerLookup(LookupChannel):
+    model = Musicplayer
+    def get_query(self,q,request):
+        return Musicplayer.objects.filter(Q(player_name__icontains=q)).order_by('player_name')
+    def get_result(self,obj):
+        u""" result is the simple text that is the completion of what the person typed """
+        return obj.player_name
+    def format_match(self,obj):
+        """ (HTML) formatted item for display in the dropdown """
+        return self.format_item_display(obj)
+    def format_item_display(self,obj):
+        """ (HTML) formatted item for displaying item in the selected deck area """
+        return u"<div><i>%s</i></div>" % (escape(obj.player_name))
+    def check_auth(self, request):
+        return True

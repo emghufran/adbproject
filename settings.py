@@ -182,7 +182,8 @@ AJAX_LOOKUP_CHANNELS = {
     #'genre'  : {'model':'vinyl.genre', 'search_field':'genre_name'}
     'genre' : ('adbproject.lookups', 'GenreLookup'),
     'artist' : ('adbproject.lookups', 'ArtistLookup'),
-    'soundtrack_title' : ('adbproject.lookups', 'SoundtrackTitleLookup')
+    'soundtrack_title' : ('adbproject.lookups', 'SoundtrackTitleLookup'),
+    'musicplayer_name' : ('adbproject.lookups', 'MusicplayerLookup'),
 }
 # magically include jqueryUI/js/css
 AJAX_SELECT_BOOTSTRAP = True

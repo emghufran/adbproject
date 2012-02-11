@@ -10,7 +10,7 @@ urlpatterns = patterns('',
                     url(r'^record/(?P<record_id>\d+)$', record_details),  
                     url(r'^playlist/(?P<playlist_id>\d+)$', playlist_details),
                     
-                    url(r'^track/new/(?P<record_id>\d+)/$', new_track),
+                    url(r'track/new/(?P<record_id>\d+)/$', new_track, name='new_track_url'),
                     url(r'^track/(?P<track_id>\d+)$', track_details),
                     url(r'^track/edit/(?P<track_id>\d+)$', edit_track),
                     url(r'^playlist/edit/(?P<playlist_id>\d+)$', edit_playlist),

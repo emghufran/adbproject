@@ -60,7 +60,7 @@ class RecordLibrary(models.Model):
 class SoundtrackAbstract(models.Model):
     title = models.CharField(max_length=256, null=True)
     release_date = models.DateTimeField(null=True)
-    playing_time = models.TimeField(null=True)
+    playing_time = models.IntegerField(null=True)
     style = models.CharField(max_length=16, null=True)
     audio_engineer = models.CharField(max_length=128, null=True)
     lyricist = models.CharField(max_length=128, null=True)
@@ -109,7 +109,7 @@ class Recordtrack(models.Model):
     order = models.IntegerField()
     disc_number = models.IntegerField()
     def __unicode__(self):
-        return u'%s' % (self.title)
+        return u'%s' % (self.record_id)
 
 admin.site.register(Recordtrack)
     

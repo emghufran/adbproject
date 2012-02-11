@@ -60,13 +60,41 @@ class RecordForm(forms.ModelForm):
 		fields = ('matrix_number', 'title', 'disk_size', 'press_info', 'genre', 'artist', 'category')
 		#exclude = ('user_id')
 
+class SoundtrackForm(forms.ModelForm):
+	title = forms.CharField(max_length=256, required=True)
+	artist = make_ajax_field(Trackartist,'artist','artist',help_text="Primary artist")
+	
+	release_date = forms.CharField(required=False)
+	playing_time = forms.IntegerField(required=False)
+	style = forms.CharField(max_length=128, required=False)
+	audio_engineer = forms.CharField(max_length=128, required=False)
+	lyricist = forms.CharField(max_length=128, required=False)
+	music_writer = forms.CharField(max_length=128, required=False)
+	rythm = forms.CharField(max_length=128, required=False)
+	label = forms.CharField(max_length=128, required=False)
+	genre = make_ajax_field(Record,'genre','genre', required=False) #,help_text=True)
+	
+	original_version = make_ajax_field(Recordtrack,'track','soundtrack_title',help_text="Search for existing soundtracks", required=False)
+	player = make_ajax_field(Soundtrack,'player','musicplayer_name', required=False)#,help_text="Add music players")
+	#player = models.ManyToManyField(Musicplayer)
+	class Meta:
+		model = Soundtrack
+
 class RecordtrackForm(forms.ModelForm):
 	#make_ajax_field(model,model_fieldname,channel,show_help_text = False,**kwargs)
 	track = make_ajax_field(Recordtrack,'track','soundtrack_title',help_text="Search for existing soundtracks or add a new using link at the top")
 	order = forms.CharField(max_length=32, required=True)
 	disc_number = forms.IntegerField(required=True)
-	
-	
+		
 	class Meta:
 		model = Recordtrack
-		fields = ('track', 'order')
+		fields = ('track', 'order', 'disc_number')
+
+class RecordtrackSmallForm(forms.ModelForm):
+	#make_ajax_field(model,model_fieldname,channel,show_help_text = False,**kwargs)
+	order = forms.CharField(max_length=32, required=True, help_text="Order of the track in the record")
+	disc_number = forms.IntegerField(required=True, help_text="Disc number in the record")
+		
+	class Meta:
+		model = Recordtrack
+		fields = ('order', 'disc_number')
