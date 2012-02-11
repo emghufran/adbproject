@@ -153,8 +153,34 @@ def track_details(request, track_id):
 # TODO update these views. They are added to make navigation work.
 def edit_track(request, track_id):
 	return HttpResponse("")
-def new_track(request, record_id=None):
-	return HttpResponse("")
+
+def new_track(request, record_id):
+	if request.method == 'POST':
+		if Record.objects.filter(pk=record_id).count() < 1:
+			return HttpResponseRedirect('/') #do something better
+		
+		form = SoundtrackForm(request.POST)
+		recordtrack = RecordtrackSmallForm(request.POST)
+		
+		if form.is_valid() and recordtrack.is_valid():
+			artist = request.POST['artist']
+			soundtrack = form.save()
+			print soundtrack.id
+			if Trackartist.objects.filter(artist__id=artist,track__id=soundtrack.id).count() < 1:
+				ta = Trackartist.objects.create(artist_id=artist, track_id=soundtrack.id,artisttype="P")
+			
+			rt = recordtrack.save(commit=False)
+			if Recordtrack.objects.filter(record__id=record_id, track__id=soundtrack.id).count() < 1:
+				rt.record_id = record_id
+				rt.track_id = soundtrack.id
+				rt.save()
+			logger.debug("testing register: if case")
+			return HttpResponseRedirect('/vinyl/record/' + str(record_id))
+	else:
+		form = SoundtrackForm()
+		recordtrack = RecordtrackSmallForm()
+		
+	return render_to_response('record/new_track.html', { 'form' : form, 'record':record_id, 'recordtrack':recordtrack }, context_instance=RequestContext(request))
 
 def edit_playlist(request, playlist_id):
 	return HttpResponse("")
@@ -178,18 +204,16 @@ def associate_track_to_record(request):
 	import json
 	if request.method == 'POST':
 		form = RecordtrackForm(request.POST)
+		record_id = request.POST["record"]
 		if form.is_valid():
 			recordtrack = form.save(commit=False)
-			recordtrack.record_id = request.POST["record"]
+			recordtrack.record_id = record_id
 			recordtrack.disc_number = form.cleaned_data['disc_number']
 			recordtrack.order = form.cleaned_data['order']
-			
+			if Recordtrack.objects.filter(record__id=record_id, track__id=recordtrack.track_id).count() > 0:
+				return HttpResponse(json.dumps({"general_error":["This soundtrack is already associated with this Record"]}))
 			recordtrack.save() 
 			logger.debug("testing register: if case")
 			return HttpResponse(json.dumps({"success": "true", "next" : "/vinyl/record/" + str(recordtrack.record_id)}))
 		else:
 			return HttpResponse(json.dumps(form.errors))
-
-def json_response(x):
-	import json
-	return HttpResponse(json.dumps(x, sort_keys=True, indent=2), content_type='application/json; charset=UTF-8')
