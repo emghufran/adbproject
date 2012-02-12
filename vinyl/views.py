@@ -185,6 +185,7 @@ def track_details(request, track_id):
 def delete_track(request, track_id, record_id):
 	track=Soundtrack.objects.filter(pk=track_id)
 	record=Record.objects.filter(pk=record_id)
+
 	errorlist=[]
 	uid = request.user.id
 	if uid == None:
@@ -193,14 +194,14 @@ def delete_track(request, track_id, record_id):
 		errorlist.append('Track or Record does not exist')
 		return HttpResponseRedirect('/vinyl/record/' + str(record.id))
 	
-	rt = Recordtrack.objects.filter(record__id=record.id, track__id=track.id)
+	rt = Recordtrack.objects.filter(record__id=record[0].id, track__id=track[0].id)
 	rt.delete()
 	rev = Revision.objects.create(revision_type='RecordTrack', created_on=datetime.now(), user_id=uid)
-	curr_rts = Recordtrack.objects.filter(record__id=record.id)
+	curr_rts = Recordtrack.objects.filter(record__id=record[0].id)
 	for cr in curr_rts:
 		RecordtrackArchive.objects.create(track_id=cr.track_id, record_id=cr.record_id, order=cr.order, disc_number=cr.disc_number, revision_id=rev.id)
 		
-	return HttpResponseRedirect('/vinyl/record/' + str(record.id))
+	return HttpResponseRedirect('/vinyl/record/' + str(record[0].id))
 
 def new_track(request, record_id):
 	uid = request.user.id
