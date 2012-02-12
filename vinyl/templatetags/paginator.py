@@ -5,6 +5,7 @@
 #
 #     http://www.tummy.com/Community/Articles/django-pagination/
 
+from adbproject.vinyl.utils import get_query_from_request
 from django import template
 
 register = template.Library()
@@ -26,7 +27,10 @@ def paginator(context, adjacent_pages=2):
             if n > 0 and n <= context['pages']]
     page_obj = context['page_obj']
     paginator = context['paginator']
-
+    request_querydict = context.get('request_querydict', None)
+    
+    additional_params = get_query_from_request(request_querydict, exclude='page')
+    
     return {
         'page_obj': page_obj,
         'paginator': paginator,
@@ -41,7 +45,7 @@ def paginator(context, adjacent_pages=2):
         'has_previous': context['has_previous'],
         'show_first': 1 not in page_numbers,
         'show_last': context['pages'] not in page_numbers,
-        'additional_params': context.get('additional_params', '')
+        'additional_params': additional_params
     }
 
 register.inclusion_tag('tags/paginator.html', takes_context=True)(paginator)

@@ -49,15 +49,21 @@
 		<tbody>
 			{% for object in object_list %}
 			<tr>
-				<td><input id="{{object.id}}" type="checkbox"
-					class="id-chekbox" />
+				<td>
+				{% if user.is_authenticated %}
+					<input id="{{object.id}}" type="checkbox"
+						class="id-chekbox" />
+				{% endif %}
 				</td>
-				<td>{{ object.title }}</td>
+				<td>
+					<a href="{% url vinyl.views.record_details object.id %}">
+					{{ object.title }}</a>
+				</td>
 				<td>{{ object.matrix_number }}</td>
 				<td>{{ object.artist.name}}</td>
 				<td>{{ object.rating.avg_rating }}</td>
 				<td>{{ object.genre.genre_name }}</td>
-				<td>{{ object.category_name }}</td>
+				<td>{{ object.category.category_name }}</td>
 			</tr>
 			{% endfor %}
 		</tbody>
@@ -87,16 +93,29 @@
 		<tbody>
 			{% for object in object_list %}
 			<tr>
-				<td><input id="{{object.track.id}}_{{object.record.id}}" type="checkbox"
-					class="id-chekbox" />
+				<td>
+				{% if user.is_authenticated %}
+					<input id="{{object.track.id}}_{{object.record.id}}" type="checkbox"
+						class="id-chekbox" />
+				{% endif %}
 				</td>
-				<td>{{ object.track.title }}</td>
-				<td>{{ object.track.artist.name}}</td>
+				<td>
+					<a href="{% url vinyl.views.track_details object.track.id %}">
+					{{ object.track.title }}
+					</a></td>
+				<td>{{ object.track.trackartist}}</td>
 				<td>{{ object.track.music_writer}}</td>
-				<td>{{ object.track.release_date }}</td>
+				<td>{{ object.track.release_date|date:"M Y" }}</td>
 				<td>{{ object.track.genre.genre_name }}</td>
-				<td>{{ object.track.original_version.title }}</td>
-			</tr>
+				<td>
+				{% if object.track.original_version %}
+					<a href="{% url vinyl.views.track_details object.track.original_version.id %}">
+					{{ object.track.original_version.title }} </a>
+				{% else %} 
+					{{ object.track.original_version.title }}
+				{% endif %}
+				</td>
+			</tr> 
 			{% endfor %}
 		</tbody>
 	</table>

@@ -2,10 +2,11 @@ from adbproject import settings
 from adbproject.vinyl.forms import *
 from adbproject.vinyl.models import *
 from adbproject.vinyl.snippets.tablesorter import SortHeaders
-from adbproject.vinyl.utils import get_query, pluralize
+from adbproject.vinyl.utils import get_query, pluralize, get_query_from_request
 from datetime import datetime
+from django.contrib import messages
 from django.contrib.auth import logout, logout, logout, get_user
-from django.contrib.auth.forms import UserCreationForm, UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, send_mail
@@ -20,7 +21,6 @@ from django.utils.translation import activate
 from django.views.generic.list_detail import object_list
 import logging
 import urllib
-from django.contrib import messages
 
 #from haystack.views import SearchView
 
@@ -33,6 +33,12 @@ def homepage(request):
 	return object_list(request, template_name='index.html',
          queryset=record_list, paginate_by=12)
 	
+def community(request):
+	publishedpls = Playlist.objects.filter(is_published=True).order_by('-published_on')
+	t = loader.get_template("community.html")
+	c = RequestContext(request, {'playlists': publishedpls})
+	return HttpResponse(t.render(c))
+
 def playlists(request, pltype):
 	user = get_user(request)
 	
@@ -55,12 +61,12 @@ def playlists(request, pltype):
 							.annotate(num_records=Count('playlistitem')).order_by(sort_headers.get_order_by())
 	else:
 		pltype = 'all'
-		playlists = Playlist.objects.annotate(num_records=Count('playlistitem'))\
+		playlists = Playlist.objects.filter(is_published=True).annotate(num_records=Count('playlistitem'))\
 							.order_by(sort_headers.get_order_by())
 			
 	return object_list(request, template_name='playlists.html',
-         queryset=playlists, paginate_by=10, extra_context={'ptype':pltype, 'headers': list(sort_headers.headers())})
-	
+         queryset=playlists, paginate_by=10, extra_context={'ptype':pltype, 
+														'request_querydict': request.GET, 'headers': list(sort_headers.headers())})
 
 def logout_view(request):
 	logout(request)
@@ -168,11 +174,11 @@ def track_details(request, track_id):
 	
 	artiststr = []
 	feat_artiststr = []
-	for artist in artists:
-		if artist.artisttype == 'M':
-			artiststr.append(artist.name)
-		elif artist.artisttype == 'F':
-			feat_artiststr.append(artist.name)
+	for trackartist in artists:
+		if trackartist.artisttype == 'M':
+			artiststr.append(trackartist.artist.name)
+		elif trackartist.artisttype == 'F':
+			feat_artiststr.append(trackartist.artist.name)
 
 	playerstr = []
 	for player in musicplayers:
@@ -187,7 +193,6 @@ def track_details(request, track_id):
 def delete_track(request, track_id, record_id):
 	track=Soundtrack.objects.filter(pk=track_id)
 	record=Record.objects.filter(pk=record_id)
-
 	errorlist=[]
 	uid = request.user.id
 	if uid == None:
@@ -300,19 +305,20 @@ def library(request, list_type):
 	LIST_HEADERS = (
 				('Title', 'record__title'),
 				('Artist', 'record__artist__name'),
-				('Genre', 'record__genre__nane'),
-				('Category', 'record__category__nane'),
+				('Genre', 'record__genre__genre_name'),
+				('Category', 'record__category__category_name'),
 				('# of Tracks', 'num_tracks'),
 				('Producer', 'record__producer'),
 				)
 		
-	sort_headers = SortHeaders(request, LIST_HEADERS) 
+	sort_headers = SortHeaders(request, LIST_HEADERS)  
 	records = RecordLibraryItem.objects.filter(user=user.id, \
 											library__library_type=list_type)\
 											.annotate(num_tracks=Count('record__recordtrack')).order_by(sort_headers.get_order_by())
 	
 	return object_list(request, template_name='library.html',
-         queryset=records, paginate_by=10, extra_context={'list_type':list_type, 'headers': list(sort_headers.headers())})
+         queryset=records, paginate_by=10, extra_context={'list_type':list_type, 'request_querydict': request.GET,
+														'headers': list(sort_headers.headers())})
 
 @transaction.commit_on_success
 def remove_from_library(request, ids):
@@ -356,7 +362,7 @@ def add_to_list(request, type, ids):
 	
 	rec_library = RecordLibrary.objects.filter(user=cur_user.id, library_type=type)
 	if not(rec_library):
-		rec_library = RecordLibrary(created_by=cur_user, library_type=type)
+		rec_library = RecordLibrary(user=cur_user, library_type=type)
 		rec_library.save()
 	else:
 		rec_library = rec_library[0]
@@ -459,7 +465,6 @@ def publish_playlist(request, playlist_id):
 		
 def search_record(request):
 	query_string = request.GET.get('q', '')
-	cur_user = get_user(request)
 	
 	form = SearchForm()
 
@@ -472,16 +477,19 @@ def search_record(request):
 				('Genre', 'genre__genre_name'),
 				('Category', 'category__category_name'),
 				)
-		additional_params = 'q=' + query_string
+#		additional_params = 'q=' + query_string
 		
-		sort_headers = SortHeaders(request, LIST_HEADERS, additional_params={'q':query_string})
+		sort_headers = SortHeaders(request, LIST_HEADERS)
 
 		entry_query = get_query(query_string.strip(), ['title', 'genre__genre_name', 'category__category_name',
 													'artist__name', 'recordtrack__track__title', ])
 
-		record_list = Record.objects.filter(entry_query).order_by(sort_headers.get_order_by())
+		record_list = Record.objects.filter(entry_query).order_by(sort_headers.get_order_by()).distinct()
 		
-		context = {'q':query_string, 'form': form, 'additional_params': additional_params, 'view': 'rec', 'headers': sort_headers.headers()}
+		context = {'q':query_string, 'form': form, 
+				
+				'request_querydict': request.GET, 
+				'view': 'rec', 'headers': sort_headers.headers()}
 		
 		return object_list(request, template_name='search_results.html',
          queryset=record_list, paginate_by=10, extra_context=context) 
@@ -497,11 +505,15 @@ def search_record(request):
 #	return object_list(request, template_name='search_results.html',
 #         queryset=record_list, paginate_by=2, extra_context = context)
 		
+
 def search_track(request):
 	query_string = request.GET.get('q', '')
 	cur_user = get_user(request) 
 	
-	playlists = Playlist.objects.filter(created_by=cur_user)
+	if (cur_user.is_authenticated()):
+		playlists = Playlist.objects.filter(created_by=cur_user)
+	else: 
+		playlists = []
 	
 	form = SearchForm()
 
@@ -515,21 +527,17 @@ def search_track(request):
 				('Original Version', 'track__original_version__title'),
 				)
 
-		additional_params = 'q=' + query_string
+#		additional_params = 'q=' + query_string
 		
-		sort_headers = SortHeaders(request, LIST_HEADERS, additional_params={'q':query_string})
-
-#		entry_query = get_query(query_string.strip(), ['title', 'genre__genre_name', 'music_writer', 
-#													'trackartist__artist__name', 'recordtrack__record__title',])
-#		track_list = Soundtrack.objects.select_related().filter(entry_query).order_by(sort_headers.get_order_by())
+		sort_headers = SortHeaders(request, LIST_HEADERS)
 
 		entry_query = get_query(query_string.strip(), ['track__title', 'record__genre__genre_name',\
 													'track__music_writer', 'track__genre__genre_name' ,\
 													'track__trackartist__artist__name', 'record__title', ])
-		track_list = Recordtrack.objects.filter(entry_query).order_by(sort_headers.get_order_by())
-		
+		track_list = Recordtrack.objects.filter(entry_query).order_by(sort_headers.
+																	get_order_by()).distinct()
 			
-		context = {'q':query_string, 'form': form, 'additional_params': additional_params, \
+		context = {'q':query_string, 'form': form, 'request_querydict': request.GET, \
 				'playlists': playlists, 'view': 'track', 'headers': sort_headers.headers(), }
 		
 		

@@ -27,7 +27,7 @@
 	</tr>
 	<tr>
 		<td class="label">{% trans "Created on" %}</td> 
-		<td>{{ playlist.created_on }}</td>
+		<td>{{ playlist.created_on|date:"SHORT_DATE_FORMAT" }}</td>
 	</tr>
 </table>
 

@@ -2,17 +2,15 @@
 {% block content %}
 {% load i18n %}
 <div class="details-title">{{ record.title}} 
+	{% if user.is_authenticated %}
 	<a href="{% url adbproject.vinyl.views.edit_record record.id  %}" class="class-link">[Edit]</a>
+	{% endif %}
 </div>
 <div class="rec-details">
 <table id="details">
 	<tr>
 		<td class="label">{% trans "Artist" %}</td>
 		<td>{{record.artist.name}}</td>
-	</tr>
-	<tr>
-		<td class="label">{% trans "Featuring" %}</td> <!-- Needs correction in the table -->
-		<td>{{record.disc_size}}</td>
 	</tr>
 	<tr>
 		<td class="label">{% trans "Producer" %}</td>
@@ -23,12 +21,12 @@
 		<td>{{record.genre.genre_name}}</td>
 	</tr>
 	<tr>
-		<td class="label">{% trans "Cateogry" %}</td>
-		<td>{{record.category.name}}</td>
+		<td class="label">{% trans "Category" %}</td>
+		<td>{{record.category.category_name}}</td>
 	</tr>
 	<tr>
 		<td class="label">{% trans "Disc Size" %}</td>
-		<td>{{record.disc_size}}</td>
+		<td>{{record.disk_size}}</td>
 	</tr>
 	<tr>
 		<td class="label">{% trans "Matrix Number" %}</td>
@@ -48,23 +46,29 @@
 </table>
 
 <br/>
-<div class="details-title">Tracks<span><a class="class-link" href="javascript:;" onclick="$('#add_track_div').toggle()">Add Tracks</a></span>
-<div id="add_track_div" style="display:none;">
-<div>Search for existing tracks, or add new tracks using <a href='/vinyl/track/new/{{record.id}}/'>this</a> link. The new track will automatically be linked with this record.</div>
-<div id="add_track_error_div">
-</div>
-<form id="add_track_to_record_form" method="post" action="">
-{% csrf_token %}
-{{recordtrack_form.as_p}}
+<div class="details-title">Tracks 
+	{% if user.is_authenticated %}
+		<span><a class="class-link" href="javascript:;"
+			onclick="$('#add_track_div').toggle()">Add Tracks</a>
+		</span>
+		<div id="add_track_div" style="display: none;">
+			<div>
+				Search for existing tracks, or add new tracks using <a
+					href='/vinyl/track/new/{{record.id}}/'>this</a> link. The new track
+				will automatically be linked with this record.
+			</div>
+			<div id="add_track_error_div"></div>
+			<form id="add_track_to_record_form" method="post" action="">
+				{% csrf_token %} {{recordtrack_form.as_p}} <input type="hidden"
+					id="add_track_record_id" name="record" value="{{ record.id }}" />
+				<input type="submit" id="add_track_submit" value="Add Soundtrack" />
+				<input type="hidden" name="next" value="{{ next }}" />
+			</form>
 
-<input type="hidden" id="add_track_record_id" name="record" value="{{ record.id }}" />
-<input type="submit" id="add_track_submit" value="Add Soundtrack" />
-<input type="hidden" name="next" value= "{{ next }}" />
-</form>
 
-
-</div>
-</div>
+		</div>
+	{% endif %}
+	</div>
 
 <table>
 <thead>
@@ -75,26 +79,35 @@
 		<th>{% trans "Genre" %}</th>
 		<th>{% trans "Playing Time" %}</th>
 		<th>{% trans "Release Date" %}</th>
-		<th>{% trans "Edit" %}</th>
-		<th>{% trans "Delete" %}</th>
+		<th></th>
+		<th></th>
 	</tr>
 </thead>
 <tbody>
 {% for row in data %}
 	<tr>
 		<td></td>
-		<td>{{row.recordtrack.track.title}}</td>
+		<td><a href="{% url vinyl.views.track_details row.recordtrack.track.id %}">{{row.recordtrack.track.title}}</a></td>
 		<td>{{row.artists}}</td>
 		<td>{{row.recordtrack.track.genre.genre_name}}</td>
 		<td>{{row.recordtrack.track.playing_time}}</td>
-		<td>{{row.recordtrack.track.release_date }}</td>
-		<td><a href="{%url edit_track_url track_id=row.recordtrack.track.id %}">{% trans "Edit" %}</a></td>
-		<td><a href="{%url delete_track_url track_id=row.recordtrack.track.id record_id=record.id%}">{% trans "Delete" %}</a></td>
+		<td>{{row.recordtrack.track.release_date|date:"M Y" }}</td>
+		<td>
+		{% if user.is_authenticated %}
+			<a href="{%url edit_track_url track_id=row.recordtrack.track.id %}">{% trans "Edit" %}</a>
+		{% endif %}
+		</td>
+		<td>
+		{% if user.is_authenticated %}
+			<a href="{%url delete_track_url track_id=row.recordtrack.track.id record_id=record.id%}">{% trans "Delete" %}</a>
+		{% endif %}
+		</td>
 	</tr> 
 {% endfor %}
 </tbody>
 </table>
 <br/>
+{% if comments %}
 <div class="comments-panel">
 <div><strong>{% trans "Comments" %}</strong></div>
 	{% for comment in comments %}
@@ -104,5 +117,6 @@
 	</div>
 	{% endfor %}
 </div>
+{% endif %}
 </div>
 {% endblock %}

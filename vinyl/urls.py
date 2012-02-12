@@ -3,7 +3,7 @@ from adbproject.vinyl.views import *
 from adbproject import settings
 
 
-urlpatterns = patterns('', 
+urlpatterns = patterns('',
 					#url(r'^$', 'vinyl.views.homepage', name='homepage'),
 					url(r'^lang/(?P<lang>\w+)$', change_language),	
                     
@@ -16,11 +16,10 @@ urlpatterns = patterns('',
                     url(r'^playlist/(?P<playlist_id>\d+)$', playlist_details),
                     url(r'^playlist/edit/(?P<playlist_id>\d+)$', edit_playlist),
                     url(r'^playlist/add/(?P<playlist_id>\d+)/(?P<ids>\w+)$', add_to_playlist),
-                    url(r'^record/edit/(?P<record_id>\d+)$', edit_record),
                     url(r'^playlist/new/(?P<list_name>\w+)/(?P<ids>\w+)$', new_playlist),
-                    url(r'^profile/(?P<user_id>\d+)/$', my_profile),
                     url(r'^playlist/publish/(?P<playlist_id>\d+)$', publish_playlist),
                     
+                    url(r'^profile/(?P<user_id>\d+)/$', my_profile),
                     url(r'^list/add/(?P<type>\w)/(?P<ids>\w+)$', add_to_list),
 
                     url(r'^record/(?P<record_id>\d+)$', record_details),  
@@ -31,6 +30,7 @@ urlpatterns = patterns('',
 					url(r'^library/(?P<list_type>\w)/$', library), 
 					url(r'^library/delete/(?P<ids>\w+)/$', remove_from_library),
 					url(r'^library/promote/(?P<ids>\w+)/$', promote_tracked_to_owned),
-					url(r'^profile/(?P<user_id>\d+)/$', my_profile),
+					
+					url(r'^community/$', community),
 					
                 )
