@@ -4,7 +4,7 @@ import re
 
 def pluralize(word, count):
     if word == 'be':
-        return ngettext('is', 'are', count) % {'count': count}
+        return ngettext('is', 'are', count) % {'count': count} 
     elif word == 'have':
         return ngettext('has', 'have', count) % {'count': count}
     else:
@@ -47,4 +47,13 @@ def get_query(query_string, search_fields):
             query = query & or_query
     return query
 
+
+def get_query_from_request(request_querydict, exclude=None):
+    query = []
+    if request_querydict:
+        params = dict(request_querydict.items())
+        for param in params:
+            if not(param in exclude):
+                query.append(param + "=" + request_querydict.get(param)) 
+    return "&".join(query)
 

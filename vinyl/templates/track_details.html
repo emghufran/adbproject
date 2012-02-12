@@ -2,7 +2,9 @@
 {% block content %}
 {% load i18n %}
 <div class="details-title">{{ track.title}} 
+	{% if user.is_authenticated %} 
 	<a href="{% url adbproject.vinyl.views.edit_track track.id  %}" class="class-link">[Edit]</a>
+	{% endif %}
 </div>
 <table id="details">
 	<tr>

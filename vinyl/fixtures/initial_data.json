@@ -1,477 +1,4143 @@
 [
+    {
+        "pk": 1, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "LP"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "Double LP"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "EP"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "vinyl.Category", 
+        "fields": {
+            "category_name": "Double EP"
+        }
+    },
 	{
-		"pk": "1",
-		"model": "vinyl.Soundtrack",
-		"fields": {
-			"title": "Someone like you"
-		}
-	},
+        "pk": 1, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Pop"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Rock"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Hiphop"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Country"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Raggae"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Jazz"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Blues"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Folk"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Latin"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "R&B"
+        }
+    },
+    {
+        "pk": 11, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Metal"
+        }
+    },
+   {
+        "pk": 1, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "(You Keep Me) Hanging On", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Love Roy", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "100 Pounds of Cocaine", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jah Richie", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "1000 Dollars Reward", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Horace Andy", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "1000 Tons of Megaton", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "I Jarzif", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "2 Way", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "I Wayne", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "2000 Years", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Jackie Opel", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "21 Girls Salute", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jah T", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "22 Questions", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jigsy King", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "4 in 1/Drums Drums", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Johnny Osbourne", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "4 Year Old", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Johnny P", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Angel", 
+            "release_date": "1977-05-17", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Judas", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Angel in Zion", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Judy Mowatt", 
+            "genre": 11
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Angry Hearts", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Luciano", 
+            "genre": 1
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Annie Palmer", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Lutan Fyah", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Another Sound Come", 
+            "release_date": "1978-05-01", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Lymie", 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Answer Me", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Marcia Griffiths", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "original_version": 1, 
+            "title": "Anti Apartheid", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Max Romeo", 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Ants", 
+            "release_date": "1993-06-11", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Tanya Stephens", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Any Day Now", 
+            "release_date": "2004-12-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Tappa Zukie", 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Battle Field", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Love Roy", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Battle Of The Giants", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jah Richie", 
+            "genre": 1
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Bawl Fe More", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Horace Andy", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Be a Friend", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "I Jarzif", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Be a Man", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "I Wayne", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Be Good", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jackie Opel", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Be Good", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jah T", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Bye Bye Happiness", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jigsy King", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "original_version": 6, 
+            "title": "C. O . D.", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Johnny Osbourne", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Caan Cross The Border", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Johnny P", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Caan Say Yu Neva", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Judas", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Calico", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Judy Mowatt", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "California Dreamin", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Luciano", 
+            "genre": 11
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Call", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Lutan Fyah", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "DJ Special", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Lymie", 
+            "genre": 11
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Do Dem Sup uh", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Marcia Griffiths", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Do Good", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Max Romeo", 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Do It", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Tanya Stephens", 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Even Though Youre Gone", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Tappa Zukie", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Even When the Wind Blow", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Love Roy", 
+            "genre": 11
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Ever Deh a Jail", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jah Richie", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "original_version": 6, 
+            "title": "Every Mans Burden", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Horace Andy", 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Every Minute Everyday", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "I Jarzif", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Every Nigga is a Winner", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "I Wayne", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Every Thing Shall Tell", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jackie Opel", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Everybody", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jah T", 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Everybody Bawling", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jigsy King", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Flash It Tonight", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Johnny Osbourne", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Flashing My Whip", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Johnny P", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "original_version": 7, 
+            "title": "Flat Foot Hustling", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Judas", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Flesh and Bone", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Judy Mowatt", 
+            "genre": 11
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Flex Out", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Luciano", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Here Comes the Heartaches", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Lutan Fyah", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Here I Am", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Lymie", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Here I Come Again", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Marcia Griffiths", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Here Is My Heart", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Max Romeo", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Here Tonight", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Tanya Stephens", 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Here we come again", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Tappa Zukie", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Hero", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Love Roy", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "original_version": 9, 
+            "title": "I Feel Good", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Jah Richie", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "I found Love", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Horace Andy", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "I Got a Feeling", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "I Jarzif", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "I Have a Problem", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "I Wayne", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "I Wish", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jackie Opel", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "I Wish it Was Me", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jah T", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "I Wish It Would Go On Forever", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Jigsy King", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "I Wish Your Picture Was You", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Johnny Osbourne", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Jah Nah Fail", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Johnny P", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Jah Name a Mention", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Judas", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Kiss Me Neck/Da Ba Da", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Judy Mowatt", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "original_version": 10, 
+            "title": "Kissing (Ver)", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Luciano", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Knee Shall Bow", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Lutan Fyah", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Knock me off my Feet", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Lymie", 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Knock Three times", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Marcia Griffiths", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Knocking on Heavans Door", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Max Romeo", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Let Me Go Girl", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Tanya Stephens", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 76, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Let Me Hold You", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Tappa Zukie", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Let me In", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Love Roy", 
+            "genre": 11
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Let Me In Your Heart", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Jah Richie", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 79, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "My Sound", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Horace Andy", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "original_version": 44, 
+            "title": "My Sound Sweet", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "I Jarzif", 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 81, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Nothing Come Easy", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "I Wayne", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 82, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Nothing Gonna Change my Love", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Jackie Opel", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 83, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "O Carol", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Jah T", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 84, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "O Jean", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Jigsy King", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 85, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "One Draw Sensimilia", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Johnny Osbourne", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 86, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Pay the Price", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Johnny P", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 87, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Pay Up Your Taxes", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Judas", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 88, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Peace", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Judy Mowatt", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 89, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Pressure and The Slide", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Luciano", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 90, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Opportunity", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Lutan Fyah", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 91, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "original_version": 56, 
+            "title": "Pressure On Botha", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Lymie", 
+            "genre": 1
+        }
+    }, 
+    {
+        "pk": 92, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Reaching Out", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Marcia Griffiths", 
+            "genre": 1
+        }
+    }, 
+    {
+        "pk": 93, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Reaction", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Max Romeo", 
+            "genre": 9
+        }
+    }, 
+    {
+        "pk": 94, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Read it in Revelation", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Tanya Stephens", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 95, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Road Block", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Tappa Zukie", 
+            "genre": 11
+        }
+    }, 
+    {
+        "pk": 96, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Self Reliance", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Love Roy", 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 97, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Sell Out", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jah Richie", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 98, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Suffering in the Land", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Horace Andy", 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 99, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Suffering Still", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "I Jarzif", 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 100, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Sugar", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "I Wayne", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 101, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Tears of Joy", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Jackie Opel", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 102, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Tears on my Pillow", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Jah T", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 103, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Teenie Weenie", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Jigsy King", 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 104, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Want Everything", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Johnny Osbourne", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 105, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Want Fi Go Rave", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Johnny P", 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 106, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "original_version": 100, 
+            "title": "You Must Believe", 
+            "release_date": "1987-05-07", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Judas", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 107, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "You Must Believe Me", 
+            "release_date": "1983-06-11", 
+            "lyricist": "Barry Brown", 
+            "music_writer": "Judy Mowatt", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 108, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Robert Valentine", 
+            "title": "Youve Got to Come Back", 
+            "release_date": "1954-02-01", 
+            "lyricist": "Fuzzy Jones", 
+            "music_writer": "Luciano", 
+            "genre": 10
+        }
+    }, 
+    {
+        "pk": 109, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rolston Daley", 
+            "title": "Yow Yow", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Lutan Fyah", 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 110, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Roman Stewart", 
+            "title": "Yuh Nah", 
+            "release_date": "1978-05-21", 
+            "lyricist": "Barrington Levy", 
+            "music_writer": "Lymie", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 111, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Rappa Robert", 
+            "title": "Zion", 
+            "release_date": "1934-03-04", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Marcia Griffiths", 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 112, 
+        "model": "vinyl.Soundtrack", 
+        "fields": {
+            "audio_engineer": "Richie Spice", 
+            "title": "Zion Children", 
+            "release_date": "1943-12-25", 
+            "lyricist": "Barry Biggs", 
+            "music_writer": "Max Romeo", 
+            "genre": 9
+        }
+    },
+	{
+        "pk": 1, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Admiral Tibet"
+        }
+    }, 
     {
         "pk": 2, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Al Campbell"
+            "name": "Antonio"
         }
     }, 
     {
         "pk": 3, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Alpha Rowen"
+            "name": "ARP"
         }
     }, 
     {
         "pk": 4, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Alton Ellis"
+            "name": "ARP&Zebra"
         }
     }, 
     {
         "pk": 5, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Anthony B"
+            "name": "Barrington Levy"
         }
     }, 
     {
         "pk": 6, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Artist"
+            "name": "Beenie Man"
         }
     }, 
     {
         "pk": 7, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Baco"
+            "name": "Beres Hammond"
         }
     }, 
     {
         "pk": 8, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Bagga Worries"
+            "name": "Big Joe"
         }
     }, 
     {
         "pk": 9, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Barry Biggs"
+            "name": "Bishop Richards"
         }
     }, 
     {
         "pk": 10, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Carlton Lewis"
+            "name": "Black Rose"
         }
     }, 
     {
         "pk": 11, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Christine Miller"
+            "name": "Black Skin the Prophet"
         }
     }, 
     {
         "pk": 12, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Bob Marley"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Brent dowe"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Buju Banton Ernest Wilson"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Capleton"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Chena D"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Chevelle Franklin"
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Chris Wayne"
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Chrisinti"
+        }
+    }, 
+    {
+        "pk": 20, 
         "model": "vinyl.Artist", 
         "fields": {
             "name": "Chuck Fenda"
         }
     }, 
     {
-        "pk": 13, 
+        "pk": 21, 
         "model": "vinyl.Artist", 
         "fields": {
             "name": "Cornel Campbell"
         }
     }, 
     {
-        "pk": 14, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Cultural Roots"
-        }
-    }, 
-    {
-        "pk": 15, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Danny Red"
-        }
-    }, 
-    {
-        "pk": 16, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Delton Screechie"
-        }
-    }, 
-    {
-        "pk": 17, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Don Carlos"
-        }
-    }, 
-    {
-        "pk": 18, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Earl Sixteen"
-        }
-    }, 
-    {
-        "pk": 19, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Early B"
-        }
-    }, 
-    {
-        "pk": 20, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Errol Dunkley"
-        }
-    }, 
-    {
-        "pk": 21, 
-        "model": "vinyl.Artist", 
-        "fields": {
-            "name": "Everton Blender"
-        }
-    }, 
-    {
         "pk": 22, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Fitta Warri"
+            "name": "Culture Lee"
         }
     }, 
     {
         "pk": 23, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Gussie P"
+            "name": "Danny Hill"
         }
     }, 
     {
         "pk": 24, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Jah Stitch"
+            "name": "Della Grant"
         }
     }, 
     {
         "pk": 25, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Jah Thomas"
+            "name": "Delroy Willis"
         }
     }, 
     {
         "pk": 26, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Kenny Knots"
+            "name": "Delroy Wilson"
         }
     }, 
     {
         "pk": 27, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Kiko"
+            "name": "Derrick Morgan"
         }
     }, 
     {
         "pk": 28, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Mafia & Fluxy"
+            "name": "Dillinger"
         }
     }, 
     {
         "pk": 29, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Peter Broggs"
+            "name": "Don Hickey"
         }
     }, 
     {
         "pk": 30, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Ruddy Thomas"
+            "name": "DYCR"
         }
     }, 
     {
         "pk": 31, 
         "model": "vinyl.Artist", 
         "fields": {
-            "name": "Wayne And Johnny"
+            "name": "El Paso"
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Everton Blender"
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Frankie Paul"
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Freddie McKay"
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Frisco Kid"
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Gargalore"
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Garnet Silk"
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "General Plough"
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Gentleman"
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Hugh Roy"
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Hugo Barrington"
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Humpty King"
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Jah Blakks Mosiah"
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Jah Mali"
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Jah Mason"
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Jah Messengers"
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Jimmy Cliff"
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "John Mouse"
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Johnny Clarke"
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Josey Wales"
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Time Unlimited"
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Toni Anderson"
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Tony Lowe"
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Trevor Sparks"
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Triston Palma"
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Turbulence"
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Tyrone Taylor"
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "U Roy"
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "U Roy"
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Wayne Wade"
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Wesley Tinglin"
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Winston Francis"
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Winston Groovy"
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "vinyl.Artist", 
+        "fields": {
+            "name": "Zarca"
         }
     },
+	{
+        "pk": 1, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 44, 
+            "artisttype": "F", 
+            "track": 20
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 56, 
+            "artisttype": "F", 
+            "track": 21
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 56, 
+            "artisttype": "F", 
+            "track": 42
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 47, 
+            "artisttype": "F", 
+            "track": 74
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 59, 
+            "artisttype": "F", 
+            "track": 80
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 40, 
+            "artisttype": "M", 
+            "track": 1
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 34, 
+            "artisttype": "M", 
+            "track": 2
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 2, 
+            "artisttype": "M", 
+            "track": 3
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 3, 
+            "artisttype": "M", 
+            "track": 4
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 24, 
+            "artisttype": "M", 
+            "track": 5
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 2, 
+            "artisttype": "M", 
+            "track": 6
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 19, 
+            "artisttype": "M", 
+            "track": 7
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 18, 
+            "artisttype": "M", 
+            "track": 8
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 13, 
+            "artisttype": "M", 
+            "track": 9
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 30, 
+            "artisttype": "M", 
+            "track": 10
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 11, 
+            "artisttype": "M", 
+            "track": 11
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 25, 
+            "artisttype": "M", 
+            "track": 12
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 25, 
+            "artisttype": "M", 
+            "track": 13
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 22, 
+            "artisttype": "M", 
+            "track": 14
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 30, 
+            "artisttype": "M", 
+            "track": 15
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 38, 
+            "artisttype": "M", 
+            "track": 16
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 40, 
+            "artisttype": "M", 
+            "track": 17
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 21, 
+            "artisttype": "M", 
+            "track": 18
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 36, 
+            "artisttype": "M", 
+            "track": 19
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 11, 
+            "artisttype": "M", 
+            "track": 20
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 8, 
+            "artisttype": "M", 
+            "track": 21
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 14, 
+            "artisttype": "M", 
+            "track": 22
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 15, 
+            "artisttype": "M", 
+            "track": 23
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 1, 
+            "artisttype": "M", 
+            "track": 24
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 30, 
+            "artisttype": "M", 
+            "track": 25
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 14, 
+            "artisttype": "M", 
+            "track": 26
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 34, 
+            "artisttype": "M", 
+            "track": 27
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 36, 
+            "artisttype": "M", 
+            "track": 28
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 35, 
+            "artisttype": "M", 
+            "track": 29
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 5, 
+            "artisttype": "M", 
+            "track": 30
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 3, 
+            "artisttype": "M", 
+            "track": 31
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 38, 
+            "artisttype": "M", 
+            "track": 32
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 26, 
+            "artisttype": "M", 
+            "track": 33
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 36, 
+            "artisttype": "M", 
+            "track": 34
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 14, 
+            "artisttype": "M", 
+            "track": 35
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 29, 
+            "artisttype": "M", 
+            "track": 36
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 33, 
+            "artisttype": "M", 
+            "track": 37
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 27, 
+            "artisttype": "M", 
+            "track": 38
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 32, 
+            "artisttype": "M", 
+            "track": 39
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 39, 
+            "artisttype": "M", 
+            "track": 40
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 27, 
+            "artisttype": "M", 
+            "track": 41
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 24, 
+            "artisttype": "M", 
+            "track": 42
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 33, 
+            "artisttype": "M", 
+            "track": 43
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 20, 
+            "artisttype": "M", 
+            "track": 44
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 2, 
+            "artisttype": "M", 
+            "track": 45
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 22, 
+            "artisttype": "M", 
+            "track": 46
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 23, 
+            "artisttype": "M", 
+            "track": 47
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 23, 
+            "artisttype": "M", 
+            "track": 48
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 13, 
+            "artisttype": "M", 
+            "track": 49
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 40, 
+            "artisttype": "M", 
+            "track": 50
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 31, 
+            "artisttype": "M", 
+            "track": 51
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 24, 
+            "artisttype": "M", 
+            "track": 52
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 40, 
+            "artisttype": "M", 
+            "track": 53
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 20, 
+            "artisttype": "M", 
+            "track": 54
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 39, 
+            "artisttype": "M", 
+            "track": 55
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 8, 
+            "artisttype": "M", 
+            "track": 56
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 30, 
+            "artisttype": "M", 
+            "track": 57
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 14, 
+            "artisttype": "M", 
+            "track": 58
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 26, 
+            "artisttype": "M", 
+            "track": 59
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 39, 
+            "artisttype": "M", 
+            "track": 60
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 13, 
+            "artisttype": "M", 
+            "track": 61
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 40, 
+            "artisttype": "M", 
+            "track": 62
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 19, 
+            "artisttype": "M", 
+            "track": 63
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 26, 
+            "artisttype": "M", 
+            "track": 64
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 38, 
+            "artisttype": "M", 
+            "track": 65
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 10, 
+            "artisttype": "M", 
+            "track": 66
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 33, 
+            "artisttype": "M", 
+            "track": 67
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 26, 
+            "artisttype": "M", 
+            "track": 68
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 34, 
+            "artisttype": "M", 
+            "track": 69
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 33, 
+            "artisttype": "M", 
+            "track": 70
+        }
+    }, 
+    {
+        "pk": 76, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 14, 
+            "artisttype": "M", 
+            "track": 71
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 29, 
+            "artisttype": "M", 
+            "track": 72
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 32, 
+            "artisttype": "M", 
+            "track": 73
+        }
+    }, 
+    {
+        "pk": 79, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 8, 
+            "artisttype": "M", 
+            "track": 74
+        }
+    }, 
+    {
+        "pk": 80, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 13, 
+            "artisttype": "M", 
+            "track": 75
+        }
+    }, 
+    {
+        "pk": 81, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 21, 
+            "artisttype": "M", 
+            "track": 76
+        }
+    }, 
+    {
+        "pk": 82, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 4, 
+            "artisttype": "M", 
+            "track": 77
+        }
+    }, 
+    {
+        "pk": 83, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 13, 
+            "artisttype": "M", 
+            "track": 78
+        }
+    }, 
+    {
+        "pk": 84, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 34, 
+            "artisttype": "M", 
+            "track": 79
+        }
+    }, 
+    {
+        "pk": 85, 
+        "model": "vinyl.Trackartist", 
+        "fields": {
+            "artist": 18, 
+            "artisttype": "M", 
+            "track": 80
+        }
+    },
+	{
+        "pk": 1, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "12 Tribes", 
+            "title": "1000 Dollars Reward", 
+            "matrix_number": "BPR-2334-AS-RC1", 
+            "artist": 7, 
+            "category": 3, 
+            "genre": 4
+        }
+    }, 
     {
         "pk": 2, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 2, 
-            "genre": 5, 
-            "producer": "Tappa Zukie", 
-            "title": "Know Your Culture / Jill"
+            "disk_size": 12, 
+            "producer": "1st Choice Intl", 
+            "title": "A New Day In The Morning", 
+            "matrix_number": "BPR-1256-AS-RC2", 
+            "artist": 11, 
+            "category": 2, 
+            "genre": 5
         }
     }, 
     {
         "pk": 3, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 3, 
-            "genre": 5, 
-            "producer": "Oxman", 
-            "title": "Brother Man"
+            "disk_size": 10, 
+            "producer": "1st Foundation", 
+            "title": "Africa Awaits", 
+            "matrix_number": "BPR-2334-AS-RC3", 
+            "artist": 17, 
+            "category": 2, 
+            "genre": 6
         }
     }, 
     {
         "pk": 4, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 4, 
-            "genre": 5, 
-            "producer": "Mosco", 
-            "title": "Zulu Man / Peeping Tom"
+            "disk_size": 7, 
+            "producer": "2M Production", 
+            "title": "Barber Cries", 
+            "matrix_number": "BPR-2334-AS-RC4", 
+            "artist": 10, 
+            "category": 4, 
+            "genre": 6
         }
     }, 
     {
         "pk": 5, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 5, 
-            "genre": 5, 
-            "producer": "Manjul", 
-            "title": "Show Your Emotion / Tonight"
+            "disk_size": 10, 
+            "producer": "4 Wind", 
+            "title": "Battle Field", 
+            "matrix_number": "BPR-2334-AS-RC5", 
+            "artist": 27, 
+            "category": 4, 
+            "genre": 2
         }
     }, 
     {
         "pk": 6, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 6, 
-            "genre": 5, 
-            "producer": "Nomadix", 
-            "title": "400 Years"
+            "disk_size": 10, 
+            "producer": "5th Ave", 
+            "title": "Caution", 
+            "matrix_number": "BPR-2334-AS-RC6", 
+            "artist": 40, 
+            "category": 2, 
+            "genre": 3
         }
     }, 
     {
         "pk": 7, 
         "model": "vinyl.Record", 
         "fields": {
+            "disk_size": 7, 
+            "producer": "5th Avenue South", 
+            "title": "Conscious", 
+            "matrix_number": "BPR-096-AS-RC7", 
             "artist": 7, 
-            "genre": 5, 
-            "producer": "Tappa Zukie", 
-            "title": "Reflection"
+            "category": 3, 
+            "genre": 7
         }
     }, 
     {
         "pk": 8, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 8, 
-            "genre": 5, 
-            "producer": "Fashion", 
-            "title": "Sweet Soul Rocking / Golden Wonder DUB"
+            "disk_size": 12, 
+            "producer": "7th", 
+            "title": "Countrymen", 
+            "matrix_number": "BPR-5463-AS-RC8", 
+            "artist": 7, 
+            "category": 3, 
+            "genre": 1
         }
     }, 
     {
         "pk": 9, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 9, 
-            "genre": 5, 
-            "producer": "Roots HiTek", 
-            "title": "The Light / Trod Away Home"
+            "disk_size": 12, 
+            "producer": "A A Coke", 
+            "title": "Cry Me A River", 
+            "matrix_number": "BPR-2334-AS-RC9", 
+            "artist": 35, 
+            "category": 2, 
+            "genre": 5
         }
     }, 
     {
         "pk": 10, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 10, 
-            "genre": 5, 
-            "producer": "D Davis", 
-            "title": "Locks A Flow / Babylon Get A Blow"
+            "disk_size": 10, 
+            "producer": "A Al Azeem", 
+            "title": "Dilemma", 
+            "matrix_number": "BPR-2334-AS-RC10", 
+            "artist": 8, 
+            "category": 1, 
+            "genre": 8
         }
     }, 
     {
         "pk": 11, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 11, 
-            "genre": 5, 
-            "producer": "Ryan Moore", 
-            "title": "Why Dem Gwaan So / Universal Ruler"
+            "disk_size": 10, 
+            "producer": "A Austin", 
+            "title": "Dont Know", 
+            "matrix_number": "BPR-2334-AS-RC11", 
+            "artist": 4, 
+            "category": 1, 
+            "genre": 3
         }
     }, 
     {
         "pk": 12, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 12, 
-            "genre": 5, 
-            "producer": "Hookim", 
-            "title": "I Need You Right Now / You Captured My Heart"
+            "disk_size": 12, 
+            "producer": "A Barrett", 
+            "title": "Dream Of Me", 
+            "matrix_number": "BPR-2334-AS-RC12", 
+            "artist": 15, 
+            "category": 1, 
+            "genre": 5
         }
     }, 
     {
         "pk": 13, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 13, 
-            "genre": 5, 
-            "producer": "Germain / Cultural Roots", 
-            "title": "Reality"
+            "disk_size": 10, 
+            "producer": "Bam & Ryan Bowser", 
+            "title": "Fire Corner", 
+            "matrix_number": "BPR-2334-AS-RC13", 
+            "artist": 38, 
+            "category": 1, 
+            "genre": 4
         }
     }, 
     {
         "pk": 14, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 14, 
-            "genre": 5, 
-            "producer": "Gussie P", 
-            "title": "Give Jah Praise / Ballistic Domination"
+            "disk_size": 12, 
+            "producer": "Bancroft Darling", 
+            "title": "Gangster Role Vol 1", 
+            "matrix_number": "BPR-2334-AS-RC14", 
+            "artist": 39, 
+            "category": 4, 
+            "genre": 8
         }
     }, 
     {
         "pk": 15, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 15, 
-            "genre": 5, 
-            "producer": "Bunny Hylton", 
-            "title": "Sweet Africa / History"
+            "disk_size": 10, 
+            "producer": "Banja", 
+            "title": "Girlie", 
+            "matrix_number": "BPR-2334-AS-RC15", 
+            "artist": 38, 
+            "category": 2, 
+            "genre": 4
         }
     }, 
     {
         "pk": 16, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 16, 
-            "genre": 5, 
-            "producer": "Niney / Hookim", 
-            "title": "Dice Cup / Ackee Monkey"
+            "disk_size": 12, 
+            "producer": "Bankey", 
+            "title": "High Grade", 
+            "matrix_number": "BPR-2334-AS-RC16", 
+            "artist": 10, 
+            "category": 4, 
+            "genre": 5
         }
     }, 
     {
         "pk": 17, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 17, 
-            "genre": 5, 
-            "producer": "Earl Sixteen", 
-            "title": "Jah Love We Want / Gold Of Sheba"
+            "disk_size": 10, 
+            "producer": "Banton", 
+            "title": "Honest Living", 
+            "matrix_number": "BPR-2334-AS-RC17", 
+            "artist": 39, 
+            "category": 2, 
+            "genre": 4
         }
     }, 
     {
         "pk": 18, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 18, 
-            "genre": 5, 
-            "producer": "Gussie P", 
-            "title": "Gates Of Hell"
+            "disk_size": 12, 
+            "producer": "Barclay", 
+            "title": "Honor", 
+            "matrix_number": "BPR-4533-AS-RC18", 
+            "artist": 8, 
+            "category": 1, 
+            "genre": 7
         }
     }, 
     {
         "pk": 19, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 19, 
-            "genre": 5, 
-            "producer": "D Davis", 
-            "title": "Reggae Ambassador / Have Fe Mek It"
+            "disk_size": 7, 
+            "producer": "Barclay", 
+            "title": "Jamma", 
+            "matrix_number": "BPR-2334-AS-RC19", 
+            "artist": 1, 
+            "category": 3, 
+            "genre": 4
         }
     }, 
     {
         "pk": 20, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 20, 
-            "genre": 5, 
-            "producer": "Fred Dread", 
-            "title": "Starlights / Live Consciously"
+            "disk_size": 10, 
+            "producer": "A Bernard", 
+            "title": "Keep The Roots", 
+            "matrix_number": "BPR-2334-AS-RC20", 
+            "artist": 33, 
+            "category": 4, 
+            "genre": 1
         }
     }, 
     {
         "pk": 21, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 21, 
-            "genre": 5, 
-            "producer": "Errol Dunkley", 
-            "title": "Mount Zion / Love Of My Woman"
+            "disk_size": 10, 
+            "producer": "A Bernard", 
+            "title": "Keep Your Head Up", 
+            "matrix_number": "BPR-2334-AS-RC21", 
+            "artist": 27, 
+            "category": 1, 
+            "genre": 2
         }
     }, 
     {
         "pk": 22, 
         "model": "vinyl.Record", 
         "fields": {
-            "artist": 22, 
-            "genre": 5, 
-            "producer": "Neil Perch", 
-            "title": "Israel / Wicked Intentions"
+            "disk_size": 7, 
+            "producer": "A Bernard", 
+            "title": "Kung Fu", 
+            "matrix_number": "BPR-83-AS-RC22", 
+            "artist": 5, 
+            "category": 3, 
+            "genre": 4
         }
-    },
+    }, 
     {
-        "pk": 1, 
-        "model": "vinyl.Category", 
+        "pk": 23, 
+        "model": "vinyl.Record", 
         "fields": {
-            "category_name": "LP", 
-            "no_of_disc" : 1
+            "disk_size": 7, 
+            "producer": "A Blackwood", 
+            "title": "Length And Strength", 
+            "matrix_number": "BPR-2334-AS-23", 
+            "artist": 17, 
+            "category": 1, 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "A Bosi", 
+            "title": "Lets Love", 
+            "matrix_number": "BPR-3-AS-R4", 
+            "artist": 9, 
+            "category": 4, 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "A Brightley", 
+            "title": "Level You Vibes", 
+            "matrix_number": "BPR-2334-AS-RC25", 
+            "artist": 21, 
+            "category": 2, 
+            "genre": 1
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "Byron Lee", 
+            "title": "Love And Harmony", 
+            "matrix_number": "BPR-2334-AS-RC26", 
+            "artist": 24, 
+            "category": 2, 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "Byron Murray", 
+            "title": "Malvo A Come", 
+            "matrix_number": "BPR-2334-AS-RC27", 
+            "artist": 39, 
+            "category": 2, 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "Byron Murray", 
+            "title": "Missing You", 
+            "matrix_number": "BPR-2334-AS-RC28", 
+            "artist": 24, 
+            "category": 4, 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "Byron Murray", 
+            "title": "My First Love", 
+            "matrix_number": "BPR-2334-AS-RC29", 
+            "artist": 30, 
+            "category": 4, 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "Byron Murray", 
+            "title": "My People", 
+            "matrix_number": "BPR-2334-AS-RC30", 
+            "artist": 5, 
+            "category": 2, 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "Byron Reid", 
+            "title": "Na Fight And Chap Up", 
+            "matrix_number": "BPR-2334-AS-RC31", 
+            "artist": 27, 
+            "category": 3, 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "Byron Reid", 
+            "title": "Nah Draw Nil", 
+            "matrix_number": "BPR-2334-AS-RC32", 
+            "artist": 17, 
+            "category": 2, 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "Byron Reid", 
+            "title": "No False Rumour", 
+            "matrix_number": "BPR-2334-AS-RC33", 
+            "artist": 30, 
+            "category": 1, 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "Byron Reid", 
+            "title": "No War", 
+            "matrix_number": "BPR-2334-AS-RC34", 
+            "artist": 12, 
+            "category": 2, 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 8, 
+            "producer": "Byron Reid", 
+            "title": "Number One", 
+            "matrix_number": "BPR-2334-AS-RC35", 
+            "artist": 17, 
+            "category": 3, 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "Byron Treasure", 
+            "title": "Proper Loving", 
+            "matrix_number": "BPR-2334-AS-RC36", 
+            "artist": 23, 
+            "category": 1, 
+            "genre": 7
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "Byron Treasure", 
+            "title": "Proud A You Man", 
+            "matrix_number": "BPR-2334-AS-RC37", 
+            "artist": 7, 
+            "category": 1, 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "Byron Whiteley", 
+            "title": "Pusher Man", 
+            "matrix_number": "BPR-2334-AS-RC38", 
+            "artist": 22, 
+            "category": 3, 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "Byron Whitely", 
+            "title": "Revelation Soldier", 
+            "matrix_number": "BPR-2334-AS-RC39", 
+            "artist": 33, 
+            "category": 4, 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "Byron Whitely", 
+            "title": "Ruff This Year", 
+            "matrix_number": "BPR-2334-AS-RC40", 
+            "artist": 22, 
+            "category": 3, 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "C A Lindsay", 
+            "title": "Runout Walkin", 
+            "matrix_number": "BPR-2334-AS-RC41", 
+            "artist": 8, 
+            "category": 2, 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "C Allen", 
+            "title": "Seeds Of Love", 
+            "matrix_number": "BPR-2334-AS-RC42", 
+            "artist": 32, 
+            "category": 4, 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "C Anthony", 
+            "title": "Shanice", 
+            "matrix_number": "BPR-2334-AS-RC43", 
+            "artist": 30, 
+            "category": 1, 
+            "genre": 1
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "C Ayton", 
+            "title": "Stand Firm", 
+            "matrix_number": "BPR-2334-AS-RC44", 
+            "artist": 1, 
+            "category": 3, 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "C Banton", 
+            "title": "Sunshine", 
+            "matrix_number": "BPR-2334-AS-RC45", 
+            "artist": 2, 
+            "category": 3, 
+            "genre": 4
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "C Brown", 
+            "title": "The Ambush", 
+            "matrix_number": "BPR-2334-AS-RC46", 
+            "artist": 29, 
+            "category": 1, 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "C Brown", 
+            "title": "Them Bow", 
+            "matrix_number": "BPR-2334-AS-RC47", 
+            "artist": 1, 
+            "category": 4, 
+            "genre": 5
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "C Brown", 
+            "title": "Thug Lovin", 
+            "matrix_number": "BPR-2334-AS-RC48", 
+            "artist": 12, 
+            "category": 2, 
+            "genre": 2
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 10, 
+            "producer": "C Brownie", 
+            "title": "Tricked", 
+            "matrix_number": "BPR-2334-AS-RC49", 
+            "artist": 9, 
+            "category": 1, 
+            "genre": 3
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "C Bushay", 
+            "title": "Tricked", 
+            "matrix_number": "BPR-2334-AS-RC50", 
+            "artist": 40, 
+            "category": 2, 
+            "genre": 8
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "C Campbell", 
+            "title": "True Love", 
+            "matrix_number": "BPR-2334-AS-RC51", 
+            "artist": 28, 
+            "category": 2, 
+            "genre": 6
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 7, 
+            "producer": "C Campbell", 
+            "title": "Wanted", 
+            "matrix_number": "BPR-2334-AS-RC52", 
+            "artist": 5, 
+            "category": 2, 
+            "genre": 1
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "vinyl.Record", 
+        "fields": {
+            "disk_size": 12, 
+            "producer": "C Carnegie", 
+            "title": "Youth", 
+            "matrix_number": "BPR-2334-AS-RC53", 
+            "artist": 34, 
+            "category": 4, 
+            "genre": 6
         }
     },
+	{
+        "pk": 1, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 1, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 5
+        }
+    }, 
     {
         "pk": 2, 
-        "model": "vinyl.Category", 
+        "model": "vinyl.Recordtrack", 
         "fields": {
-            "category_name": "Double LP", 
-            "no_of_disc" : 2
+            "record": 2, 
+            "disc_number": 2, 
+            "order": 2, 
+            "track": 40
         }
-    },
+    }, 
     {
         "pk": 3, 
-        "model": "vinyl.Category", 
+        "model": "vinyl.Recordtrack", 
         "fields": {
-            "category_name": "EP", 
-            "no_of_disc" : 1
+            "record": 3, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 55
         }
-    },
+    }, 
     {
         "pk": 4, 
-        "model": "vinyl.Category", 
+        "model": "vinyl.Recordtrack", 
         "fields": {
-            "category_name": "Double EP", 
-            "no_of_disc" : 2
+            "record": 3, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 81
         }
-    },
+    }, 
     {
         "pk": 5, 
-        "model": "vinyl.Category", 
+        "model": "vinyl.Recordtrack", 
         "fields": {
-            "category_name": "Maxi Single", 
-            "no_of_disc" : 1
+            "record": 3, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 25
         }
-    },
+    }, 
     {
         "pk": 6, 
-        "model": "vinyl.Category", 
+        "model": "vinyl.Recordtrack", 
         "fields": {
-            "category_name": "Single", 
-            "no_of_disc" : 1
+            "record": 4, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 48
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 4, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 62
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 4, 
+            "disc_number": 2, 
+            "order": 3, 
+            "track": 70
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 6, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 3
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 6, 
+            "disc_number": 2, 
+            "order": 3, 
+            "track": 43
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 7, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 4
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 7, 
+            "disc_number": 2, 
+            "order": 2, 
+            "track": 20
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 9, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 57
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 9, 
+            "disc_number": 2, 
+            "order": 4, 
+            "track": 26
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 10, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 46
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 11, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 72
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 12, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 106
+        }
+    }, 
+    {
+        "pk": 18, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 12, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 89
+        }
+    }, 
+    {
+        "pk": 19, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 13, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 101
+        }
+    }, 
+    {
+        "pk": 20, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 14, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 25
+        }
+    }, 
+    {
+        "pk": 21, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 15, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 48
+        }
+    }, 
+    {
+        "pk": 22, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 15, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 62
+        }
+    }, 
+    {
+        "pk": 23, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 15, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 70
+        }
+    }, 
+    {
+        "pk": 24, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 16, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 3
+        }
+    }, 
+    {
+        "pk": 25, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 16, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 100
+        }
+    }, 
+    {
+        "pk": 26, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 16, 
+            "disc_number": 1, 
+            "order": 4, 
+            "track": 12
+        }
+    }, 
+    {
+        "pk": 27, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 19, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 108
+        }
+    }, 
+    {
+        "pk": 28, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 19, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 19
+        }
+    }, 
+    {
+        "pk": 29, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 20, 
+            "disc_number": 1, 
+            "order": 5, 
+            "track": 110
+        }
+    }, 
+    {
+        "pk": 30, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 21, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 26
+        }
+    }, 
+    {
+        "pk": 31, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 23, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 46
+        }
+    }, 
+    {
+        "pk": 32, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 23, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 72
+        }
+    }, 
+    {
+        "pk": 33, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 23, 
+            "disc_number": 2, 
+            "order": 5, 
+            "track": 106
+        }
+    }, 
+    {
+        "pk": 34, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 24, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 89
+        }
+    }, 
+    {
+        "pk": 35, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 26, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 1
+        }
+    }, 
+    {
+        "pk": 36, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 26, 
+            "disc_number": 1, 
+            "order": 4, 
+            "track": 6
+        }
+    }, 
+    {
+        "pk": 37, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 27, 
+            "disc_number": 1, 
+            "order": 5, 
+            "track": 2
+        }
+    }, 
+    {
+        "pk": 38, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 28, 
+            "disc_number": 1, 
+            "order": 6, 
+            "track": 5
+        }
+    }, 
+    {
+        "pk": 39, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 29, 
+            "disc_number": 1, 
+            "order": 7, 
+            "track": 109
+        }
+    }, 
+    {
+        "pk": 40, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 29, 
+            "disc_number": 1, 
+            "order": 6, 
+            "track": 9
+        }
+    }, 
+    {
+        "pk": 41, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 30, 
+            "disc_number": 1, 
+            "order": 8, 
+            "track": 89
+        }
+    }, 
+    {
+        "pk": 42, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 31, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 10
+        }
+    }, 
+    {
+        "pk": 43, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 31, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 21
+        }
+    }, 
+    {
+        "pk": 44, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 32, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 31
+        }
+    }, 
+    {
+        "pk": 45, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 32, 
+            "disc_number": 1, 
+            "order": 4, 
+            "track": 55
+        }
+    }, 
+    {
+        "pk": 46, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 33, 
+            "disc_number": 1, 
+            "order": 5, 
+            "track": 24
+        }
+    }, 
+    {
+        "pk": 47, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 33, 
+            "disc_number": 1, 
+            "order": 6, 
+            "track": 112
+        }
+    }, 
+    {
+        "pk": 48, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 35, 
+            "disc_number": 1, 
+            "order": 7, 
+            "track": 57
+        }
+    }, 
+    {
+        "pk": 49, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 35, 
+            "disc_number": 1, 
+            "order": 8, 
+            "track": 83
+        }
+    }, 
+    {
+        "pk": 50, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 35, 
+            "disc_number": 2, 
+            "order": 1, 
+            "track": 77
+        }
+    }, 
+    {
+        "pk": 51, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 36, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 58
+        }
+    }, 
+    {
+        "pk": 52, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 36, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 82
+        }
+    }, 
+    {
+        "pk": 53, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 37, 
+            "disc_number": 1, 
+            "order": 4, 
+            "track": 103
+        }
+    }, 
+    {
+        "pk": 54, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 37, 
+            "disc_number": 1, 
+            "order": 5, 
+            "track": 66
+        }
+    }, 
+    {
+        "pk": 55, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 38, 
+            "disc_number": 1, 
+            "order": 6, 
+            "track": 12
+        }
+    }, 
+    {
+        "pk": 56, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 38, 
+            "disc_number": 1, 
+            "order": 7, 
+            "track": 21
+        }
+    }, 
+    {
+        "pk": 57, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 40, 
+            "disc_number": 1, 
+            "order": 8, 
+            "track": 23
+        }
+    }, 
+    {
+        "pk": 58, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 41, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 21
+        }
+    }, 
+    {
+        "pk": 59, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 42, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 85
+        }
+    }, 
+    {
+        "pk": 60, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 43, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 23
+        }
+    }, 
+    {
+        "pk": 61, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 44, 
+            "disc_number": 1, 
+            "order": 4, 
+            "track": 60
+        }
+    }, 
+    {
+        "pk": 62, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 44, 
+            "disc_number": 1, 
+            "order": 5, 
+            "track": 84
+        }
+    }, 
+    {
+        "pk": 63, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 44, 
+            "disc_number": 2, 
+            "order": 6, 
+            "track": 110
+        }
+    }, 
+    {
+        "pk": 64, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 45, 
+            "disc_number": 1, 
+            "order": 7, 
+            "track": 7
+        }
+    }, 
+    {
+        "pk": 65, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 45, 
+            "disc_number": 1, 
+            "order": 8, 
+            "track": 41
+        }
+    }, 
+    {
+        "pk": 66, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 47, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 7
+        }
+    }, 
+    {
+        "pk": 67, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 47, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 99
+        }
+    }, 
+    {
+        "pk": 68, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 48, 
+            "disc_number": 1, 
+            "order": 3, 
+            "track": 19
+        }
+    }, 
+    {
+        "pk": 69, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 48, 
+            "disc_number": 1, 
+            "order": 4, 
+            "track": 98
+        }
+    }, 
+    {
+        "pk": 70, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 49, 
+            "disc_number": 1, 
+            "order": 5, 
+            "track": 89
+        }
+    }, 
+    {
+        "pk": 71, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 49, 
+            "disc_number": 1, 
+            "order": 6, 
+            "track": 101
+        }
+    }, 
+    {
+        "pk": 72, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 49, 
+            "disc_number": 1, 
+            "order": 7, 
+            "track": 109
+        }
+    }, 
+    {
+        "pk": 73, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 50, 
+            "disc_number": 1, 
+            "order": 8, 
+            "track": 102
+        }
+    }, 
+    {
+        "pk": 74, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 51, 
+            "disc_number": 1, 
+            "order": 1, 
+            "track": 68
+        }
+    }, 
+    {
+        "pk": 75, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 51, 
+            "disc_number": 1, 
+            "order": 2, 
+            "track": 75
+        }
+    }, 
+    {
+        "pk": 76, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 51, 
+            "disc_number": 2, 
+            "order": 3, 
+            "track": 84
+        }
+    }, 
+    {
+        "pk": 77, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 52, 
+            "disc_number": 1, 
+            "order": 4, 
+            "track": 5
+        }
+    }, 
+    {
+        "pk": 78, 
+        "model": "vinyl.Recordtrack", 
+        "fields": {
+            "record": 53, 
+            "disc_number": 1, 
+            "order": 5, 
+            "track": 97
         }
     }
+
 ]

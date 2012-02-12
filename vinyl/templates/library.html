@@ -18,6 +18,7 @@
 {% load paginator %}
 {% paginator 10 %}
 {% endif %}
+{% if object_list %}
 <table>
 	<thead>
 		<tr>
@@ -41,10 +42,14 @@
 	</tbody>
 </table>
 <br/>
+
 	<div id="commands">
 		<input id="rm-rec-lib" type="button" value="Remove Selected" class="button" /> 
 		{% if list_type == "T" %} 
 		<input id="promote-owned" type="button" value="Promote selected to owned" class="button">
 		{% endif %}
 	</div>
+{% else %}
+<div>No records in the list</div>
+{% endif %}
 {% endblock %}

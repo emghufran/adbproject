@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<div class="details-title">{% trans "Community Updates" %} 
+</div>
+
+<table>
+{% for playlist in playlists %}
+	<tr>
+		<td>{% if user.is_authenticated and user.id == playlist.created_by.id %}
+			{% trans "You" %}
+			{% else %}
+			{{ playlist.created_by.username}} 
+			{% endif %}
+			{% trans "published" %} <a href="{% url vinyl.views.playlist_details playlist.id%}">'{{ playlist.list_name }}'</a> [{{ playlist.published_on}}]</td>
+	</tr>
+{% endfor %}
+</table>
+
+{% endblock %} 
