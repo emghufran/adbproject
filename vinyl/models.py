@@ -121,6 +121,7 @@ class Rating(models.Model):
 class Userrating(models.Model):
     rated_by = models.ForeignKey(User)
     rated_for = models.ForeignKey(Record)
+    rating = models.IntegerField(null=False)
     rated_on = models.DateTimeField()
 
 class Comment(models.Model):

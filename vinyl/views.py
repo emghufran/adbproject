@@ -619,3 +619,57 @@ def associate_track_to_record(request):
 			return HttpResponse(json.dumps({"success": "true", "next" : "/vinyl/record/" + str(recordtrack.record_id)}))
 		else:
 			return HttpResponse(json.dumps(form.errors))
+
+def handle_rating(request):
+	import string, json
+	record_id = int(string.lstrip(request.POST['widget_id'], "rec_"))
+	rating_obj = Rating.objects.filter(record__id=record_id)
+	if 'fetch' in request.POST:		
+		if rating_obj.count() < 1:
+			resp_data = {'widget_id' : "rec_" + str(record_id), 'number_votes' : "0", "total_points":"0", 'dec_avg':'0', 'whole_avg':'0'}
+		else:
+			resp_data = {'widget_id' : "rec_" + str(record_id), 'number_votes' : rating_obj[0].count, "total_points":"0", 'dec_avg':rating_obj[0].avg_rating, 'whole_avg':int(round(rating_obj[0].avg_rating))}
+		return HttpResponse(json.dumps(resp_data))
+	else:
+		clicked_rating = int(string.lstrip(string.split(request.POST['clicked_on'], ' ')[0], "star_"))
+		user_rating = Userrating.objects.filter(rated_by__id=request.user.id, rated_for__id=record_id)
+		print "rating_count:" + str(rating_obj.count()) 
+		if rating_obj.count() < 1:
+			print "rating object not present"
+			if user_rating.count() < 1:
+				print "user rating not present"
+				Userrating.objects.create(rated_by_id=request.user.id, rated_for_id=record_id, rating=clicked_rating, rated_on=datetime.now())
+				Rating.objects.create(record__id=record_id, count=1, avg_rating=clicked_rating)
+				resp_data = {'widget_id' : "rec_" + str(record_id), 'number_votes' : "1", "total_points":"0", 'dec_avg':clicked_rating, 'whole_avg':clicked_rating}
+				
+		else:
+			print "rating object present"
+			if user_rating.count() < 1:
+				print "user rating object not present"
+				Userrating.objects.create(rated_by_id=request.user.id, rated_for_id=record_id, rating=clicked_rating, rated_on=datetime.now())
+				existing_score = (rating_obj[0].avg_rating * rating_obj[0].count) 
+				new_avg = (existing_score + clicked_rating)/(rating_obj[0].count + 1)
+				#rating_obj[0].avg_rating = new_avg
+				#rating_obj[0].count = rating_obj[0].count + 1
+				#rating_obj[0].save()
+				Rating.objects.filter(id=rating_obj[0].id).update(avg_rating=new_avg, count=rating_obj[0].count + 1)
+				
+				resp_data = {'widget_id' : "rec_" + str(record_id), 'number_votes' : rating_obj[0].count, "total_points":"0",'dec_avg':rating_obj[0].avg_rating, 'whole_avg':round(rating_obj[0].avg_rating)}
+			else:
+				print "user rating object present"
+				existing_avg = rating_obj[0].avg_rating
+				existing_count = rating_obj[0].count
+				existing_user_rating = user_rating[0].rating 
+				
+				Userrating.objects.filter(id=user_rating[0].id).update(rating=clicked_rating)
+				
+				print "Old User Rating:" + str(existing_user_rating)
+				print "New User Rating:" + str(clicked_rating)
+				
+				new_avg = ((existing_avg * existing_count)-existing_user_rating + clicked_rating)/existing_count
+				
+				Rating.objects.filter(id=rating_obj[0].id).update(avg_rating=new_avg)
+				print "New Avg:" + str(new_avg)
+				resp_data = {'widget_id' : "rec_" + str(record_id), 'number_votes' : existing_count, "total_points":"0",'dec_avg':rating_obj[0].avg_rating, 'whole_avg':round(rating_obj[0].avg_rating)}
+			
+		return HttpResponse(json.dumps(resp_data))
