@@ -49,11 +49,11 @@
 			<div class="lefthalf">
 				<div id="navigation">
 				<ul>
-				<li class="menu community"><a href="{% url vinyl.views.community %}">{% trans "Community" %}</a>
+				<li class="menu community"><a href="{% url adbproject.vinyl.views.community %}">{% trans "Community" %}</a>
 				</li>
 				{% if user.is_authenticated %}
 
-					<li class="menu myProfile"><a href="{% url vinyl.views.my_profile %}">{% trans "My Profile" %}</a></li>
+					<li class="menu myProfile"><a href="{% url adbproject.vinyl.views.my_profile %}">{% trans "My Profile" %}</a></li>
 					<li class="menu myLibrary"><a href="{% url adbproject.vinyl.views.library 'O' %}">{% trans "My Library" %}</a></li>
 				{% endif %}
 					<li class="menu myPlaylists"><a href="{% url adbproject.vinyl.views.playlists 'all' %}">{% trans "Playlists" %}</a></li>
