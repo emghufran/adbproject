@@ -80,6 +80,15 @@
 		</div>
 		<div id="wrapper">
 			<div id="content">
+				{%if messages%}
+				<div class="error corner-all">
+				<ul class='errorlist'>
+					{%for msg in messages%}
+					<li>{{msg}}</li>
+					{% endfor %}
+				</ul>
+				</div>
+				{%endif%}
 				{% block content %}
 					
 				{% endblock %}

@@ -1,11 +1,6 @@
 from adbproject.ajax_select import make_ajax_field
 from adbproject.vinyl.models import *
 from django import forms
-#from django.db import models
-#from django.contrib.auth.models import User
-#from django.contrib import admin
-#from django.contrib.auth.forms import UserCreationForm
-#from adbproject import settings
 
 #UserProfile form	
 class UserProfileForm(forms.ModelForm):
@@ -17,7 +12,7 @@ class UserProfileForm(forms.ModelForm):
 	profile_pic = forms.CharField(max_length=512, required=False)
 	class Meta:
 		model = UserProfile
-		exclude = ('user_id')
+		exclude = ('confirmation_code','user')
 
 class RegisterForm(UserCreationForm):
 	username = forms.RegexField(label= "Username" , max_length = 30, regex = r'^[\w]+$', error_messages = {'invalid': "This value may contain only letters, numbers and _ characters."})
@@ -75,7 +70,22 @@ class RecordArchiveForm(forms.ModelForm):
 	class Meta:
 		model = RecordArchive
 		fields = ('matrix_number', 'title', 'disk_size', 'press_info', 'genre', 'artist', 'category')
-		
+
+class SoundtrackArchiveForm(forms.ModelForm):
+	title = forms.CharField(required=True)
+	release_date = forms.DateField(required=False)
+	playing_time = forms.CharField(required=False)
+	style = forms.CharField(required=False)
+	audio_engineer = forms.CharField(required=False)
+	lyricist = forms.CharField(required=False)
+	music_writer = forms.CharField(required=False)
+	rythm = forms.CharField(required=False)
+	label = forms.CharField(required=False)
+	original_version = forms.IntegerField(required=False) 
+	genre_id = forms.IntegerField(required=False)
+	class Meta:
+		model=SoundtrackArchive
+
 class SearchForm(forms.Form):
 	record_title = forms.CharField(max_length=128, required=False)
 	artist = forms.CharField(max_length=128, required=False)
@@ -103,7 +113,6 @@ class SoundtrackForm(forms.ModelForm):
 	
 	original_version = make_ajax_field(Recordtrack,'track','soundtrack_title',help_text="Search for existing soundtracks", required=False)
 	player = make_ajax_field(Soundtrack,'player','musicplayer_name', required=False)#,help_text="Add music players")
-	#player = models.ManyToManyField(Musicplayer)
 	class Meta:
 		model = Soundtrack
 

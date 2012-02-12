@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block content %}
+<form method= "post" action="{% url 'edit_track_url' track_id=track_id %}" >
+{% csrf_token %}
+<div class="clearboth"></div>
+
+{% for field in form %}
+<p>
+{{ field.errors }}
+{% if field.name == 'artist' %}
+<label for="id_artist_text">Artist Name</label>
+{% else %}
+{% if field.name == 'original_version'%}
+<label for="id_original_version_text">Original Version</label>
+{%else%}
+{{ field.label_tag }}
+{% endif %}
+{% endif %} : {{ field }}
+</p>
+{% endfor %}
+{{recordtrack.as_p}}
+<input type="submit" value="Edit Track" />
+<input type="hidden" name="next" value= "{{ next }}" />
+</form>
+{% endblock %}

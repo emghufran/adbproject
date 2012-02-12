@@ -19,6 +19,7 @@ from django.utils.translation import activate
 from django.views.generic.list_detail import object_list
 import logging
 import urllib
+from django.contrib import messages
 
 #from haystack.views import SearchView
 
@@ -64,6 +65,26 @@ def logout_view(request):
 	logout(request)
 	return HttpResponseRedirect('/')
 
+def confirm_user(request, user_id, confirm_code):
+	user = User.objects.filter(id=user_id)
+	if user.count() < 1:
+		messages.error(request, "Invalid User")
+	else:
+		user = user[0]
+		profile = user.get_profile()
+		print profile.confirmation_code
+		print confirm_code
+		if profile.confirmation_code != confirm_code:
+			messages.error(request, "Invalid Code" + profile.confirmation_code + ":" + confirm_code)
+		else:
+			user.is_active = True
+			profile.confirmation_code = ''
+			user.save()
+			profile.save()
+			email_text = "Dear " + user.username + ",\n\nWe welcome you to VinylRecords!  Your email has been confirmed!\n\nThanks,\nVinylRecords Team."
+			send_mail('Email Confirmed', email_text, 'admin@vinylrecords.com', [user.email])
+	return HttpResponseRedirect('/')
+
 def register(request):
 	if request.method == 'POST':
 		form = RegisterForm(request.POST)
@@ -71,15 +92,21 @@ def register(request):
 		if form.is_valid() and profile_form.is_valid():
 			#do something
 			logger.debug("testing register: if case")
-			user = form.save()
-			user_profile = profile_form.save(commit=False)
-			user_profile.user_id = user.id
-			user_profile.save()
+			user = form.save(commit=False)
+			user.is_active = False
+			user.save()
+			
 			import md5
 			m = md5.new(user.username)
+			
+			user_profile = profile_form.save(commit=False)
+			user_profile.user_id = user.id
+			user_profile.confirmation_code = m.hexdigest()
+			user_profile.save()
+			
 			email_text = "Dear " + user.username + ",\n\nWe welcome you to VinylRecords. Please click on the following link to confirm your registration:\n\n" + settings.SITE_BASE_URL + "accounts/activate/" + str(user.id) + "/" + m.hexdigest() + "\n\nThanks,\nVinylRecords Team."
 			send_mail('Welcome to Vinyl Records', email_text, 'admin@vinylrecords.com', [user.email])
-			return HttpResponseRedirect('/vinyl/playlists/all/')
+			return HttpResponseRedirect('/')
 	else:
 		form = RegisterForm()
 		profile_form = UserProfileForm()
@@ -141,9 +168,9 @@ def track_details(request, track_id):
 	artiststr = []
 	feat_artiststr = []
 	for artist in artists:
-		if artist.type == 'M':
+		if artist.artisttype == 'M':
 			artiststr.append(artist.name)
-		elif artists.type == 'F':
+		elif artist.artisttype == 'F':
 			feat_artiststr.append(artist.name)
 
 	playerstr = []
@@ -154,10 +181,6 @@ def track_details(request, track_id):
 	c = RequestContext(request, {'track': track, 'artists': ",".join(artiststr), \
 								'feat_artists': ",".join(feat_artiststr), 'musicplayers': ",".join(playerstr)})
 	return HttpResponse(t.render(c))
-
-# TODO update these views. They are added to make navigation work.
-def edit_track(request, track_id):
-	return HttpResponse("")
 
 def delete_track(request, track_id, record_id):
 	track=Soundtrack.objects.filter(pk=track_id)
@@ -180,6 +203,9 @@ def delete_track(request, track_id, record_id):
 	return HttpResponseRedirect('/vinyl/record/' + str(record.id))
 
 def new_track(request, record_id):
+	uid = request.user.id
+	if uid == None:
+		uid = 1
 	if request.method == 'POST':
 		if Record.objects.filter(pk=record_id).count() < 1:
 			return HttpResponseRedirect('/') #do something better
@@ -192,20 +218,67 @@ def new_track(request, record_id):
 			soundtrack = form.save()
 			print soundtrack.id
 			if Trackartist.objects.filter(artist__id=artist,track__id=soundtrack.id).count() < 1:
-				Trackartist.objects.create(artist_id=artist, track_id=soundtrack.id,artisttype="P")
+				Trackartist.objects.create(artist_id=artist, track_id=soundtrack.id,artisttype="M")
 			
 			rt = recordtrack.save(commit=False)
 			if Recordtrack.objects.filter(record__id=record_id, track__id=soundtrack.id).count() < 1:
 				rt.record_id = record_id
 				rt.track_id = soundtrack.id
 				rt.save()
-			logger.debug("testing register: if case")
+			
+			rev = Revision.objects.create(revision_type='RecordTrack', created_on=datetime.now(), user_id=uid)
+			curr_rts = Recordtrack.objects.filter(record__id=record_id)
+			for cr in curr_rts:
+				RecordtrackArchive.objects.create(track_id=cr.track_id, record_id=cr.record_id, order=cr.order, disc_number=cr.disc_number, revision_id=rev.id)
+			
 			return HttpResponseRedirect('/vinyl/record/' + str(record_id))
 	else:
 		form = SoundtrackForm()
 		recordtrack = RecordtrackSmallForm()
 		
 	return render_to_response('record/new_track.html', { 'form' : form, 'record':record_id, 'recordtrack':recordtrack }, context_instance=RequestContext(request))
+
+# TODO update these views. They are added to make navigation work.
+def edit_track(request, track_id):
+	errorlist=[]
+	track = Soundtrack.objects.filter(pk=track_id)
+	uid = request.user.id
+	if uid == None:
+		uid = 1
+	if track.count() < 1:
+		errorlist.append('Track does not exist.')
+		return render_to_response('record/edit_track.html', { 'errors':errorlist}, context_instance=RequestContext(request))
+		
+	if request.method == 'POST':
+		form = SoundtrackForm(request.POST, instance=track[0])
+		if form.is_valid():
+			artist = request.POST['artist']
+			soundtrack = form.save()
+
+			if Trackartist.objects.filter(artist__id=artist,track__id=soundtrack.id).count() < 1:
+				Trackartist.objects.create(artist_id=artist, track_id=soundtrack.id,artisttype="P")
+			
+			rev = Revision.objects.create(revision_type='Track', created_on=datetime.now(), user_id=uid)
+			new_data = request.POST.copy()
+			new_data['revision'] = rev.id
+			soundtrack_arc = SoundtrackArchiveForm(new_data)
+			if soundtrack_arc.is_valid():
+				logger.debug(soundtrack_arc)
+				archive_obj = soundtrack_arc.save(commit=False)
+				archive_obj.revision_id = rev.id
+				archive_obj.save()
+			else:
+				print soundtrack_arc.errors
+			
+			for pl in soundtrack.player.all():
+				TrackplayerArchive.objects.create(musicplayer_id=pl.musicplayer_id, track_id=pl.soundtrack_id, revision_id=rev.id)
+			for ar in soundtrack.trackartist_set.all():
+				TrackartistArchive.objects.create(artist_id=ar.artist_id, track_id=ar.track_id, type=ar.artisttype, revision_id=rev.id)
+			
+			return HttpResponseRedirect('/vinyl/track/' + str(soundtrack.id))
+	else:
+		form = SoundtrackForm(instance=track[0])
+	return render_to_response('record/edit_track.html', { 'form' : form, 'errors':errorlist, 'track_id':track_id}, context_instance=RequestContext(request))
 
 def edit_playlist(request, playlist_id):
 	return HttpResponse("")
@@ -529,7 +602,7 @@ def associate_track_to_record(request):
 			curr_rts = Recordtrack.objects.filter(record__id=record_id)
 			for cr in curr_rts:
 				RecordtrackArchive.objects.create(track_id=cr.track_id, record_id=cr.record_id, order=cr.order, disc_number=cr.disc_number, revision_id=rev.id)
-			logger.debug("testing register: if case")
+				
 			return HttpResponse(json.dumps({"success": "true", "next" : "/vinyl/record/" + str(recordtrack.record_id)}))
 		else:
 			return HttpResponse(json.dumps(form.errors))

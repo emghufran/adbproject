@@ -169,7 +169,7 @@ LOGGING = {
         },
     }
 }
-AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+AUTH_PROFILE_MODULE = 'vinyl.UserProfile'
 LOGIN_REDIRECT_URL = '/vinyl/playlists/all'
 
 

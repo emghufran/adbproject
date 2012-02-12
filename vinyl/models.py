@@ -10,6 +10,7 @@ class UserProfile(models.Model):
 	address = models.CharField(max_length=256, null=True)
 	profile_pic = models.CharField(max_length=1024, null=True)
 	language = models.CharField(max_length=8, null=True)
+	confirmation_code=models.CharField(max_length=64, null=True)
 	user = models.ForeignKey(User)
 
 admin.site.register(UserProfile)
@@ -67,7 +68,6 @@ class SoundtrackAbstract(models.Model):
     music_writer = models.CharField(max_length=256, null=True, db_index=True)
     rythm = models.CharField(max_length=32, null=True)
     label = models.CharField(max_length=128, null=True)
-    
     class Meta:
         abstract = True
 
@@ -187,7 +187,8 @@ class RecordtrackArchive(models.Model):
 	def __unicode__(self):
 		return u'%s' % (self.record_id)
 	
-class SoundtrackArchive(Soundtrack):
+class SoundtrackArchive(SoundtrackAbstract):
+    original_version = models.IntegerField(null=True) 
     genre_id = models.IntegerField(null=True)
     revision = models.ForeignKey(Revision)
 
