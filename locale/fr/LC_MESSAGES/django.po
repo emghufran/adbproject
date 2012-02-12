@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-04 20:54+0100\n"
+"POT-Creation-Date: 2012-02-12 16:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .\vinyl\templates\base.html.py:40
+#: .\ajax_select\fields.py:97 .\ajax_select\fields.py:138
+#: .\ajax_select\fields.py:303
+msgid "Enter text to search."
+msgstr ""
+
+#: .\vinyl\templates\base.html.py:33
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: .\vinyl\templates\base.html.py:40
+#: .\vinyl\templates\base.html.py:33
 msgid "Logout"
 msgstr "Se disconnecter"
 
-#: .\vinyl\templates\base.html.py:42
+#: .\vinyl\templates\base.html.py:35
 msgid "Register"
 msgstr "Inscription"
 
-#: .\vinyl\templates\base.html.py:42
+#: .\vinyl\templates\base.html.py:35
 msgid "Login"
 msgstr "Se connecter"
 
-#: .\vinyl\templates\base.html.py:59 .\vinyl\templates\base.html.py:92
+#: .\vinyl\templates\base.html.py:52
 msgid "Community"
 msgstr "La communauté"
 
-#: .\vinyl\templates\base.html.py:63 .\vinyl\templates\base.html.py:98
+#: .\vinyl\templates\base.html.py:56
 msgid "My Profile"
 msgstr "Mon profil"
 
-#: .\vinyl\templates\base.html.py:64 .\vinyl\templates\base.html.py:99
+#: .\vinyl\templates\base.html.py:57
 msgid "My Library"
 msgstr "Ma bibliothèque"
 
-#: .\vinyl\templates\index.html.py:13
-#: .\vinyl\templates\record_details.html.py:8
+#: .\vinyl\templates\base.html.py:59
+msgid "Playlists"
+msgstr ""
+
+#: .\vinyl\templates\base.html.py:66
+msgid "Search"
+msgstr "Rechercher"
+
+#: .\vinyl\templates\community.html.py:4
+#, fuzzy
+msgid "Community Updates"
+msgstr "La communauté"
+
+#: .\vinyl\templates\community.html.py:11
+msgid "You"
+msgstr "Vous"
+
+#: .\vinyl\templates\community.html.py:15
+msgid "published"
+msgstr "avez publié"
+
+#: .\vinyl\templates\index.html.py:15
+#: .\vinyl\templates\playlist_details.html.py:41
+#: .\vinyl\templates\record_details.html.py:12
+#: .\vinyl\templates\record_details.html.py:78
 msgid "Artist"
 msgstr "Artiste"
 
-#: .\vinyl\templates\index.html.py:14
+#: .\vinyl\templates\index.html.py:16
 #: .\vinyl\templates\record_details.html.py:20
+#: .\vinyl\templates\record_details.html.py:79
+#: .\vinyl\templates\track_details.html.py:19
 msgid "Genre"
 msgstr "Genre"
 
-#: .\vinyl\templates\record_details.html.py:12
-msgid "Featuring"
+#: .\vinyl\templates\playlist_details.html.py:12
+msgid "Owner"
+msgstr ""
+
+#: .\vinyl\templates\playlist_details.html.py:16
+msgid "Published"
+msgstr "Publié"
+
+#: .\vinyl\templates\playlist_details.html.py:29
+msgid "Created on"
+msgstr ""
+
+#: .\vinyl\templates\playlist_details.html.py:39
+#: .\vinyl\templates\record_details.html.py:77
+msgid "Title"
+msgstr "Titre"
+
+#: .\vinyl\templates\playlist_details.html.py:40
+msgid "Record"
+msgstr ""
+
+#: .\vinyl\templates\playlist_details.html.py:42
+msgid "Added by"
+msgstr ""
+
+#: .\vinyl\templates\profile.html.py:11
+msgid "Username"
+msgstr ""
+
+#: .\vinyl\templates\profile.html.py:15
+msgid "Name"
+msgstr "Nom"
+
+#: .\vinyl\templates\profile.html.py:19
+msgid "Email"
+msgstr ""
+
+#: .\vinyl\templates\profile.html.py:23
+msgid "Phone"
+msgstr ""
+
+#: .\vinyl\templates\profile.html.py:27
+msgid "Language"
 msgstr ""
 
 #: .\vinyl\templates\record_details.html.py:16
@@ -64,7 +135,7 @@ msgid "Producer"
 msgstr ""
 
 #: .\vinyl\templates\record_details.html.py:24
-msgid "Cateogry"
+msgid "Category"
 msgstr ""
 
 #: .\vinyl\templates\record_details.html.py:28
@@ -83,6 +154,72 @@ msgstr ""
 msgid "Rating"
 msgstr ""
 
-#: .\vinyl\templates\record_details.html.py:53
+#: .\vinyl\templates\record_details.html.py:80
+#: .\vinyl\templates\track_details.html.py:23
+msgid "Playing Time"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:81
+msgid "Release Date"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:97
+msgid "Edit"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:102
+msgid "Delete"
+msgstr ""
+
+#: .\vinyl\templates\record_details.html.py:112
 msgid "Comments"
 msgstr "Commentaires"
+
+#: .\vinyl\templates\track_details.html.py:11
+#, fuzzy
+msgid "Artists"
+msgstr "Artiste"
+
+#: .\vinyl\templates\track_details.html.py:15
+msgid "Featuring Artists"
+msgstr ""
+
+#: .\vinyl\templates\track_details.html.py:27
+msgid "Style"
+msgstr ""
+
+#: .\vinyl\templates\track_details.html.py:31
+msgid "Lyricist"
+msgstr ""
+
+#: .\vinyl\templates\track_details.html.py:35
+msgid "Audio Engineer"
+msgstr ""
+
+#: .\vinyl\templates\track_details.html.py:39
+msgid "Music Writer"
+msgstr ""
+
+#: .\vinyl\templates\track_details.html.py:43
+msgid "Rhythm"
+msgstr ""
+
+#: .\vinyl\templates\track_details.html.py:47
+msgid "Original version"
+msgstr ""
+
+#: .\vinyl\templates\track_details.html.py:51
+msgid "Music Players"
+msgstr ""
+
+#: .\vinyl\utils\__init__.py:7
+msgid "is"
+msgid_plural "are"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\vinyl\utils\__init__.py:9
+msgid "has"
+msgid_plural "have"
+msgstr[0] ""
+msgstr[1] ""

@@ -290,11 +290,13 @@ def edit_track(request, track_id):
 	return render_to_response('record/edit_track.html', { 'form' : form, 'errors':errorlist, 'track_id':track_id}, context_instance=RequestContext(request))
 
 def edit_playlist(request, playlist_id):
-	return HttpResponse("")
+	return HttpResponse("") 
 
-def my_profile(request, user_id):
-	user_profile = UserProfile.objects.get(id=user_id)
-
+@login_required
+def my_profile(request):
+	cur_user = get_user(request)
+	user_profile = UserProfile.objects.get(user=cur_user.id)
+	
 	t = loader.get_template("profile.html")
 	c = RequestContext(request, {'user_profile': user_profile})
 	return HttpResponse(t.render(c))
@@ -302,7 +304,7 @@ def my_profile(request, user_id):
 def library(request, list_type):
 	user = get_user(request)
 	
-	LIST_HEADERS = (
+	LIST_HEADERS = (	
 				('Title', 'record__title'),
 				('Artist', 'record__artist__name'),
 				('Genre', 'record__genre__genre_name'),
@@ -408,7 +410,6 @@ def add_to_playlist(request, playlist_id, ids):
 	msg = save_to_playlist(cur_user, Playlist(id=playlist_id), ids)		
 	return HttpResponse(msg)
 
-@login_required
 def save_to_playlist(cur_user, playlist, ids):
 	id_array = ids.split("__")
 	
@@ -424,7 +425,7 @@ def save_to_playlist(cur_user, playlist, ids):
 		except IntegrityError:
 			duplicate_ids.append(trid[0])
 			transaction.rollback()
-		else:
+		else: 
 			inserted_ids.append(trid[0])
 	
 	msg = ""

@@ -53,7 +53,7 @@
 				</li>
 				{% if user.is_authenticated %}
 
-					<li class="menu myProfile"><a href="">{% trans "My Profile" %}</a></li>
+					<li class="menu myProfile"><a href="{% url vinyl.views.my_profile %}">{% trans "My Profile" %}</a></li>
 					<li class="menu myLibrary"><a href="{% url adbproject.vinyl.views.library 'O' %}">{% trans "My Library" %}</a></li>
 				{% endif %}
 					<li class="menu myPlaylists"><a href="{% url adbproject.vinyl.views.playlists 'all' %}">{% trans "Playlists" %}</a></li>
@@ -84,23 +84,7 @@
 				{% endblock %}
 			</div>
 		</div>
-		<!-- <div id="navigation">
-			<br />
-			<form id="searchForm" method="post" action="">
-			  <div><input id="search" name="search" type="text"></input>
-				<input type="button" value="Search" class="button"/>
-				</div>
-			</form>
-			<br/>
-			<p class="menu community"><a href="">{% trans "Community" %}</a>
-			</p>
-		</div> -->
 		{% if user.is_authenticated %}
-		<!-- <div id="extra">
-
-			<p class="menu myProfile"><a href="">{% trans "My Profile" %}</a></p>
-			<p class="menu myLibrary"><a href="">{% trans "My Library" %}</a></p>
-		</div> -->
 		{% endif %}
 		<div id="footer">
 			<p>&nbsp;</p>

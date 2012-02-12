@@ -97,6 +97,13 @@
             "genre_name": "R&B"
         }
     },
+    {
+        "pk": 11, 
+        "model": "vinyl.Genre", 
+        "fields": {
+            "genre_name": "Metal"
+        }
+    },
    {
         "pk": 1, 
         "model": "vinyl.Soundtrack", 

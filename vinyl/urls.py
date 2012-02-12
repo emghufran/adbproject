@@ -19,7 +19,7 @@ urlpatterns = patterns('',
                     url(r'^playlist/new/(?P<list_name>\w+)/(?P<ids>\w+)$', new_playlist),
                     url(r'^playlist/publish/(?P<playlist_id>\d+)$', publish_playlist),
                     
-                    url(r'^profile/(?P<user_id>\d+)/$', my_profile),
+                    url(r'^profile/$', my_profile),
                     url(r'^list/add/(?P<type>\w)/(?P<ids>\w+)$', add_to_list),
 
                     url(r'^record/(?P<record_id>\d+)$', record_details),  

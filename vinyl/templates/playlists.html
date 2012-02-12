@@ -28,16 +28,10 @@
 	<thead>
 		<tr>
 			{% table_header headers %}
-			<!-- <th>Playlist</th>
-			<th>Created by</th>
-			<th>Created on</th>
-			<th># of Records</th> -->
-			<!-- <th>Last Updated on</th> -->
 			<th></th>
 		</tr>
 	</thead>
 	<tbody>
-	<!--  works for my playlists and all playlists. TODO modify for my shared and shared with me -->
 {% for playlist in object_list %}
 		<tr>
 			<td><a href="{% url adbproject.vinyl.views.playlist_details playlist.id %}">{{ playlist.list_name|escape }}</a></td>
@@ -49,7 +43,6 @@
 				{% if playlist.created_by.id == user.id %}
 				<a href="{% url adbproject.vinyl.views.edit_playlist playlist.id  %}" class="button buttonlink">Edit</a> &nbsp;
 				<a href="" class="button buttonlink">Delete</a>
-				<!-- <input type="button" value="Edit" class="button"/> &nbsp;<input type="button" value="Delete" class="button"/> -->
 				{% endif %}
 			</td>
 		</tr>
