@@ -7,6 +7,7 @@ from datetime import datetime
 from django.contrib.auth import logout, logout, logout, get_user
 from django.contrib.auth.forms import UserCreationForm, UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, send_mail
 from django.core.paginator import Paginator
 from django.db import transaction
@@ -182,6 +183,7 @@ def track_details(request, track_id):
 								'feat_artists': ",".join(feat_artiststr), 'musicplayers': ",".join(playerstr)})
 	return HttpResponse(t.render(c))
 
+@login_required
 def delete_track(request, track_id, record_id):
 	track=Soundtrack.objects.filter(pk=track_id)
 	record=Record.objects.filter(pk=record_id)
@@ -203,6 +205,7 @@ def delete_track(request, track_id, record_id):
 		
 	return HttpResponseRedirect('/vinyl/record/' + str(record[0].id))
 
+@login_required
 def new_track(request, record_id):
 	uid = request.user.id
 	if uid == None:
@@ -239,7 +242,7 @@ def new_track(request, record_id):
 		
 	return render_to_response('record/new_track.html', { 'form' : form, 'record':record_id, 'recordtrack':recordtrack }, context_instance=RequestContext(request))
 
-# TODO update these views. They are added to make navigation work.
+@login_required
 def edit_track(request, track_id):
 	errorlist=[]
 	track = Soundtrack.objects.filter(pk=track_id)
@@ -272,7 +275,7 @@ def edit_track(request, track_id):
 				print soundtrack_arc.errors
 			
 			for pl in soundtrack.player.all():
-				TrackplayerArchive.objects.create(musicplayer_id=pl.musicplayer_id, track_id=pl.soundtrack_id, revision_id=rev.id)
+				TrackplayerArchive.objects.create(musicplayer_id=pl.id, track_id=track_id, revision_id=rev.id)
 			for ar in soundtrack.trackartist_set.all():
 				TrackartistArchive.objects.create(artist_id=ar.artist_id, track_id=ar.track_id, type=ar.artisttype, revision_id=rev.id)
 			
@@ -290,6 +293,7 @@ def my_profile(request, user_id):
 	t = loader.get_template("profile.html")
 	c = RequestContext(request, {'user_profile': user_profile})
 	return HttpResponse(t.render(c))
+
 def library(request, list_type):
 	user = get_user(request)
 	
@@ -319,6 +323,7 @@ def remove_from_library(request, ids):
 	
 	return HttpResponse()
 
+@login_required
 def promote_tracked_to_owned(request, ids):
 	id_array = ids.split("_")
 	user = get_user(request)
@@ -330,7 +335,8 @@ def promote_tracked_to_owned(request, ids):
 		lib_item.save()
 	
 	return HttpResponse()
-	
+
+@login_required
 @transaction.commit_on_success
 def new_playlist(request, list_name, ids):
 	cur_user = get_user(request)
@@ -389,12 +395,14 @@ def add_to_list(request, type, ids):
 		
 	return HttpResponse(msg)
 
+@login_required
 @transaction.commit_on_success
 def add_to_playlist(request, playlist_id, ids):
 	cur_user = get_user(request)
 	msg = save_to_playlist(cur_user, Playlist(id=playlist_id), ids)		
 	return HttpResponse(msg)
 
+@login_required
 def save_to_playlist(cur_user, playlist, ids):
 	id_array = ids.split("__")
 	
@@ -435,6 +443,7 @@ def save_to_playlist(cur_user, playlist, ids):
 		msg += "'{0}' {1} already in the list.".format("', '".join(dup_rec_title), be)
 	return msg
 
+@login_required
 def publish_playlist(request, playlist_id):
 	msg = ''
 	try:
@@ -488,7 +497,6 @@ def search_record(request):
 #	return object_list(request, template_name='search_results.html',
 #         queryset=record_list, paginate_by=2, extra_context = context)
 		
-
 def search_track(request):
 	query_string = request.GET.get('q', '')
 	cur_user = get_user(request) 
@@ -536,6 +544,7 @@ def search_track(request):
 		c = RequestContext(request, context)
 		return HttpResponse(t.render(c))
 
+@login_required
 def edit_record(request, record_id):
 	errorlist = []
 	rec_instance = Record.objects.filter(pk=record_id)
@@ -561,6 +570,8 @@ def edit_record(request, record_id):
 		form = RecordForm(instance=rec_instance[0])
 
 	return render_to_response('record/edit_record.html', { 'form' : form, 'errors' : errorlist, 'record_id':record_id }, context_instance=RequestContext(request))
+
+@login_required
 def new_record(request):
 	uid = request.user.id
 	if uid == None:
@@ -582,6 +593,7 @@ def new_record(request):
 		
 	return render_to_response('record/new_record.html', { 'form' : form }, context_instance=RequestContext(request))
 
+@login_required
 def associate_track_to_record(request):
 	import json
 	uid = request.user.id

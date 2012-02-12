@@ -31,5 +31,6 @@ urlpatterns = patterns('',
 					url(r'^library/(?P<list_type>\w)/$', library), 
 					url(r'^library/delete/(?P<ids>\w+)/$', remove_from_library),
 					url(r'^library/promote/(?P<ids>\w+)/$', promote_tracked_to_owned),
+					url(r'^profile/(?P<user_id>\d+)/$', my_profile),
 					
                 )
